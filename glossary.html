@@ -324,8 +324,8 @@
     <p class="sub">地圖 → 新手 → 初階 → 進階 → 程式語言與工具 → 副檔名，六個分頁自由切換，還能搜尋</p>
     <div class="meta">
       <span>地圖 1 張</span>
-      <span>新手 27 個概念</span>
-      <span>程式語言與工具 22 個</span>
+      <span>新手 37 個概念</span>
+      <span>程式語言與工具 24 個</span>
       <span>初階 19 個指令</span>
       <span>進階 28 個技巧</span>
       <span>副檔名 42 個</span>
@@ -360,10 +360,10 @@
   <div class="bar">
     <div class="tabs" role="tablist">
       <button class="tab-btn" data-tab="map" role="tab" aria-selected="false">地圖</button>
-      <button class="tab-btn on" data-tab="beginner" role="tab" aria-selected="true">新手<span class="cnt">27</span></button>
+      <button class="tab-btn on" data-tab="beginner" role="tab" aria-selected="true">新手<span class="cnt">37</span></button>
       <button class="tab-btn" data-tab="elementary" role="tab" aria-selected="false">初階<span class="cnt">19</span></button>
       <button class="tab-btn" data-tab="advanced" role="tab" aria-selected="false">進階<span class="cnt">28</span></button>
-      <button class="tab-btn" data-tab="langs" role="tab" aria-selected="false">程式語言與工具<span class="cnt">22</span></button>
+      <button class="tab-btn" data-tab="langs" role="tab" aria-selected="false">程式語言與工具<span class="cnt">24</span></button>
       <button class="tab-btn" data-tab="ext" role="tab" aria-selected="false">副檔名<span class="cnt">42</span></button>
     </div>
     <input class="kw" id="kw" type="search" placeholder="搜尋全部詞彙（跨分頁）…">
@@ -499,10 +499,10 @@
           <div class="d">第一個程式語言，也常是統計、AI 的首選。</div>
           <div class="path">初階・起步 4 → 進階・3</div>
         </div>
-        <div class="domain-card" data-goto="langs" data-grp="開發工具">
+        <div class="domain-card" data-goto="beginner" data-grp="AI 與新工具">
           <div class="t">🤖 AI 工具</div>
           <div class="d">讓 AI 幫你寫程式、查資料、做筆記。</div>
-          <div class="path">程式語言與工具分頁・開發工具 10 → 進階・AI Agent 操作 7</div>
+          <div class="path">新手・概念 5 → 進階・AI Agent 操作 7</div>
         </div>
         <div class="domain-card" data-goto="beginner" data-grp="前端與後端">
           <div class="t">🌐 網頁開發</div>
@@ -512,6 +512,11 @@
         <div class="domain-card" data-goto="langs" data-grp="常用程式語言">
           <div class="t">💬 常用程式語言</div>
           <div class="d">JavaScript、Python、Swift…各語言的分工與差別。</div>
+          <div class="path">程式語言與工具分頁・12 條</div>
+        </div>
+        <div class="domain-card" data-goto="langs" data-grp="開發工具">
+          <div class="t">🛠️ 開發工具</div>
+          <div class="d">VS Code、React、Django…寫程式會用到的工具與框架。</div>
           <div class="path">程式語言與工具分頁・12 條</div>
         </div>
       </div>
@@ -728,6 +733,90 @@
 
     
     <div class="grp">
+<div class="grp">
+      <div class="grp-head"><span class="dot" style="background:#D9534F;"></span><h3>程式與開發概念</h3><span class="cnt">5</span></div>
+      <div class="grp-path">🗂️ 領域全貌：<a class="path-link" data-goto="map">地圖・領域總覽</a></div>
+      <div class="card">
+        <div class="term">
+          <div class="term-l"><b>程式碼</b><span class="en">Code</span></div>
+          <div class="term-r">
+            <p>寫給電腦看的指令文字；你學的 Python 就是一種程式語言。</p>
+            <p class="when"><b>遇到：</b>用 VS Code 打開 <code>.py</code> 檔，<b>看到的內容就是程式碼</b>。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><b>編輯器</b><span class="en">Editor</span></div>
+          <div class="term-r">
+            <p>專門寫程式的軟體，最常用的是 VS Code。</p>
+            <p class="when"><b>遇到：</b>安裝 VS Code 後，<b>用「開啟資料夾」打開專案資料夾</b>來寫 code。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><b>腳本</b><span class="en">Script</span></div>
+          <div class="term-r">
+            <p>一段自動化小程式，例如「自動整理下載資料夾」。Python 特別適合寫腳本。</p>
+            <p class="when"><b>遇到：</b><b>想讓重複的事自動做時，就是寫腳本的時機</b>。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><b>報錯／錯誤訊息</b><span class="en">Error</span></div>
+          <div class="term-r">
+            <p>程式出錯時跳出的提示（通常是英文）。它是程式給你的線索，不是在罵你。</p>
+            <p class="when"><b>遇到：</b>幾乎每天。<b>SOP：整段複製 → 貼給 AI → 跟著改，最有效率</b>。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><b>API</b><span class="en">API</span></div>
+          <div class="term-r">
+            <p>兩個程式之間溝通的「點餐窗口」：你叫資料，它出資料。</p>
+            <p class="when"><b>遇到：</b><b>想讓程式抓天氣、匯率、股市資料時</b>；也是「連接器」背後的原理。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="grp">
+      <div class="grp-head"><span class="dot" style="background:#7B5EA7;"></span><h3>AI 與新工具</h3><span class="cnt">5</span></div>
+      <div class="grp-path">🧭 想更深入：<a class="path-link" data-goto="advanced" data-grp="AI Agent 操作">進階・AI Agent 操作</a></div>
+      <div class="card">
+        <div class="term">
+          <div class="term-l"><b>Prompt（提示詞）</b><span class="en">Prompt</span></div>
+          <div class="term-r">
+            <p>你對 AI 說的話＝任務描述。說得越清楚，結果越好。</p>
+            <p class="when"><b>遇到：</b>每次跟 AI 對話都是在寫 prompt；<b>「目標＋材料＋格式＋驗收標準」四件套最有效</b>。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><b>Agent（智能體）</b><span class="en">Agent</span></div>
+          <div class="term-r">
+            <p>能自己拆解任務、調用工具的 AI（豆包工作就是 Agent）。</p>
+            <p class="when"><b>遇到：</b>任務模式／工作模式裡的我。<b>不用懂原理，會下指令就行</b>。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><b>模型</b><span class="en">Model</span></div>
+          <div class="term-r">
+            <p>AI 的「大腦」；不同模型擅長的事情不同。</p>
+            <p class="when"><b>遇到：</b><b>生成結果不理想時，可以問問換個模型／模式是不是更好</b>。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><b>額度</b><span class="en">Quota</span></div>
+          <div class="term-r">
+            <p>你能使用某功能的次數或時長限制。</p>
+            <p class="when"><b>遇到：</b>提示「今日次數用完」時；<b>免費版次日重置，訂閱則有更大額度</b>。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><b>上下文</b><span class="en">Context</span></div>
+          <div class="term-r">
+            <p>AI 記得的先前對話內容。</p>
+            <p class="when"><b>遇到：</b>新開對話後 AI 忘了前面的事＝上下文斷了；<b>把重要資訊重新貼上即可</b>。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
       <div class="grp-head"><span class="dot" style="background:#5A6ACF;"></span><h3>前端與後端（端的地圖）</h3><span class="cnt">6</span></div>
       <div class="grp-path">🗂️ 全貌：<a class="path-link" data-goto="map">地圖分頁</a> ｜ 🧭 深入：<a class="path-link" data-goto="advanced" data-grp="網頁開發（前端）">進階・網頁開發</a></div>
       <div class="card">
@@ -1255,84 +1344,83 @@
         </div>
       </div>
     </div>
-      <div class="grp">
-        <div class="grp-head"><span class="dot" style="background:#2E9E8F;"></span><h3>開發工具</h3><span class="cnt">10</span></div>
-        <div class="grp-path">🗂️ 領域全貌：<a class="path-link" data-goto="map">地圖・領域總覽</a> ｜ 🧭 深入：<a class="path-link" data-goto="advanced" data-grp="AI Agent 操作">進階・AI Agent 操作</a></div>
-        <div class="card">
-<div class="card">
-        <div class="term">
-          <div class="term-l"><b>程式碼</b><span class="en">Code</span></div>
-          <div class="term-r">
-            <p>寫給電腦看的指令文字；你學的 Python 就是一種程式語言。</p>
-            <p class="when"><b>遇到：</b>用 VS Code 打開 <code>.py</code> 檔，<b>看到的內容就是程式碼</b>。</p>
-          </div>
-        </div>
-        <div class="term">
-          <div class="term-l"><b>編輯器</b><span class="en">Editor</span></div>
-          <div class="term-r">
-            <p>專門寫程式的軟體，最常用的是 VS Code。</p>
-            <p class="when"><b>遇到：</b>安裝 VS Code 後，<b>用「開啟資料夾」打開專案資料夾</b>來寫 code。</p>
-          </div>
-        </div>
-        <div class="term">
-          <div class="term-l"><b>腳本</b><span class="en">Script</span></div>
-          <div class="term-r">
-            <p>一段自動化小程式，例如「自動整理下載資料夾」。Python 特別適合寫腳本。</p>
-            <p class="when"><b>遇到：</b><b>想讓重複的事自動做時，就是寫腳本的時機</b>。</p>
-          </div>
-        </div>
-        <div class="term">
-          <div class="term-l"><b>報錯／錯誤訊息</b><span class="en">Error</span></div>
-          <div class="term-r">
-            <p>程式出錯時跳出的提示（通常是英文）。它是程式給你的線索，不是在罵你。</p>
-            <p class="when"><b>遇到：</b>幾乎每天。<b>SOP：整段複製 → 貼給 AI → 跟著改，最有效率</b>。</p>
-          </div>
-        </div>
-        <div class="term">
-          <div class="term-l"><b>API</b><span class="en">API</span></div>
-          <div class="term-r">
-            <p>兩個程式之間溝通的「點餐窗口」：你叫資料，它出資料。</p>
-            <p class="when"><b>遇到：</b><b>想讓程式抓天氣、匯率、股市資料時</b>；也是「連接器」背後的原理。</p>
-          </div>
-        </div>
-      </div>
+      
+            <div class="grp">
+        <div class="grp-head"><span class="dot" style="background:#2E9E8F;"></span><h3>開發工具</h3><span class="cnt">12</span></div>
+        <div class="grp-path">📘 前置：<a class="path-link" data-goto="beginner" data-grp="程式與開發概念">新手・程式與開發概念</a> ｜ 🧭 深入：<a class="path-link" data-goto="advanced" data-grp="AI Agent 操作">進階・AI Agent 操作</a></div>
         <div class="card">
         <div class="term">
-          <div class="term-l"><b>Prompt（提示詞）</b><span class="en">Prompt</span></div>
+          <div class="term-l"><code>VS Code</code><span class="en">編輯器・全語言通用</span></div>
           <div class="term-r">
-            <p>你對 AI 說的話＝任務描述。說得越清楚，結果越好。</p>
-            <p class="when"><b>遇到：</b>每次跟 AI 對話都是在寫 prompt；<b>「目標＋材料＋格式＋驗收標準」四件套最有效</b>。</p>
+            <p>寫程式最常用的編輯器，免費、輕快，裝外掛就能支援所有語言。<b>當作：</b>寫程式的「Word」</p>
           </div>
         </div>
         <div class="term">
-          <div class="term-l"><b>Agent（智能體）</b><span class="en">Agent</span></div>
+          <div class="term-l"><code>Xcode</code><span class="en">蘋果官方 IDE</span></div>
           <div class="term-r">
-            <p>能自己拆解任務、調用工具的 AI（豆包工作就是 Agent）。</p>
-            <p class="when"><b>遇到：</b>任務模式／工作模式裡的我。<b>不用懂原理，會下指令就行</b>。</p>
+            <p>蘋果出品的開發工具，寫 iPhone／Mac 的 App 都要用它。<b>當作：</b>蘋果家的「工廠」</p>
           </div>
         </div>
         <div class="term">
-          <div class="term-l"><b>模型</b><span class="en">Model</span></div>
+          <div class="term-l"><code>PyCharm</code><span class="en">Python 專用 IDE</span></div>
           <div class="term-r">
-            <p>AI 的「大腦」；不同模型擅長的事情不同。</p>
-            <p class="when"><b>遇到：</b><b>生成結果不理想時，可以問問換個模型／模式是不是更好</b>。</p>
+            <p>專門寫 Python 的開發環境，自動補齊、抓錯字。<b>當作：</b>Python 的「專用工作檯」</p>
           </div>
         </div>
         <div class="term">
-          <div class="term-l"><b>額度</b><span class="en">Quota</span></div>
+          <div class="term-l"><code>Homebrew</code><span class="en">Mac 套件管理器</span></div>
           <div class="term-r">
-            <p>你能使用某功能的次數或時長限制。</p>
-            <p class="when"><b>遇到：</b>提示「今日次數用完」時；<b>免費版次日重置，訂閱則有更大額度</b>。</p>
+            <p>Mac 的「軟體管家」，一行 <code>brew install</code> 就裝好工具。<b>當作：</b>Mac 的命令列 App Store</p>
           </div>
         </div>
         <div class="term">
-          <div class="term-l"><b>上下文</b><span class="en">Context</span></div>
+          <div class="term-l"><code>npm</code><span class="en">JS 套件管理器</span></div>
           <div class="term-r">
-            <p>AI 記得的先前對話內容。</p>
-            <p class="when"><b>遇到：</b>新開對話後 AI 忘了前面的事＝上下文斷了；<b>把重要資訊重新貼上即可</b>。</p>
+            <p>JavaScript 世界的「套件超商」，安裝別人寫好的功能模組。<b>當作：</b>前端專案的「App Store」</p>
           </div>
         </div>
-      </div>
+        <div class="term">
+          <div class="term-l"><code>Node.js</code><span class="en">伺服器端 JS</span></div>
+          <div class="term-r">
+            <p>讓 JavaScript 不只活在瀏覽器，也能在伺服器上跑後端。<b>當作：</b>JS 的「第二個家」</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><code>React</code><span class="en">前端框架</span></div>
+          <div class="term-r">
+            <p>Meta 推出的前端框架，把畫面拆成小元件組合，FB、IG 都在用。<b>當作：</b>樂高積木式蓋網頁</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><code>Vue</code><span class="en">前端框架</span></div>
+          <div class="term-r">
+            <p>前端框架，中文文件齊全、好上手，台灣工程師愛用。<b>當作：</b>React 的「輕量親切版」</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><code>Django</code><span class="en">Python 後端框架</span></div>
+          <div class="term-r">
+            <p>Python 的重量級後端框架，內建後台與資料庫，快速做出網站後端。<b>當作：</b>後端的「全配廚房」</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><code>Flask</code><span class="en">Python 後端框架</span></div>
+          <div class="term-r">
+            <p>Python 的輕量後端框架，小巧靈活，適合小專案。<b>當作：</b>後端的「行動餐車」</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><code>Docker</code><span class="en">環境打包工具</span></div>
+          <div class="term-r">
+            <p>把整個開發環境打包成箱子，到哪台電腦都能跑。<b>當作：</b>程式的「搬家紙箱」</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><code>Postman</code><span class="en">API 測試工具</span></div>
+          <div class="term-r">
+            <p>把請求發給伺服器、看它回應什麼，測試 API 必備。<b>當作：</b>API 的「對話測試機」</p>
+          </div>
+        </div>
         </div>
       </div>
     </div>
