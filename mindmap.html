@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>零基礎程式學習思維導圖｜24 週分階段地圖</title>
+<style>
+  :root{
+    --bg:#F4F3EE; --card:#FFFFFF; --text:#1A1B1C; --text2:#5F6470;
+    --border:#E4E3DD; --line:#CFCCC0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:'PingFang TC','PingFang SC','Noto Sans TC','Microsoft JhengHei',sans-serif;
+    line-height:1.65;padding:36px 16px 72px;
+  }
+  .wrap{max-width:980px;margin:0 auto;}
+
+  header{text-align:center;margin-bottom:30px;}
+  header h1{font-size:30px;font-weight:800;letter-spacing:1px;}
+  header .sub{color:var(--text2);margin-top:8px;font-size:14.5px;}
+  .meta{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:16px;}
+  .meta span{
+    background:var(--card);border:1px solid var(--border);border-radius:999px;
+    padding:5px 14px;font-size:12.5px;color:var(--text2);
+  }
+
+  .root{
+    background:linear-gradient(135deg,#3B4E9B,#5A6ACF);color:#fff;
+    border-radius:16px;padding:22px 26px;text-align:center;
+    box-shadow:0 4px 18px rgba(59,78,155,0.22);
+  }
+  .root h2{font-size:22px;font-weight:800;letter-spacing:2px;}
+  .root p{font-size:13px;opacity:0.92;margin-top:6px;}
+
+  .connector{width:2px;height:22px;background:var(--line);margin-left:16px;}
+
+  .stage{
+    position:relative;margin:16px 0 0 32px;padding:16px 20px 14px 20px;
+    background:var(--card);border:1px solid var(--border);border-left:5px solid var(--c);
+    border-radius:12px;
+  }
+  .stage::before{
+    content:'';position:absolute;left:-38px;top:20px;width:12px;height:12px;
+    border-radius:50%;background:var(--c);
+  }
+  .stage-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;}
+  .badge{
+    background:var(--c);color:#fff;font-size:12px;font-weight:700;
+    padding:3px 10px;border-radius:6px;letter-spacing:1px;
+  }
+  .stage-head h3{font-size:19px;font-weight:700;}
+  .week{
+    font-size:12px;color:#fff;background:var(--c);opacity:0.9;
+    padding:2px 10px;border-radius:999px;font-weight:600;
+  }
+  .goal{width:100%;font-size:13px;color:var(--text2);margin-top:2px;}
+  .goal b{color:var(--c);}
+
+  .topics{margin-top:12px;}
+  .topic{
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;
+    padding:8px 0;border-bottom:1px dashed var(--border);
+  }
+  .topic:last-child{border-bottom:none;}
+  .topic b{font-size:14.5px;color:var(--c);min-width:120px;white-space:nowrap;}
+  .topic b::before{content:'▸ ';font-size:12px;}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;}
+  .chip{
+    background:var(--cl);color:var(--text);font-size:12.5px;
+    padding:2px 10px;border-radius:999px;border:1px solid var(--c);
+  }
+
+  footer{
+    margin-top:34px;padding:14px 18px;background:var(--card);
+    border:1px solid var(--border);border-radius:12px;font-size:13px;color:var(--text2);
+  }
+  footer b{color:var(--text);}
+
+  @media (max-width:560px){
+    body{padding:24px 12px 56px;}
+    header h1{font-size:24px;}
+    .stage{margin-left:20px;padding:14px 14px 12px;}
+    .stage::before{left:-26px;}
+    .topic b{min-width:100%;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>零基礎程式學習思維導圖</h1>
+    <p class="sub">24 週分階段地圖 · 每週 12–15 小時 · 從 0 到能獨立完成專案</p>
+    <div class="meta">
+      <span>主線語言：Python</span>
+      <span>適用：程式零基礎</span>
+      <span>產出：GitHub 作品集</span>
+      <span>第 4 階段可選方向</span>
+    </div>
+  </header>
+
+  <div class="root">
+    <h2>零基礎學程式</h2>
+    <p>6 個區塊：5 個學習階段 + 1 組貫穿全程的習慣</p>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- 階段 0 -->
+  <section class="stage" style="--c:#5A6ACF;--cl:#EEF0FC;">
+    <div class="stage-head">
+      <span class="badge">階段 0</span>
+      <h3>預備期</h3>
+      <span class="week">第 1–2 週</span>
+      <p class="goal"><b>目標</b>：環境建置完成 · 跑出第一個程式 · 建立學習習慣</p>
+    </div>
+    <div class="topics">
+      <div class="topic"><b>學習方法</b><div class="chips"><span class="chip">費曼學習法</span><span class="chip">番茄鐘 25+5</span><span class="chip">刻意練習</span><span class="chip">固定時段</span></div></div>
+      <div class="topic"><b>電腦基礎</b><div class="chips"><span class="chip">檔案系統與路徑</span><span class="chip">終端機常用指令</span><span class="chip">快捷鍵</span></div></div>
+      <div class="topic"><b>開發工具</b><div class="chips"><span class="chip">VS Code</span><span class="chip">安裝 Python 3.12+</span><span class="chip">執行環境設定</span></div></div>
+      <div class="topic"><b>版本控制</b><div class="chips"><span class="chip">Git 基礎指令</span><span class="chip">GitHub 註冊</span><span class="chip">第一個 Repo</span></div></div>
+    </div>
+  </section>
+
+  <!-- 階段 1 -->
+  <section class="stage" style="--c:#3E9D63;--cl:#E8F5EE;">
+    <div class="stage-head">
+      <span class="badge">階段 1</span>
+      <h3>Python 基礎</h3>
+      <span class="week">第 3–10 週</span>
+      <p class="goal"><b>目標</b>：掌握語法核心，能寫 200 行內的完整小程式</p>
+    </div>
+    <div class="topics">
+      <div class="topic"><b>語法核心</b><div class="chips"><span class="chip">變數與型別</span><span class="chip">條件判斷 if</span><span class="chip">迴圈 for·while</span><span class="chip">函式 def</span></div></div>
+      <div class="topic"><b>資料結構</b><div class="chips"><span class="chip">list</span><span class="chip">dict</span><span class="chip">tuple</span><span class="chip">set</span></div></div>
+      <div class="topic"><b>字串與 I/O</b><div class="chips"><span class="chip">字串操作</span><span class="chip">f-string</span><span class="chip">檔案讀寫</span></div></div>
+      <div class="topic"><b>錯誤與模組</b><div class="chips"><span class="chip">try·except</span><span class="chip">import</span><span class="chip">內建函式庫</span></div></div>
+      <div class="topic"><b>小專案</b><div class="chips"><span class="chip">BMI 計算機</span><span class="chip">猜數字</span><span class="chip">猜拳</span><span class="chip">CLI 待辦清單</span></div></div>
+    </div>
+  </section>
+
+  <!-- 階段 2 -->
+  <section class="stage" style="--c:#D98E1E;--cl:#FBF3E2;">
+    <div class="stage-head">
+      <span class="badge">階段 2</span>
+      <h3>資料結構與演算法</h3>
+      <span class="week">第 11–16 週</span>
+      <p class="goal"><b>目標</b>：建立演算法思維，會分析簡單的複雜度</p>
+    </div>
+    <div class="topics">
+      <div class="topic"><b>複雜度分析</b><div class="chips"><span class="chip">Big O 入門</span><span class="chip">空間複雜度</span></div></div>
+      <div class="topic"><b>線性結構</b><div class="chips"><span class="chip">陣列</span><span class="chip">堆疊</span><span class="chip">佇列</span><span class="chip">鏈結串列</span></div></div>
+      <div class="topic"><b>查找結構</b><div class="chips"><span class="chip">雜湊表 dict</span><span class="chip">集合 set</span><span class="chip">雙指針</span></div></div>
+      <div class="topic"><b>樹與圖</b><div class="chips"><span class="chip">二元樹</span><span class="chip">二元搜尋樹</span><span class="chip">DFS·BFS</span></div></div>
+      <div class="topic"><b>排序與搜尋</b><div class="chips"><span class="chip">氣泡·插入·合併·快速</span><span class="chip">二分搜尋</span></div></div>
+      <div class="topic"><b>刷題習慣</b><div class="chips"><span class="chip">每天 1 題 LeetCode 簡單題</span></div></div>
+    </div>
+  </section>
+
+  <!-- 階段 3 -->
+  <section class="stage" style="--c:#D9534F;--cl:#FBECEB;">
+    <div class="stage-head">
+      <span class="badge">階段 3</span>
+      <h3>專案實戰</h3>
+      <span class="week">第 17–22 週</span>
+      <p class="goal"><b>目標</b>：完成 3 個可展示專案，建立 GitHub 作品集</p>
+    </div>
+    <div class="topics">
+      <div class="topic"><b>專案 1 · 資料分析</b><div class="chips"><span class="chip">Pandas 清洗</span><span class="chip">Matplotlib 視覺化</span><span class="chip">分析報告</span></div></div>
+      <div class="topic"><b>專案 2 · 網路爬蟲</b><div class="chips"><span class="chip">requests</span><span class="chip">BeautifulSoup</span><span class="chip">存成 CSV</span><span class="chip">遵守網站規範</span></div></div>
+      <div class="topic"><b>專案 3 · Web App</b><div class="chips"><span class="chip">Flask 或 FastAPI</span><span class="chip">簡單前端頁面</span><span class="chip">部署上線</span></div></div>
+      <div class="topic"><b>作品集</b><div class="chips"><span class="chip">每個專案寫 README</span><span class="chip">GitHub 整理</span><span class="chip">Render·Railway 部署</span></div></div>
+    </div>
+  </section>
+
+  <!-- 階段 4 -->
+  <section class="stage" style="--c:#24939B;--cl:#E4F4F5;">
+    <div class="stage-head">
+      <span class="badge">階段 4</span>
+      <h3>方向深化（選一條主線）</h3>
+      <span class="week">第 23 週起</span>
+      <p class="goal"><b>目標</b>：深入選定方向，做出代表作品</p>
+    </div>
+    <div class="topics">
+      <div class="topic"><b>資料科學 / AI</b><div class="chips"><span class="chip">NumPy</span><span class="chip">Pandas</span><span class="chip">scikit-learn</span><span class="chip">Kaggle</span></div></div>
+      <div class="topic"><b>後端開發</b><div class="chips"><span class="chip">SQL</span><span class="chip">FastAPI</span><span class="chip">REST API</span><span class="chip">Docker</span></div></div>
+      <div class="topic"><b>前端開發</b><div class="chips"><span class="chip">HTML·CSS</span><span class="chip">JavaScript</span><span class="chip">React</span></div></div>
+      <div class="topic"><b>量化交易</b><div class="chips"><span class="chip">金融資料 API</span><span class="chip">回測框架</span><span class="chip">券商 API</span></div></div>
+      <div class="topic"><b>自動化</b><div class="chips"><span class="chip">辦公自動化腳本</span><span class="chip">爬蟲排程</span><span class="chip">Pygame</span></div></div>
+    </div>
+  </section>
+
+  <!-- 習慣 -->
+  <section class="stage" style="--c:#7B5EA7;--cl:#F0EBF7;">
+    <div class="stage-head">
+      <span class="badge">貫穿全程</span>
+      <h3>學習習慣</h3>
+      <span class="week">第 1 週～第 24 週</span>
+      <p class="goal"><b>作用</b>：決定學習成敗的不是天份，是每天重複的小動作</p>
+    </div>
+    <div class="topics">
+      <div class="topic"><b>每天寫 code</b><div class="chips"><span class="chip">平日 1.5–2 小時</span><span class="chip">週末加碼 2–3 小時</span></div></div>
+      <div class="topic"><b>動手優先</b><div class="chips"><span class="chip">70% 實作 / 30% 觀看</span></div></div>
+      <div class="topic"><b>卡住 15 分鐘規則</b><div class="chips"><span class="chip">先查文件</span><span class="chip">再問 AI 助教</span><span class="chip">最後問社群</span></div></div>
+      <div class="topic"><b>每週覆盤</b><div class="chips"><span class="chip">週日檢視進度</span><span class="chip">調整下週節奏</span></div></div>
+      <div class="topic"><b>作品集思維</b><div class="chips"><span class="chip">從第一天就用 GitHub 記錄成長</span></div></div>
+      <div class="topic"><b>找同伴</b><div class="chips"><span class="chip">加入 Python Taiwan 等社群</span></div></div>
+    </div>
+  </section>
+
+  <footer>
+    <b>使用說明：</b>本圖以 <b>Python 為主線</b>（對零基礎最友善，且通往量化交易、資料分析、AI 都順路）。階段 0–3 對多數方向通用；階段 4 依你的目標四選一即可。每個階段的詳細週計劃、資源清單與日程，見另一份《零基礎程式學習計劃書》。
+  </footer>
+
+</div>
+</body>
+</html>

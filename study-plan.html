@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>零基礎程式學習計劃書｜24 週完整日程與資源</title>
+<style>
+  :root{
+    --bg:#F4F3EE; --card:#FFFFFF; --text:#1A1B1C; --text2:#5F6470;
+    --border:#E4E3DD; --accent:#3B4E9B; --accent-light:#EEF0FC;
+    --green:#3E9D63; --green-light:#E8F5EE;
+    --amber:#D98E1E; --amber-light:#FBF3E2;
+    --red:#D9534F; --red-light:#FBECEB;
+    --teal:#24939B; --teal-light:#E4F4F5;
+    --purple:#7B5EA7; --purple-light:#F0EBF7;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:'PingFang TC','PingFang SC','Noto Sans TC','Microsoft JhengHei',sans-serif;
+    line-height:1.7;padding:36px 16px 80px;
+  }
+  .wrap{max-width:920px;margin:0 auto;}
+
+  /* 頁首 */
+  .hero{
+    background:linear-gradient(135deg,#3B4E9B,#5A6ACF);color:#fff;
+    border-radius:18px;padding:34px 32px;box-shadow:0 6px 24px rgba(59,78,155,0.25);
+  }
+  .hero h1{font-size:28px;font-weight:800;letter-spacing:1px;}
+  .hero .sub{margin-top:8px;font-size:14.5px;opacity:0.94;}
+  .hero .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;}
+  .hero .meta span{
+    background:rgba(255,255,255,0.16);border:1px solid rgba(255,255,255,0.35);
+    border-radius:999px;padding:5px 14px;font-size:12.5px;
+  }
+
+  /* 說明框 */
+  .note{
+    margin-top:20px;padding:16px 20px;background:var(--amber-light);
+    border:1px solid #EFD9A8;border-left:5px solid var(--amber);border-radius:12px;
+    font-size:13.5px;color:#6B4E12;
+  }
+  .note b{color:#8A5A00;}
+
+  /* 區段標題 */
+  section{margin-top:44px;}
+  .sec-title{
+    display:flex;align-items:center;gap:12px;margin-bottom:18px;
+  }
+  .sec-title .num{
+    background:var(--accent);color:#fff;font-size:15px;font-weight:700;
+    width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .sec-title h2{font-size:22px;font-weight:800;}
+  .sec-title p{width:100%;font-size:13px;color:var(--text2);margin:-6px 0 0 46px;}
+
+  /* 卡片 */
+  .card{
+    background:var(--card);border:1px solid var(--border);border-radius:14px;
+    padding:20px 22px;
+  }
+
+  /* 目標卡片 */
+  .goal-grid{display:flex;flex-wrap:wrap;gap:14px;}
+  .goal-item{
+    flex:1 1 200px;background:var(--card);border:1px solid var(--border);
+    border-top:4px solid var(--accent);border-radius:12px;padding:16px;
+  }
+  .goal-item h4{font-size:14px;color:var(--text2);font-weight:600;}
+  .goal-item p{font-size:15px;font-weight:700;margin-top:6px;}
+
+  /* 原則 */
+  .rules{counter-reset:r;display:flex;flex-direction:column;gap:10px;}
+  .rule{display:flex;gap:12px;align-items:flex-start;}
+  .rule .rn{
+    counter-increment:r;flex-shrink:0;width:26px;height:26px;border-radius:50%;
+    background:var(--accent-light);color:var(--accent);font-weight:700;font-size:13px;
+    display:flex;align-items:center;justify-content:center;margin-top:2px;
+  }
+  .rule b{font-size:15px;}
+  .rule span{font-size:14px;color:var(--text2);}
+
+  /* 表格 */
+  table{width:100%;border-collapse:collapse;background:var(--card);border-radius:12px;overflow:hidden;}
+  th,td{padding:11px 14px;font-size:13.5px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top;}
+  th{background:var(--accent-light);color:var(--accent);font-weight:700;white-space:nowrap;}
+  tr:last-child td{border-bottom:none;}
+  td .tag{display:inline-block;font-size:11.5px;font-weight:700;color:#fff;border-radius:5px;padding:1px 8px;margin-right:6px;}
+  .t0{background:#5A6ACF;} .t1{background:#3E9D63;} .t2{background:#D98E1E;}
+  .t3{background:#D9534F;} .t4{background:#24939B;} .th{background:#7B5EA7;}
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  .link{word-break:break-all;font-size:12.5px;color:var(--text2);}
+
+  /* 階段詳細 */
+  .phase{margin-bottom:26px;}
+  .phase-head{
+    display:flex;flex-wrap:wrap;align-items:center;gap:10px;
+    padding:14px 18px;border-radius:12px;color:#fff;font-weight:700;
+  }
+  .phase-head .ph-title{font-size:17px;}
+  .phase-head .ph-week{
+    background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.4);
+    border-radius:999px;padding:2px 12px;font-size:12px;font-weight:600;
+  }
+  .phase-head .ph-goal{width:100%;font-size:13px;font-weight:400;opacity:0.95;}
+  .phase-body{margin-top:10px;}
+  .phase-body .card{margin-top:10px;}
+  .phase-body h5{font-size:14px;margin:14px 0 8px;color:var(--text);}
+  .phase-body h5:first-child{margin-top:0;}
+  .res-list{font-size:13.5px;color:var(--text2);}
+  .res-list li{margin:4px 0 4px 18px;}
+
+  /* 時間模板 */
+  .dayline{display:flex;flex-direction:column;gap:0;}
+  .dl-row{display:flex;gap:14px;padding:10px 0;border-bottom:1px dashed var(--border);}
+  .dl-row:last-child{border-bottom:none;}
+  .dl-time{flex-shrink:0;width:96px;font-weight:700;font-size:13.5px;color:var(--accent);}
+  .dl-txt{font-size:14px;}
+  .dl-txt small{color:var(--text2);display:block;font-size:12.5px;}
+
+  /* 資源 */
+  .resource-tbl{overflow-x:auto;}
+  .resource-tbl table{min-width:640px;}
+
+  /* 清單 */
+  .checklist{list-style:none;}
+  .checklist li{
+    display:flex;gap:10px;align-items:flex-start;padding:8px 0;
+    border-bottom:1px dashed var(--border);font-size:14px;
+  }
+  .checklist li:last-child{border-bottom:none;}
+  .checklist input{margin-top:5px;width:16px;height:16px;flex-shrink:0;accent-color:var(--accent);}
+  .checklist b{color:var(--accent);font-size:12.5px;}
+
+  /* 追蹤表 */
+  .track td:first-child{font-weight:700;white-space:nowrap;color:var(--accent);}
+  .track input{width:16px;height:16px;accent-color:var(--green);}
+
+  /* 陷阱 */
+  .trap{
+    display:flex;gap:12px;padding:12px 0;border-bottom:1px dashed var(--border);
+    font-size:14px;
+  }
+  .trap:last-child{border-bottom:none;}
+  .trap .ic{
+    flex-shrink:0;width:26px;height:26px;border-radius:8px;background:var(--red-light);
+    color:var(--red);font-weight:800;display:flex;align-items:center;justify-content:center;
+    font-size:14px;
+  }
+  .trap b{display:block;}
+  .trap span{color:var(--text2);font-size:13.5px;}
+
+  footer{
+    margin-top:48px;padding:16px 20px;background:var(--card);
+    border:1px solid var(--border);border-radius:12px;font-size:12.5px;color:var(--text2);
+  }
+
+  @media (max-width:560px){
+    body{padding:24px 12px 60px;}
+    .hero{padding:24px 20px;}
+    .hero h1{font-size:22px;}
+    .sec-title p{margin-left:0;}
+    .dl-time{width:78px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 頁首 -->
+  <div class="hero">
+    <h1>零基礎程式學習計劃書</h1>
+    <p class="sub">24 週完整日程 · 含資源清單、每週進度、每日作息與里程碑自評</p>
+    <div class="meta">
+      <span>總長度：24 週（約 6 個月）</span>
+      <span>每週投入：12–15 小時</span>
+      <span>主線語言：Python</span>
+      <span>起點：程式零基礎</span>
+    </div>
+  </div>
+
+  <div class="note">
+    <b>使用前先讀：</b>本計劃以 <b>Python 為主線</b>——它語法簡單、對零基礎最友善，而且你未來無論想走「量化交易 / 資料分析 / AI / 後端 / 自動化」都順路。若你其實想學的是「網頁前端」等其他方向，階段 0–2 的結構照用，只換語言與資源；告訴我，我可以幫你改成對應版本。
+  </div>
+
+  <!-- 一、目標 -->
+  <section>
+    <div class="sec-title">
+      <span class="num">一</span>
+      <h2>學習目標</h2>
+      <p>24 週後你要能「獨立寫出並上架一個自己的小專案」</p>
+    </div>
+    <div class="goal-grid">
+      <div class="goal-item"><h4>第 1 個月</h4><p>能獨立寫 200 行內的 Python 程式</p></div>
+      <div class="goal-item"><h4>第 3 個月</h4><p>建立演算法思維，LeetCode 累計 30+ 題</p></div>
+      <div class="goal-item"><h4>第 5–6 個月</h4><p>完成 3 個專案、1 份 GitHub 作品集</p></div>
+      <div class="goal-item"><h4>第 6 個月後</h4><p>選定方向，做出代表作品</p></div>
+    </div>
+  </section>
+
+  <!-- 二、原則 -->
+  <section>
+    <div class="sec-title">
+      <span class="num">二</span>
+      <h2>六條學習鐵律</h2>
+      <p>比資源更重要的，是這六條紀律</p>
+    </div>
+    <div class="card">
+      <div class="rules">
+        <div class="rule"><span class="rn">1</span><div><b>動手 > 觀看。</b><span>70% 時間寫 code，30% 看課。看 10 小時不如自己寫 1 小時。</span></div></div>
+        <div class="rule"><span class="rn">2</span><div><b>費曼學習法。</b><span>學完一個概念，用自己的話寫下來或講給別人聽；講不清楚＝沒學會。</span></div></div>
+        <div class="rule"><span class="rn">3</span><div><b>每天都要碰。</b><span>每天 1.5–2 小時，比週末一次衝 10 小時有效十倍。習慣 > 熱情。</span></div></div>
+        <div class="rule"><span class="rn">4</span><div><b>卡住 15 分鐘規則。</b><span>卡超過 15 分鐘：先查官方文件 → 問 AI 助教 → 問社群，然後繼續。</span></div></div>
+        <div class="rule"><span class="rn">5</span><div><b>能跑再優化。</b><span>先讓程式「能跑」，再談「寫得好」。完美主義是初學者最大的敵人。</span></div></div>
+        <div class="rule"><span class="rn">6</span><div><b>每週覆盤。</b><span>週日花 30 分鐘檢視本週進度，調整下週節奏；不覆盤＝白學。</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 三、階段總覽 -->
+  <section>
+    <div class="sec-title">
+      <span class="num">三</span>
+      <h2>階段總覽</h2>
+      <p>五個階段 + 貫穿全程的習慣，共 24 週</p>
+    </div>
+    <div class="resource-tbl">
+      <table>
+        <thead><tr><th>階段</th><th>時間</th><th>主題</th><th>每週時數</th><th>里程碑</th></tr></thead>
+        <tbody>
+          <tr><td><span class="tag t0">0</span>預備期</td><td>第 1–2 週</td><td>環境建置、工具鏈、學習方法</td><td>8–10 h</td><td>終端機跑出 Hello World，GitHub 有第一個 Repo</td></tr>
+          <tr><td><span class="tag t1">1</span>Python 基礎</td><td>第 3–10 週</td><td>語法、資料結構、檔案與錯誤處理</td><td>10–12 h</td><td>能寫 200 行內小程式，GitHub ≥ 10 commits</td></tr>
+          <tr><td><span class="tag t2">2</span>資料結構與演算法</td><td>第 11–16 週</td><td>Big O、線性結構、樹、排序搜尋</td><td>10–12 h</td><td>LeetCode 累計 30–50 題</td></tr>
+          <tr><td><span class="tag t3">3</span>專案實戰</td><td>第 17–22 週</td><td>資料分析、爬蟲、Web App、部署</td><td>12–15 h</td><td>3 個專案上線，1 份作品集</td></tr>
+          <tr><td><span class="tag t4">4</span>方向深化</td><td>第 23 週起</td><td>資料科學 / 後端 / 前端 / 量化 四選一</td><td>10–15 h</td><td>1 個方向的主題專案</td></tr>
+          <tr><td><span class="tag th">習</span>學習習慣</td><td>全程</td><td>每天寫 code、覆盤、作品集思維</td><td>—</td><td>連續 21 天不斷線</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 四、分階段詳細計劃 -->
+  <section>
+    <div class="sec-title">
+      <span class="num">四</span>
+      <h2>分階段詳細計劃</h2>
+      <p>每週主題 × 實作 × 資源 × 里程碑，照著走即可</p>
+    </div>
+
+    <!-- 階段 0 -->
+    <div class="phase">
+      <div class="phase-head" style="background:#5A6ACF;">
+        <span>階段 0｜預備期</span><span class="ph-week">第 1–2 週</span>
+        <p class="ph-goal">目標：環境建置完成、跑出第一個程式、養成每天學習的習慣</p>
+      </div>
+      <div class="phase-body">
+        <div class="card">
+          <h5>每週進度</h5>
+          <div class="resource-tbl">
+            <table>
+              <thead><tr><th>週</th><th>主題</th><th>動手實作</th></tr></thead>
+              <tbody>
+                <tr><td>W1</td><td>學習方法（費曼 / 番茄鐘）· 電腦基礎（檔案系統、終端機）· 安裝 VS Code</td><td>用終端機建資料夾、在 VS Code 寫第一個檔案；每天打字練習 10 分鐘</td></tr>
+                <tr><td>W2</td><td>安裝 Python 3.12+ · 安裝 Git · 註冊 GitHub · Git 基礎指令</td><td>終端機執行 <code>python --version</code>，跑出 <code>print("Hello World")</code>，推到 GitHub</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h5>推薦資源</h5>
+          <ul class="res-list">
+            <li>廖雪峰《Git 教程》：<a href="https://liaoxuefeng.com" target="_blank" rel="noopener">liaoxuefeng.com</a></li>
+            <li>《為你自己學 Git》（免費線上書）：<a href="https://gitbook.tw" target="_blank" rel="noopener">gitbook.tw</a></li>
+            <li>打字練習：TypingClub（typingclub.com）或 Keybr（keybr.com）</li>
+          </ul>
+          <h5>里程碑檢查</h5>
+          <ul class="res-list">
+            <li>✓ 終端機輸入 <code>python --version</code> 無報錯</li>
+            <li>✓ GitHub 上有你自己的第一個 repo（哪怕只有 Hello World）</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 階段 1 -->
+    <div class="phase">
+      <div class="phase-head" style="background:#3E9D63;">
+        <span>階段 1｜Python 基礎</span><span class="ph-week">第 3–10 週</span>
+        <p class="ph-goal">目標：掌握語法核心，能獨立寫出 200 行內的完整小程式</p>
+      </div>
+      <div class="phase-body">
+        <div class="card">
+          <h5>每週進度</h5>
+          <div class="resource-tbl">
+            <table>
+              <thead><tr><th>週</th><th>主題</th><th>動手實作</th></tr></thead>
+              <tbody>
+                <tr><td>W3</td><td>變數、資料型別（int / float / str / bool）、print / input、型別轉換</td><td>自我介紹程式：輸入名字與年齡，輸出完整句子</td></tr>
+                <tr><td>W4</td><td>運算子、字串操作、f-string 格式化</td><td>BMI 計算機：輸入身高體重 → 輸出 BMI 與分類</td></tr>
+                <tr><td>W5</td><td>條件判斷 if / elif / else、邏輯運算子</td><td>成績分級程式、簡易猜拳（搭配 input）</td></tr>
+                <tr><td>W6</td><td>迴圈 for / while、range、break / continue、巢狀迴圈</td><td>九九乘法表、猜數字遊戲（隨機 + 迴圈 + 判斷）</td></tr>
+                <tr><td>W7</td><td>資料結構 list / tuple / dict / set：增刪改查、遍歷</td><td>購物清單管理（新增 / 刪除 / 顯示 / 統計金額）</td></tr>
+                <tr><td>W8</td><td>函式 def、參數、回傳值、作用域；模組 import</td><td>把前面做過的程式重構成多個函式呼叫</td></tr>
+                <tr><td>W9</td><td>檔案讀寫、錯誤處理 try / except、內建函式庫（random / math / datetime）</td><td>簡易記帳本：收支輸入 → 存成 txt 檔 → 下次讀回</td></tr>
+                <tr><td>W10</td><td>綜合複習 + 里程碑專案</td><td><b>CLI 待辦清單</b>：新增 / 完成 / 刪除 / 存檔 / 讀檔；上傳 GitHub</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h5>推薦資源</h5>
+          <ul class="res-list">
+            <li>主線：廖雪峰《Python 教程》（中文免費）：<a href="https://liaoxuefeng.com/books/python/" target="_blank" rel="noopener">liaoxuefeng.com/books/python/</a></li>
+            <li>副線：freeCodeCamp「Scientific Computing with Python」認證（100% 免費）：<a href="https://www.freecodecamp.org" target="_blank" rel="noopener">freecodecamp.org</a></li>
+            <li>書：《Python 程式設計：從入門到實踐》（Eric Matthes）第 1–11 章</li>
+            <li>查詢：菜鳥教程 Python3（<a href="https://www.runoob.com/python3/python3-tutorial.html" target="_blank" rel="noopener">runoob.com</a>）</li>
+          </ul>
+          <h5>里程碑檢查</h5>
+          <ul class="res-list">
+            <li>✓ 不看講義寫出「輸入 → 判斷 → 迴圈 → 函式」的程式</li>
+            <li>✓ 能說出 list 和 dict 的差別，以及各自適合的場景</li>
+            <li>✓ 能讀懂報錯訊息並自己修正（SyntaxError / NameError / TypeError）</li>
+            <li>✓ GitHub 至少 10 個 commits</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 階段 2 -->
+    <div class="phase">
+      <div class="phase-head" style="background:#D98E1E;">
+        <span>階段 2｜資料結構與演算法</span><span class="ph-week">第 11–16 週</span>
+        <p class="ph-goal">目標：建立演算法思維，會分析簡單複雜度；為面試與進階打好底</p>
+      </div>
+      <div class="phase-body">
+        <div class="card">
+          <h5>每週進度</h5>
+          <div class="resource-tbl">
+            <table>
+              <thead><tr><th>週</th><th>主題</th><th>動手實作</th></tr></thead>
+              <tbody>
+                <tr><td>W11</td><td>時間複雜度 Big O 入門、陣列與字串操作技巧</td><td>用不同寫法解同一題，比較執行時間</td></tr>
+                <tr><td>W12</td><td>堆疊、佇列、鏈結串列</td><td>用 Python 實作 Stack / Queue（可用 list 或 class）</td></tr>
+                <tr><td>W13</td><td>雜湊表（dict）、集合、雙指針</td><td>LeetCode 簡單題 ×5（哈希相關）</td></tr>
+                <tr><td>W14</td><td>樹、二元搜尋樹、DFS / BFS</td><td>手寫 Node class 建樹並遍歷</td></tr>
+                <tr><td>W15</td><td>排序（氣泡 / 插入 / 合併 / 快速）、二分搜尋</td><td>自己實作 3 種排序並比較效率</td></tr>
+                <tr><td>W16</td><td>遞迴、回溯入門；開始每天 1 題的刷題習慣</td><td>LeetCode 簡單題 ×5；建立刷題模板</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h5>推薦資源</h5>
+          <ul class="res-list">
+            <li>書：《演算法圖鑑》（石田保輝・宮崎修一）— 圖解最好懂</li>
+            <li>LeetCode：<a href="https://leetcode.com" target="_blank" rel="noopener">leetcode.com</a>（刷「Easy」與 Top Interview 150）</li>
+            <li>NeetCode 頻道（YouTube）演算法題解</li>
+            <li>CS50x 第 3–4 週（演算法與記憶體）作為深度補充：<a href="https://cs50.harvard.edu/x/" target="_blank" rel="noopener">cs50.harvard.edu/x/</a></li>
+          </ul>
+          <h5>里程碑檢查</h5>
+          <ul class="res-list">
+            <li>✓ 能向別人解釋 O(n) 和 O(log n) 的差別</li>
+            <li>✓ LeetCode 累計 30–50 題（簡單為主）</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 階段 3 -->
+    <div class="phase">
+      <div class="phase-head" style="background:#D9534F;">
+        <span>階段 3｜專案實戰</span><span class="ph-week">第 17–22 週</span>
+        <p class="ph-goal">目標：完成 3 個可展示專案，建立 GitHub 作品集 —— 這階段決定你「學得會」還是「學過」</p>
+      </div>
+      <div class="phase-body">
+        <div class="card">
+          <h5>每週進度</h5>
+          <div class="resource-tbl">
+            <table>
+              <thead><tr><th>週</th><th>專案</th><th>內容</th></tr></thead>
+              <tbody>
+                <tr><td>W17–18</td><td>專案 1｜資料分析</td><td>找一份公開 CSV（如政府開放資料、股市歷史數據）→ Pandas 清洗 → Matplotlib 畫圖 → 寫成分析報告</td></tr>
+                <tr><td>W19–20</td><td>專案 2｜網路爬蟲</td><td>requests + BeautifulSoup 抓取公開網頁資料，整理存成 CSV（注意遵守網站 robots 與條款）</td></tr>
+                <tr><td>W21–22</td><td>專案 3｜Web App</td><td>用 Flask 或 FastAPI 做一個簡單應用（例如待辦清單網頁版、個人儀表板）→ 部署到 Render / Railway → 寫 README</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h5>推薦資源</h5>
+          <ul class="res-list">
+            <li>Pandas 官方入門：<a href="https://pandas.pydata.org" target="_blank" rel="noopener">pandas.pydata.org</a></li>
+            <li>Flask 官方教學：<a href="https://flask.palletsprojects.com" target="_blank" rel="noopener">flask.palletsprojects.com</a>；FastAPI：<a href="https://fastapi.tiangolo.com" target="_blank" rel="noopener">fastapi.tiangolo.com</a></li>
+            <li>部署：Render 免費方案（render.com）或 Railway</li>
+            <li>GitHub README 寫法：GitHub 官方文件</li>
+          </ul>
+          <h5>里程碑檢查</h5>
+          <ul class="res-list">
+            <li>✓ GitHub 有 3 個專案，每個都有完整 README</li>
+            <li>✓ 至少 1 個專案部署上線，網址可公開瀏覽</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 階段 4 -->
+    <div class="phase">
+      <div class="phase-head" style="background:#24939B;">
+        <span>階段 4｜方向深化（四選一）</span><span class="ph-week">第 23 週起</span>
+        <p class="ph-goal">目標：把前面學的用在你真正感興趣的領域，做出代表作品</p>
+      </div>
+      <div class="phase-body">
+        <div class="card">
+          <div class="resource-tbl">
+            <table>
+              <thead><tr><th>方向</th><th>學習路線</th><th>起點資源</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><b>A 資料科學 / AI</b></td>
+                  <td>NumPy → Pandas → Matplotlib → scikit-learn → Kaggle 實戰</td>
+                  <td>Kaggle Learn（<a href="https://www.kaggle.com/learn" target="_blank" rel="noopener">kaggle.com/learn</a>，免費微課）</td>
+                </tr>
+                <tr>
+                  <td><b>B 後端開發</b></td>
+                  <td>SQL → FastAPI → REST API → Docker → 雲端部署</td>
+                  <td>freeCodeCamp「Backend Development and APIs」認證</td>
+                </tr>
+                <tr>
+                  <td><b>C 前端開發</b></td>
+                  <td>HTML・CSS → JavaScript → React → 前後端串接</td>
+                  <td>MDN（<a href="https://developer.mozilla.org/zh-TW/" target="_blank" rel="noopener">developer.mozilla.org</a>）＋ The Odin Project（<a href="https://www.theodinproject.com" target="_blank" rel="noopener">theodinproject.com</a>）</td>
+                </tr>
+                <tr>
+                  <td><b>D 量化交易</b></td>
+                  <td>金融資料 API（yfinance）→ Pandas 分析 → 回測框架（backtrader / vectorbt）→ 券商 API</td>
+                  <td>先用「歷史資料回測」練手；模擬單階段要跑穩再談真金白銀（投資有風險）</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 五、每週作息 -->
+  <section>
+    <div class="sec-title">
+      <span class="num">五</span>
+      <h2>每週作息模板</h2>
+      <p>合計約 15 小時／週：平日打底，週末衝專案</p>
+    </div>
+    <div class="resource-tbl">
+      <table>
+        <thead><tr><th>時段</th><th>週一～週五</th><th>週六</th><th>週日</th></tr></thead>
+        <tbody>
+          <tr><td>白天</td><td>上班／上課（可零碎時間看概念影片）</td><td>複習本週＋整理費曼筆記（1.5 h）</td><td>完整專案時段（2–3 h）</td></tr>
+          <tr><td>晚上</td><td>20:00–22:00 學習（見每日模板）</td><td>自由練習／LeetCode 刷題（1 h）</td><td>預習下週內容＋規劃＋覆盤（1 h）</td></tr>
+          <tr><td>小計</td><td>5 天 × 2 h ≈ 10 h</td><td>≈ 2.5 h</td><td>≈ 3 h</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 六、每日模板 -->
+  <section>
+    <div class="sec-title">
+      <span class="num">六</span>
+      <h2>每日時間模板（平日晚上）</h2>
+      <p>每天 2 小時：先懂概念，再動手，最後寫筆記</p>
+    </div>
+    <div class="card">
+      <div class="dayline">
+        <div class="dl-row"><div class="dl-time">20:00–20:30</div><div class="dl-txt"><b>學新概念</b><small>看教學影片或讀一章書，只求「大概懂」，不求一次全懂</small></div></div>
+        <div class="dl-row"><div class="dl-time">20:30–21:45</div><div class="dl-txt"><b>動手實作</b><small>跟著範例打一遍，再自己改 2 個地方（改變數、加功能）；卡住 15 分鐘就查文件或問 AI</small></div></div>
+        <div class="dl-row"><div class="dl-time">21:45–22:00</div><div class="dl-txt"><b>費曼筆記＋收尾</b><small>用一句話寫下「今天學了什麼、卡在哪裡、明天做什麼」；把今天的 code push 到 GitHub</small></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 七、資源大全 -->
+  <section>
+    <div class="sec-title">
+      <span class="num">七</span>
+      <h2>資源大全</h2>
+      <p>全部免費或買書即可，無需花大錢報課</p>
+    </div>
+
+    <div class="card">
+      <h5 style="margin-bottom:10px;">A. 免費線上課程與教程</h5>
+      <div class="resource-tbl">
+        <table>
+          <thead><tr><th>資源</th><th>語言</th><th>適合階段</th><th>說明</th><th>網址</th></tr></thead>
+          <tbody>
+            <tr><td>CS50x（哈佛）</td><td>英／中字</td><td>全程可選修</td><td>電腦科學導論，建立「計算思維」，免費旁聽</td><td><a href="https://cs50.harvard.edu/x/" target="_blank" rel="noopener" class="link">cs50.harvard.edu/x/</a></td></tr>
+            <tr><td>CS50P（Python 版）</td><td>英／中字</td><td>階段 1 補充</td><td>10 週 Python 課程，講師 David Malan</td><td><a href="https://cs50.harvard.edu/python/" target="_blank" rel="noopener" class="link">cs50.harvard.edu/python/</a></td></tr>
+            <tr><td>廖雪峰 Python 教程</td><td>繁中</td><td>階段 1 主線</td><td>中文免費、零起點、範例完整</td><td><a href="https://liaoxuefeng.com/books/python/" target="_blank" rel="noopener" class="link">liaoxuefeng.com/books/python/</a></td></tr>
+            <tr><td>菜鳥教程</td><td>繁中</td><td>全程查詢</td><td>語法速查、實例多，當字典用</td><td><a href="https://www.runoob.com/python3/python3-tutorial.html" target="_blank" rel="noopener" class="link">runoob.com/python3/</a></td></tr>
+            <tr><td>freeCodeCamp</td><td>中／英</td><td>階段 1–4</td><td>100% 免費、專案驅動、可拿認證</td><td><a href="https://www.freecodecamp.org" target="_blank" rel="noopener" class="link">freecodecamp.org</a></td></tr>
+            <tr><td>Python 官方教學</td><td>繁中</td><td>查詢／進階</td><td>官方文件，最權威</td><td><a href="https://docs.python.org/zh-tw/3/tutorial/" target="_blank" rel="noopener" class="link">docs.python.org/zh-tw/3/tutorial/</a></td></tr>
+            <tr><td>W3Schools</td><td>英</td><td>查詢</td><td>簡潔範例，邊看邊試</td><td><a href="https://www.w3schools.com/python/" target="_blank" rel="noopener" class="link">w3schools.com/python/</a></td></tr>
+            <tr><td>CS 自學指南</td><td>繁中</td><td>全程</td><td>開源自學路線圖，選課參考</td><td><a href="https://csdiy.wiki" target="_blank" rel="noopener" class="link">csdiy.wiki</a></td></tr>
+            <tr><td>B 站搜「Python 教程」</td><td>簡中</td><td>階段 1</td><td>影片學習（如尚硅谷、黑馬程式設計師）</td><td><a href="https://www.bilibili.com" target="_blank" rel="noopener" class="link">bilibili.com</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h5 style="margin:20px 0 10px;">B. 書籍（選買）</h5>
+      <div class="resource-tbl">
+        <table>
+          <thead><tr><th>書</th><th>階段</th><th>為什麼推薦</th></tr></thead>
+          <tbody>
+            <tr><td>《Python 程式設計：從入門到實踐》<br><span class="link">Eric Matthes</span></td><td>階段 1 必讀</td><td>全球最受歡迎的新手書，只讀第 1–11 章就夠打底</td></tr>
+            <tr><td>《演算法圖鑑》<br><span class="link">石田保輝・宮崎修一</span></td><td>階段 2</td><td>用圖解講演算法，零數學壓力</td></tr>
+            <tr><td>《流暢的 Python》<br><span class="link">Luciano Ramalho</span></td><td>階段 4</td><td>Python 進階聖經，等基礎穩了再讀</td></tr>
+            <tr><td>《為你自己學 Git》<br><span class="link">高見龍</span></td><td>階段 0</td><td>繁體中文、線上免費</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h5 style="margin:20px 0 10px;">C. 練習平台</h5>
+      <div class="resource-tbl">
+        <table>
+          <thead><tr><th>平台</th><th>階段</th><th>說明</th><th>網址</th></tr></thead>
+          <tbody>
+            <tr><td>LeetCode</td><td>階段 2 起</td><td>刷題求職標配，先只做 Easy</td><td><a href="https://leetcode.com" target="_blank" rel="noopener" class="link">leetcode.com</a></td></tr>
+            <tr><td>Exercism</td><td>階段 1–2</td><td>免費、有真人 mentor 給回饋</td><td><a href="https://exercism.org" target="_blank" rel="noopener" class="link">exercism.org</a></td></tr>
+            <tr><td>Codewars</td><td>階段 1–2</td><td>遊戲化練功，邊玩邊進步</td><td><a href="https://www.codewars.com" target="_blank" rel="noopener" class="link">codewars.com</a></td></tr>
+            <tr><td>Kaggle Learn</td><td>階段 4（A）</td><td>資料科學免費微課＋實戰比賽</td><td><a href="https://www.kaggle.com/learn" target="_blank" rel="noopener" class="link">kaggle.com/learn</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h5 style="margin:20px 0 10px;">D. 社群（卡關求救、找同伴）</h5>
+      <div class="resource-tbl">
+        <table>
+          <thead><tr><th>社群</th><th>用途</th><th>網址</th></tr></thead>
+          <tbody>
+            <tr><td>Python Taiwan（FB 社團）</td><td>繁體中文社群，新手友善</td><td><a href="https://www.facebook.com/groups/pythontw/" target="_blank" rel="noopener" class="link">facebook.com/groups/pythontw/</a></td></tr>
+            <tr><td>Stack Overflow</td><td>英文問答，報錯訊息直接搜</td><td><a href="https://stackoverflow.com" target="_blank" rel="noopener" class="link">stackoverflow.com</a></td></tr>
+            <tr><td>Reddit r/learnprogramming</td><td>全球新手社群</td><td><a href="https://www.reddit.com/r/learnprogramming/" target="_blank" rel="noopener" class="link">reddit.com/r/learnprogramming/</a></td></tr>
+            <tr><td>GitHub</td><td>放作品、看開源碼</td><td><a href="https://github.com" target="_blank" rel="noopener" class="link">github.com</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 八、工具清單 -->
+  <section>
+    <div class="sec-title">
+      <span class="num">八</span>
+      <h2>工具清單</h2>
+      <p>開學第一天裝好，之後不再分心</p>
+    </div>
+    <div class="card">
+      <div class="resource-tbl">
+        <table>
+          <thead><tr><th>工具</th><th>用途</th><th>取得</th></tr></thead>
+          <tbody>
+            <tr><td>VS Code</td><td>寫 code 的編輯器</td><td><a href="https://code.visualstudio.com" target="_blank" rel="noopener" class="link">code.visualstudio.com</a>（免費）</td></tr>
+            <tr><td>Python 3.12+</td><td>直譯器</td><td><a href="https://www.python.org" target="_blank" rel="noopener" class="link">python.org</a>（免費）</td></tr>
+            <tr><td>Git + GitHub</td><td>版本控制與作品集</td><td><a href="https://git-scm.com" target="_blank" rel="noopener" class="link">git-scm.com</a>／<a href="https://github.com" target="_blank" rel="noopener" class="link">github.com</a>（免費）</td></tr>
+            <tr><td>終端機</td><td>跑指令（Mac 內建 Terminal 即可）</td><td>Mac 內建</td></tr>
+            <tr><td>AI 助教（豆包 / ChatGPT 等）</td><td>解釋報錯、講解概念、code review</td><td>免費或低價方案；記住：<b>用來學，不是用來抄</b></td></tr>
+            <tr><td>筆記工具（Notion / Obsidian）</td><td>費曼筆記、每週覆盤</td><td>免費方案即可</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 九、里程碑自評 -->
+  <section>
+    <div class="sec-title">
+      <span class="num">九</span>
+      <h2>里程碑自評清單</h2>
+      <p>每過一關打勾；沒過就回頭補，不要硬闖下一階段</p>
+    </div>
+    <div class="card">
+      <ul class="checklist">
+        <li><input type="checkbox"><div><b>［階段 0］</b>終端機執行 <code>python --version</code> 無報錯</div></li>
+        <li><input type="checkbox"><div><b>［階段 0］</b>GitHub 上有第一個 repo</div></li>
+        <li><input type="checkbox"><div><b>［階段 1］</b>不看講義寫出「輸入 → 判斷 → 迴圈 → 函式」程式</div></li>
+        <li><input type="checkbox"><div><b>［階段 1］</b>能說出 list 與 dict 的差別與適用場景</div></li>
+        <li><input type="checkbox"><div><b>［階段 1］</b>能讀懂並修正 SyntaxError / NameError / TypeError</div></li>
+        <li><input type="checkbox"><div><b>［階段 1］</b>GitHub ≥ 10 commits</div></li>
+        <li><input type="checkbox"><div><b>［階段 2］</b>能解釋 O(n) 與 O(log n) 的差別</div></li>
+        <li><input type="checkbox"><div><b>［階段 2］</b>LeetCode 累計 30+ 題</div></li>
+        <li><input type="checkbox"><div><b>［階段 3］</b>3 個專案在 GitHub、README 完整</div></li>
+        <li><input type="checkbox"><div><b>［階段 3］</b>至少 1 個專案部署上線</div></li>
+        <li><input type="checkbox"><div><b>［習慣］</b>連續 21 天每天寫 code</div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 十、進度追蹤表 -->
+  <section>
+    <div class="sec-title">
+      <span class="num">十</span>
+      <h2>24 週進度追蹤表</h2>
+      <p>印出來或複製到筆記軟體，每週打勾＋寫一句覆盤</p>
+    </div>
+    <div class="card">
+      <div class="resource-tbl">
+        <table class="track">
+          <thead><tr><th>週</th><th>主題</th><th>完成</th><th>一句話覆盤</th></tr></thead>
+          <tbody>
+            <tr><td>W1</td><td>學習方法・電腦基礎・VS Code</td><td><input type="checkbox"></td><td></td></tr>
+            <tr><td>W2</td><td>Python + Git + GitHub 建置，Hello World</td><td><input type="checkbox"></td><td></td></tr>
+            <tr><td>W3</td><td>變數・型別・輸入輸出</td><td><input type="checkbox"></td><td></td></tr>
+            <tr><td>W4</td><td>運算子・字串・f-string（BMI 計算機）</td><td><input type="checkbox"></td><td></td></tr>
+            <tr><td>W5</td><td>條件判斷・邏輯運算子（猜拳）</td><td><input type="checkbox"></td><td></td></tr>
+            <tr><td>W6</td><td>迴圈（九九乘法表・猜數字）</td><td><input type="checkbox"></td><td></td></tr>
+            <tr><td>W7</td><td>list / dict / tuple / set（購物清單）</td><td><input type="checkbox"></td><td></td></tr>
+            <tr><td>W8</td><td>函式・模組（重構舊程式）</td><td><input type="checkbox"></td><td></td></tr>
+            <tr><td>W9</td><td>檔案讀寫・錯誤處理（簡易記帳本）</td><td><input type="checkbox"></td><td></td></tr>
+            <tr><td>W10</td><td>里程碑專案：CLI 待辦清單</td><td><input type="checkbox"></td><td></td></tr>
+            <tr><td>W11</td><td>Big O・陣列與字串技巧</td><td><input type="checkbox"></td><td></td></tr>
+            <tr><td>W12</td><td>堆疊・佇列・鏈結串列</td><td><input type="checkbox"></td><td></td></tr>
+            <tr><td>W13</td><td>雜湊表・集合・雙指針</td><td><input type="checkbox"></td><td></td></tr>
+            <tr><td>W14</td><td>樹・二元搜尋樹・DFS/BFS</td><td><input type="checkbox"></td><td></td></tr>
+            <tr><td>W15</td><td>排序・二分搜尋</td><td><input type="checkbox"></td><td></td></tr>
+            <tr><td>W16</td><td>遞迴・回溯・刷題習慣</td><td><input type="checkbox"></td><td></td></tr>
+            <tr><td>W17–18</td><td>專案 1：資料分析</td><td><input type="checkbox"></td><td></td></tr>
+            <tr><td>W19–20</td><td>專案 2：網路爬蟲</td><td><input type="checkbox"></td><td></td></tr>
+            <tr><td>W21–22</td><td>專案 3：Web App + 部署</td><td><input type="checkbox"></td><td></td></tr>
+            <tr><td>W23</td><td>選定方向・開始深化</td><td><input type="checkbox"></td><td></td></tr>
+            <tr><td>W24+</td><td>方向主題專案・持續輸出</td><td><input type="checkbox"></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 十一、陷阱 -->
+  <section>
+    <div class="sec-title">
+      <span class="num">十一</span>
+      <h2>常見陷阱與解方</h2>
+      <p>這些坑幾乎每個自學者都踩過，先看到就先贏</p>
+    </div>
+    <div class="card">
+      <div class="trap"><span class="ic">✕</span><div><b>只看不練</b><span>看課很爽，但那是「假性學習」。強制 70% 時間動手。</span></div></div>
+      <div class="trap"><span class="ic">✕</span><div><b>貪快跳基礎</b><span>跳過變數直接寫爬蟲，會越學越卡。基礎慢＝整體快。</span></div></div>
+      <div class="trap"><span class="ic">✕</span><div><b>卡住就放棄</b><span>用 15 分鐘規則：先查文件 → 問 AI → 問社群，卡關是正常的。</span></div></div>
+      <div class="trap"><span class="ic">✕</span><div><b>一次學多種語言</b><span>24 週內只碰 Python。第二門語言等基礎穩了再學，只需 1/3 時間。</span></div></div>
+      <div class="trap"><span class="ic">✕</span><div><b>完美主義重寫</b><span>「能跑」永遠優於「完美」。先交出一版爛的，再慢慢改。</span></div></div>
+      <div class="trap"><span class="ic">✕</span><div><b>不讀報錯訊息</b><span>報錯訊息是程式給你最好的提示。把整段紅字貼給 AI 或搜尋，都是正常學習。</span></div></div>
+      <div class="trap"><span class="ic">✕</span><div><b>跟別人比進度</b><span>只跟「昨天的自己」比。每個人起點不同，焦慮最傷學習。</span></div></div>
+    </div>
+  </section>
+
+  <footer>
+    本計劃書由 AI 依「程式零基礎、主線 Python、24 週、每週 12–15 小時」的設定製作。資源多為免費官方來源，付費項目僅書籍選購。學習途中隨時可以回來調整：想換方向、想加速／減速、想改主線語言，直接說即可。祝學習愉快！
+  </footer>
+
+</div>
+</body>
+</html>

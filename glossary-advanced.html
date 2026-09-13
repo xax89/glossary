@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>進階詞彙表｜終端機指令 × AI Agent 操作</title>
+<style>
+  :root{
+    --bg:#F4F3EE; --card:#FFFFFF; --text:#1A1B1C; --text2:#5F6470;
+    --border:#E4E3DD; --accent:#3B4E9B; --accent-light:#EEF0FC;
+    --danger:#D9534F; --danger-light:#FBECEB;
+    --green:#3E9D63; --green-light:#E8F5EE;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:'PingFang TC','PingFang SC','Noto Sans TC','Microsoft JhengHei',sans-serif;
+    line-height:1.7;padding:36px 16px 80px;
+  }
+  .wrap{max-width:880px;margin:0 auto;}
+
+  .hero{
+    background:linear-gradient(135deg,#3B4E9B,#5A6ACF);color:#fff;
+    border-radius:18px;padding:30px 30px;box-shadow:0 6px 24px rgba(59,78,155,0.25);
+  }
+  .hero h1{font-size:26px;font-weight:800;letter-spacing:1px;}
+  .hero .sub{margin-top:8px;font-size:14px;opacity:0.94;}
+  .hero .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+  .hero .meta span{
+    background:rgba(255,255,255,0.16);border:1px solid rgba(255,255,255,0.35);
+    border-radius:999px;padding:4px 13px;font-size:12px;
+  }
+
+  .howto{
+    margin-top:18px;padding:15px 20px;background:var(--accent-light);
+    border:1px solid #D5DBF5;border-left:5px solid var(--accent);border-radius:12px;
+    font-size:13.5px;color:#3A4371;
+  }
+  .howto b{color:var(--accent);}
+  .warn{
+    margin-top:12px;padding:13px 18px;background:var(--danger-light);
+    border:1px solid #F2D0CE;border-left:5px solid var(--danger);border-radius:12px;
+    font-size:13px;color:#7A2E2B;
+  }
+  .warn b{color:var(--danger);}
+
+  .cat{margin-top:34px;}
+  .cat-head{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+  .cat-head .no{
+    background:var(--accent);color:#fff;font-size:14px;font-weight:700;
+    width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .cat-head h2{font-size:19px;font-weight:800;}
+  .cat-head .cnt{font-size:12px;color:var(--text2);background:var(--card);border:1px solid var(--border);border-radius:999px;padding:1px 10px;}
+
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;}
+  .term{display:flex;flex-wrap:wrap;gap:6px 18px;padding:13px 20px;border-bottom:1px solid var(--border);}
+  .term:last-child{border-bottom:none;}
+  .term-l{flex:0 0 210px;min-width:170px;}
+  .term-l code{
+    display:inline-block;background:var(--accent-light);color:var(--accent);
+    border:1px solid #C9D2F0;border-radius:7px;padding:2px 10px;
+    font-family:'SF Mono',Menlo,Consolas,monospace;font-size:14px;font-weight:700;
+  }
+  .term-l .en{display:block;font-size:11.5px;color:var(--text2);margin-top:3px;}
+  .term-r{flex:1 1 340px;min-width:0;}
+  .term-r p{font-size:13.5px;}
+  .term-r code{
+    font-family:'SF Mono',Menlo,Consolas,monospace;font-size:12.5px;
+    background:#F0EFEA;border-radius:5px;padding:0 6px;color:#333;
+  }
+  .term-r .when{font-size:12.5px;color:var(--text2);margin-top:3px;}
+  .term-r .when b{color:var(--accent);font-weight:600;}
+  .term.danger .term-l code{background:var(--danger-light);color:var(--danger);border-color:#F2C9C7;}
+  .term.ok .term-l code{background:var(--green-light);color:var(--green);border-color:#BEE3CC;}
+
+  footer{
+    margin-top:40px;padding:16px 20px;background:var(--card);
+    border:1px solid var(--border);border-radius:12px;font-size:13px;color:var(--text2);
+  }
+  footer b{color:var(--text);}
+  footer li{margin:4px 0 4px 18px;}
+
+  @media (max-width:560px){
+    body{padding:24px 12px 60px;}
+    .hero{padding:22px 20px;}
+    .hero h1{font-size:22px;}
+    .term-l{flex-basis:100%;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <h1>進階詞彙表｜終端機 × AI Agent</h1>
+    <p class="sub">從「看得懂」升級到「會操作」—— 40 個指令與操作技巧，附範例</p>
+    <div class="meta">
+      <span>終端機入門 10</span>
+      <span>終端機進階 10</span>
+      <span>Git 速查 8</span>
+      <span>Python 執行 5</span>
+      <span>AI Agent 操作 7</span>
+    </div>
+  </div>
+
+  <div class="howto">
+    <b>怎麼用：</b>照著範例打一遍就會記住；打錯不會爆炸，頂多顯示「command not found」。看到紅色字（<b>危險</b>）的指令，先想清楚再執行。<br>
+    <b>練習心法：</b>指令不用背，用「<code>指令 --help</code>」或問 AI「這個指令是什麼意思」隨時查。
+  </div>
+
+  <!-- 一、終端機入門 -->
+  <div class="cat">
+    <div class="cat-head"><span class="no">一</span><h2>終端機入門｜導覽與檔案操作</h2><span class="cnt">10 個</span></div>
+    <div class="card">
+      <div class="term">
+        <div class="term-l"><code>pwd</code><span class="en">print working directory</span></div>
+        <div class="term-r">
+          <p>顯示「你現在在哪個資料夾」。迷路時的第一條指令。</p>
+          <p class="when"><b>範例：</b>輸入 <code>pwd</code> → 輸出 <code>/Users/chenjieti</code></p>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-l"><code>ls</code><span class="en">list</span></div>
+        <div class="term-r">
+          <p>列出目前資料夾裡的所有檔案。</p>
+          <p class="when"><b>範例：</b><code>ls -la</code> 顯示更詳細資訊（含隱藏檔）——新手最常用的是這個。</p>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-l"><code>cd</code><span class="en">change directory</span></div>
+        <div class="term-r">
+          <p>切換資料夾。三個固定用法必記：<code>cd 資料夾名</code> 進入、<code>cd ..</code> 回上一層、<code>cd ~</code> 回主目錄。</p>
+          <p class="when"><b>範例：</b><code>cd 下載</code> 後再 <code>pwd</code>，會發現位置變了。</p>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-l"><code>mkdir</code><span class="en">make directory</span></div>
+        <div class="term-r">
+          <p>建立新資料夾。</p>
+          <p class="when"><b>範例：</b><code>mkdir 我的專案</code> → 建立名為「我的專案」的資料夾。</p>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-l"><code>touch</code><span class="en">touch</span></div>
+        <div class="term-r">
+          <p>建立一個空檔案（檔案已存在時則只更新時間）。</p>
+          <p class="when"><b>範例：</b><code>touch 筆記.txt</code> → 建立空的筆記.txt。</p>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-l"><code>cp</code><span class="en">copy</span></div>
+        <div class="term-r">
+          <p>複製檔案。複製整個資料夾要加 <code>-r</code>。</p>
+          <p class="when"><b>範例：</b><code>cp 筆記.txt 備份.txt</code>；<code>cp -r 專案 專案備份</code>。</p>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-l"><code>mv</code><span class="en">move</span></div>
+        <div class="term-r">
+          <p>移動檔案，也能「重新命名」。</p>
+          <p class="when"><b>範例：</b><code>mv 舊名.py 新名.py</code>（改名）；<code>mv 檔案.txt 下載/</code>（搬家）。</p>
+        </div>
+      </div>
+      <div class="term danger">
+        <div class="term-l"><code>rm</code><span class="en">remove</span></div>
+        <div class="term-r">
+          <p>刪除檔案。<b>刪了就沒有垃圾桶</b>，執行前再三確認。</p>
+          <p class="when"><b>範例：</b><code>rm 暫存.txt</code>；<code>rm -r 資料夾</code> 是連資料夾一起刪——<b>新手先用 mv 移到別處，別急著 rm</b>。</p>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-l"><code>cat</code><span class="en">concatenate</span></div>
+        <div class="term-r">
+          <p>把檔案內容直接印在螢幕上，看小檔案最快。</p>
+          <p class="when"><b>範例：</b><code>cat 筆記.txt</code> → 立刻看到全部內容。</p>
+        </div>
+      </div>
+      <div class="term ok">
+        <div class="term-l"><code>open</code><span class="en">open（macOS）</span></div>
+        <div class="term-r">
+          <p>用預設程式打開檔案或資料夾（Mac 專屬）。</p>
+          <p class="when"><b>範例：</b><code>open 下載</code> → 直接跳出 Finder 視窗；<code>open 報告.pdf</code> → 用 PDF 程式打開。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 二、終端機進階 -->
+  <div class="cat">
+    <div class="cat-head"><span class="no">二</span><h2>終端機進階｜管線、輸出與工具</h2><span class="cnt">10 個</span></div>
+    <div class="card">
+      <div class="term">
+        <div class="term-l"><code>|</code><span class="en">pipe 管線</span></div>
+        <div class="term-r">
+          <p>把前一個指令的輸出「丟給」下一個指令處理。</p>
+          <p class="when"><b>範例：</b><code>ls | grep py</code> → 只列出檔名含 py 的檔案。</p>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-l"><code>&gt;</code><span class="en">redirect 重新導向</span></div>
+        <div class="term-r">
+          <p>把原本顯示在螢幕上的輸出，改存成檔案。</p>
+          <p class="when"><b>範例：</b><code>python3 程式.py &gt; 結果.txt</code> → 結果存檔而不是噴滿螢幕。</p>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-l"><code>&amp;&amp;</code><span class="en">and 接續執行</span></div>
+        <div class="term-r">
+          <p>前一個指令「成功」才執行下一個。</p>
+          <p class="when"><b>範例：</b><code>cd 專案 &amp;&amp; python3 程式.py</code> → 先進去資料夾再跑程式。</p>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-l"><code>Ctrl+C</code><span class="en">中斷</span></div>
+        <div class="term-r">
+          <p>中斷正在跑的程式。程式卡住、迴圈跑不完時的好朋友。</p>
+          <p class="when"><b>範例：</b>執行太久沒反應 → 按 <code>Ctrl+C</code> 停掉。</p>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-l"><code>Ctrl+L</code><span class="en">清畫面</span></div>
+        <div class="term-r">
+          <p>清空螢幕，等於輸入 <code>clear</code>。畫面亂掉時按一下，神清氣爽。</p>
+          <p class="when"><b>範例：</b>畫面太雜 → <code>Ctrl+L</code> 回到乾淨狀態。</p>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-l"><code>chmod</code><span class="en">change mode</span></div>
+        <div class="term-r">
+          <p>修改檔案的執行權限。初期很少用，遇到「Permission denied」才需要。</p>
+          <p class="when"><b>範例：</b><code>chmod +x 腳本.sh</code> → 讓這個檔可以被執行。</p>
+        </div>
+      </div>
+      <div class="term danger">
+        <div class="term-l"><code>sudo</code><span class="en">superuser do</span></div>
+        <div class="term-r">
+          <p>以「管理者」身分執行，會要求輸入密碼。<b>權力很大，不要亂用</b>，尤其不要配 rm 一起用。</p>
+          <p class="when"><b>範例：</b>安裝系統級軟體時教學會要求 <code>sudo</code>；其餘情況先問 AI。</p>
+        </div>
+      </div>
+      <div class="term ok">
+        <div class="term-l"><code>brew</code><span class="en">Homebrew</span></div>
+        <div class="term-r">
+          <p>Mac 的「軟體安裝商店」，用指令裝軟體。</p>
+          <p class="when"><b>範例：</b><code>brew install git</code> → 用 brew 安裝 Git。</p>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-l"><code>pip install</code><span class="en">Python 套件安裝</span></div>
+        <div class="term-r">
+          <p>安裝 Python 的套件（別人寫好的功能包）。</p>
+          <p class="when"><b>範例：</b><code>pip3 install pandas</code> → 裝好就能在程式裡 import pandas。</p>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-l"><code>curl</code><span class="en">下載／抓取</span></div>
+        <div class="term-r">
+          <p>從網址抓資料到終端機，也能下載檔案。</p>
+          <p class="when"><b>範例：</b><code>curl -O 網址</code> → 下載檔案到目前資料夾。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 三、Git 速查 -->
+  <div class="cat">
+    <div class="cat-head"><span class="no">三</span><h2>Git 指令速查｜日常八條就夠</h2><span class="cnt">8 個</span></div>
+    <div class="card">
+      <div class="term ok">
+        <div class="term-l"><code>git clone</code><span class="en">複製專案</span></div>
+        <div class="term-r">
+          <p>把別人的 repo 下載到自己電腦。</p>
+          <p class="when"><b>範例：</b><code>git clone https://github.com/某人/某專案.git</code></p>
+        </div>
+      </div>
+      <div class="term ok">
+        <div class="term-l"><code>git status</code><span class="en">查看狀態</span></div>
+        <div class="term-r">
+          <p>看「現在改了哪些檔案」。想確認自己做到哪，打這條就對了。</p>
+          <p class="when"><b>範例：</b>改完檔後打 <code>git status</code> → 紅色＝還沒暫存，綠色＝已暫存。</p>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-l"><code>git add</code><span class="en">加入暫存</span></div>
+        <div class="term-r">
+          <p>把修改「放進暫存區」，準備要 commit。</p>
+          <p class="when"><b>範例：</b><code>git add 檔名.py</code> 加單一檔案；<code>git add .</code> 一次加全部。</p>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-l"><code>git commit</code><span class="en">拍快照</span></div>
+        <div class="term-r">
+          <p>把暫存區的修改存成一筆歷史紀錄，必須附說明。</p>
+          <p class="when"><b>範例：</b><code>git commit -m "修正輸入錯誤"</code>。說明用中文也可以。</p>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-l"><code>git push</code><span class="en">上傳</span></div>
+        <div class="term-r">
+          <p>把本機的 commit 上傳到 GitHub。</p>
+          <p class="when"><b>範例：</b><code>git push</code>。口訣：<b>先 add → 再 commit → 最後 push</b>。</p>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-l"><code>git pull</code><span class="en">下載更新</span></div>
+        <div class="term-r">
+          <p>把 GitHub 上最新版本抓回本機。</p>
+          <p class="when"><b>範例：</b>換了電腦繼續做 → 先 <code>git pull</code> 再開工。</p>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-l"><code>git log</code><span class="en">看歷史</span></div>
+        <div class="term-r">
+          <p>看 commit 歷史紀錄。</p>
+          <p class="when"><b>範例：</b><code>git log --oneline</code> → 一行一條，清爽好讀。</p>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-l"><code>git branch</code><span class="en">分支</span></div>
+        <div class="term-r">
+          <p>看目前在哪個分支；開新分支＝另開一條平行修改線。</p>
+          <p class="when"><b>範例：</b><code>git branch</code> 查看；<code>git branch 新功能</code> 開新分支。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 四、Python 執行 -->
+  <div class="cat">
+    <div class="cat-head"><span class="no">四</span><h2>Python 執行指令</h2><span class="cnt">5 個</span></div>
+    <div class="card">
+      <div class="term">
+        <div class="term-l"><code>python3 --version</code><span class="en">確認版本</span></div>
+        <div class="term-r">
+          <p>確認 Python 有沒有裝好、版本是多少。</p>
+          <p class="when"><b>範例：</b>輸出 <code>Python 3.12.x</code> 就是正常；出現 command not found 代表沒裝好。</p>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-l"><code>python3 檔名.py</code><span class="en">執行程式</span></div>
+        <div class="term-r">
+          <p>執行 Python 檔案，程式會跑給你看。</p>
+          <p class="when"><b>範例：</b>在放著 hello.py 的資料夾輸入 <code>python3 hello.py</code>。</p>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-l"><code>python3</code><span class="en">互動模式</span></div>
+        <div class="term-r">
+          <p>直接進入 Python 互動視窗，一行一行試語法，適合測小東西。</p>
+          <p class="when"><b>範例：</b>輸入 <code>python3</code> → 出現 <code>&gt;&gt;&gt;</code> → 打 <code>print("hi")</code> → 按 <code>Ctrl+D</code> 或輸入 <code>exit()</code> 離開。</p>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-l"><code>pip3 install</code><span class="en">安裝套件</span></div>
+        <div class="term-r">
+          <p>安裝 Python 套件（macOS 常寫 pip3）。</p>
+          <p class="when"><b>範例：</b><code>pip3 install requests</code>；裝完通常會要求重新開啟終端機。</p>
+        </div>
+      </div>
+      <div class="term ok">
+        <div class="term-l"><code>venv</code><span class="en">虛擬環境</span></div>
+        <div class="term-r">
+          <p>每個專案獨立的「套件隔離區」，避免不同專案打架。</p>
+          <p class="when"><b>範例：</b><code>python3 -m venv myenv</code> 建立 → <code>source myenv/bin/activate</code> 啟用（Mac）→ 用完 <code>deactivate</code> 退出。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 五、AI Agent 操作 -->
+  <div class="cat">
+    <div class="cat-head"><span class="no">五</span><h2>AI Agent 指令操作</h2><span class="cnt">7 個</span></div>
+    <div class="card">
+      <div class="term ok">
+        <div class="term-l"><code>任務四件套</code><span class="en">目標＋材料＋格式＋驗收</span></div>
+        <div class="term-r">
+          <p>下指令時說清楚四件事，AI 品質立刻升級：<b>目標</b>（要什麼結果）、<b>材料</b>（讀哪些檔案／連結）、<b>格式</b>（表格／文件／程式碼）、<b>驗收標準</b>（多長、要包含什麼）。</p>
+          <p class="when"><b>範例：</b>「我要一份 Python 學習週計劃（目標），讀這份計劃書（材料），輸出表格（格式），每週要有實作項目（驗收）。」</p>
+        </div>
+      </div>
+      <div class="term ok">
+        <div class="term-l"><code>先解釋再執行</code><span class="en">安全確認</span></div>
+        <div class="term-r">
+          <p>要 AI 操作電腦或下指令前，先要求它「解釋這條會做什麼、會動到我電腦的哪裡」再執行。</p>
+          <p class="when"><b>範例：</b>「這條指令會改動我的檔案嗎？先解釋一遍再跑。」</p>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-l"><code>斜線指令 /</code><span class="en">slash command</span></div>
+        <div class="term-r">
+          <p>輸入 <code>/</code> 開頭可直接呼叫特定技能或功能（例如 /某技能名），不用打字描述。</p>
+          <p class="when"><b>範例：</b>對話框打 <code>/</code> → 跳出可選的技能／指令清單。</p>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-l"><code>指定格式</code><span class="en">輸出控制</span></div>
+        <div class="term-r">
+          <p>直接要求輸出格式，AI 會照做：表格、JSON、程式碼、繁體中文、字數限制⋯⋯</p>
+          <p class="when"><b>範例：</b>「用表格列出，3 欄，每項附一句範例」→ 比「整理一下」清楚一百倍。</p>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-l"><code>修正指令</code><span class="en">回饋迭代</span></div>
+        <div class="term-r">
+          <p>不滿意就直說哪裡不滿意：「太長」「太難」「換個比喻」「只要重點」。AI 會照你的回饋修改，不用重開對話。</p>
+          <p class="when"><b>範例：</b>「這份太專業了我看不懂，用跟 12 歲小孩解釋的方式重寫。」</p>
+        </div>
+      </div>
+      <div class="term ok">
+        <div class="term-l"><code>報錯處理 SOP</code><span class="en">貼原文</span></div>
+        <div class="term-r">
+          <p>看到報錯：<b>整段複製貼給 AI</b>，並說「用大白話解釋原因，再給我直接能跑的修正」。別自己瞎猜。</p>
+          <p class="when"><b>範例：</b>「這段報錯是什麼意思？為什麼會發生？怎麼改？」</p>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-l"><code>能力詞</code><span class="en">Skill / Connector / 定時任務 / 夥伴</span></div>
+        <div class="term-r">
+          <p>AI Agent 的擴充能力名詞，看到時知道「這是幫 AI 加能力的工具」即可：<b>技能</b>＝特定領域的專業流程、<b>連接器</b>＝接外部系統／資料、<b>定時任務</b>＝到點自動執行、<b>工作夥伴</b>＝預設的專業角色。</p>
+          <p class="when"><b>範例：</b>想讓 AI 定時整理資料 → 用「定時任務」；想接公司資料 → 用「連接器」。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <b>給新手的三句總結：</b>
+    <ul>
+      <li>終端機指令＝跟電腦講話的短句子，照抄範例就能用，打錯不會壞。</li>
+      <li>紅色字標記的（rm、sudo）先問 AI 再執行；其他放心試。</li>
+      <li>AI Agent 的關鍵不是記指令，是「把需求說清楚」——四件套＋貼報錯，勝過背一百條指令。</li>
+    </ul>
+  </footer>
+
+</div>
+</body>
+</html>
