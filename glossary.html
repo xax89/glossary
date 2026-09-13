@@ -310,7 +310,7 @@
     <p class="sub">地圖 → 新手 → 初階 → 進階 → 副檔名，五個分頁自由切換，還能搜尋</p>
     <div class="meta">
       <span>地圖 1 張</span>
-      <span>新手 42 個概念</span>
+      <span>新手 49 個概念</span>
       <span>初階 19 個指令</span>
       <span>進階 28 個技巧</span>
       <span>副檔名 42 個</span>
@@ -345,7 +345,7 @@
   <div class="bar">
     <div class="tabs" role="tablist">
       <button class="tab-btn" data-tab="map" role="tab" aria-selected="false">地圖</button>
-      <button class="tab-btn on" data-tab="beginner" role="tab" aria-selected="true">新手<span class="cnt">42</span></button>
+      <button class="tab-btn on" data-tab="beginner" role="tab" aria-selected="true">新手<span class="cnt">49</span></button>
       <button class="tab-btn" data-tab="elementary" role="tab" aria-selected="false">初階<span class="cnt">19</span></button>
       <button class="tab-btn" data-tab="advanced" role="tab" aria-selected="false">進階<span class="cnt">28</span></button>
       <button class="tab-btn" data-tab="ext" role="tab" aria-selected="false">副檔名<span class="cnt">42</span></button>
@@ -520,6 +520,61 @@
           <div class="term-r">
             <p>安裝＝把軟體裝進電腦；版本＝軟體的更新代號（例如 Python 3.12）。</p>
             <p class="when"><b>遇到：</b>照教學「下載 → 雙擊 → 下一步 → 完成」；<b>報錯說「版本太舊」就升級</b>。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grp">
+      <div class="grp-head"><span class="dot" style="background:#C97B2D;"></span><h3>電腦硬體（廚房比喻）</h3><span class="cnt">7</span></div>
+      <div class="card">
+        <div class="term">
+          <div class="term-l"><b>CPU（處理器）</b><span class="en">Central Processing Unit</span></div>
+          <div class="term-r">
+            <p>你的電腦「<b>主廚</b>」：負責算邏輯、處理指令，是電腦的大腦。你的 M4 晶片裡就有 CPU。</p>
+            <p class="when"><b>遇到：</b>電腦跑得慢先別怪它——日常「卡」<b>多半是記憶體不夠，不是 CPU 不夠</b>。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><b>GPU（顯示卡）</b><span class="en">Graphics Processing Unit</span></div>
+          <div class="term-r">
+            <p>專門「<b>畫圖</b>」的助手：處理螢幕畫面、影片、3D 渲染。M4 把 GPU 跟 CPU 做在同一顆晶片裡。</p>
+            <p class="when"><b>遇到：</b>剪片、玩遊戲、跑 AI 繪圖會用到它；<b>寫普通程式幾乎用不到</b>。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><b>RAM（記憶體）</b><span class="en">Random Access Memory</span></div>
+          <div class="term-r">
+            <p>你的「<b>料理台</b>」：同時能放多少東西「正在做」，越大越不會卡。你的 MacBook 有 24GB——很大的料理台。</p>
+            <p class="when"><b>遇到：</b>開很多程式很卡＝料理台滿了。<b>macOS 一開機就吃掉 6–8GB</b>，8GB 記憶體的舊機會一開瀏覽器就卡。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><b>儲存空間（SSD／ROM）</b><span class="en">Storage / SSD</span></div>
+          <div class="term-r">
+            <p>你的「<b>冰箱倉庫</b>」：永久存放檔案、照片、影片。500GB SSD＝中等冰箱。</p>
+            <p class="when"><b>遇到：</b>常見誤解：ROM／儲存 ≠ 記憶體。<b>記憶體決定「順不順」，儲存決定「裝多少」</b>——兩個是不同零件。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><b>NPU（AI 晶片）</b><span class="en">Neural Processing Unit</span></div>
+          <div class="term-r">
+            <p>專做 <b>AI 運算</b>的助手，也在 M4 晶片裡。</p>
+            <p class="when"><b>遇到：</b>AI 相關功能（照片修圖、語音辨識）會用到它；<b>你不需要做任何設定</b>。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><b>統一記憶體</b><span class="en">Unified Memory</span></div>
+          <div class="term-r">
+            <p>Apple M 系列的特點：<b>CPU、GPU、AI 晶片共用同一塊 RAM</b>，動態分配、隨時互相支援。</p>
+            <p class="when"><b>遇到：</b>24GB 日常用綽綽有餘，開 100 個分頁、跑統計分析也不卡；PC 上 CPU／GPU 各自有記憶體，沒這個機制。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><b>虛擬機</b><span class="en">Virtual Machine (VM)</span></div>
+          <div class="term-r">
+            <p>在一台電腦裡「<b>模擬</b>」出另一台電腦，例如在 Mac 上用 VMware Fusion 跑 Windows。</p>
+            <p class="when"><b>遇到：</b>Windows 11 建議分配 8GB；你 24GB 分 8GB 給虛擬機，<b>macOS 還有 16GB 照樣順</b>。記憶體焊死不能加裝，買了就定終身。</p>
           </div>
         </div>
       </div>
