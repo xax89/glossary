@@ -17,7 +17,7 @@
     font-family:'PingFang TC','PingFang SC','Noto Sans TC','Microsoft JhengHei',sans-serif;
     line-height:1.7;padding:36px 16px 80px;
   }
-  .wrap{max-width:880px;margin:0 auto;}
+  .wrap{max-width:1080px;margin:0 auto;}
 
   .hero{
     background:linear-gradient(135deg,#3B4E9B,#5A6ACF);color:#fff;
@@ -174,6 +174,51 @@
   footer b{color:var(--text);}
   footer li{margin:4px 0 4px 18px;}
 
+  /* 版面：主內容＋右側目錄 */
+  .layout{display:flex;gap:26px;align-items:flex-start;}
+  .main{flex:1 1 auto;min-width:0;}
+  .index{
+    flex:0 0 200px;position:sticky;top:96px;
+    background:var(--card);border:1px solid var(--border);border-radius:14px;
+    padding:12px 14px;max-height:calc(100vh - 120px);overflow-y:auto;
+  }
+  .index-title{font-size:13px;font-weight:800;color:var(--accent);margin-bottom:8px;}
+  .idx-item{
+    display:flex;align-items:center;gap:7px;padding:6px 8px;border-radius:8px;
+    cursor:pointer;font-size:12.5px;color:var(--text2);line-height:1.4;
+  }
+  .idx-item:hover{background:var(--accent-light);}
+  .idx-item.on{background:var(--accent-light);color:var(--accent);font-weight:700;}
+  .idx-item .idot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+  .idx-item .iname{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .idx-item .icnt{margin-left:auto;flex-shrink:0;font-size:11px;color:var(--text2);background:#F0EFEA;border-radius:999px;padding:0 7px;line-height:1.7;}
+  .grp{scroll-margin-top:130px;}
+
+  /* 地圖分頁 */
+  .map-hero{background:linear-gradient(135deg,#3B4E9B,#5A6ACF);color:#fff;border-radius:16px;padding:22px 24px;margin-top:22px;}
+  .map-hero h3{font-size:19px;font-weight:800;}
+  .map-hero p{margin-top:6px;font-size:13px;opacity:0.94;line-height:1.7;}
+  .map-sec{margin-top:18px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 18px;}
+  .map-sec-title{font-size:15px;font-weight:800;color:var(--text);margin-bottom:12px;}
+  .map-sec-title .no{color:var(--accent);}
+  .map-card{border-radius:10px;padding:11px 13px;box-sizing:border-box;border:1px solid;}
+  .map-card .t{font-size:13.5px;font-weight:700;}
+  .map-card .d{font-size:12.5px;line-height:1.65;margin-top:3px;color:#3A4371;}
+  .map-card .tip{font-size:11.5px;color:#6B7280;margin-top:3px;}
+  .map-chip{display:inline-block;font-size:11.5px;background:#F0EFEA;border:1px solid #E4E3DD;border-radius:999px;padding:2px 9px;margin:3px 4px 0 0;color:#333;}
+  .map-flow-step{display:flex;gap:11px;align-items:flex-start;padding:8px 0;}
+  .map-flow-num{flex:0 0 26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+  .map-flow-txt{font-size:12.5px;line-height:1.65;}
+  .map-flow-txt b{color:var(--accent);}
+  .map-arrow{text-align:center;color:#B9BDB8;font-size:12px;padding:1px 0 1px 26px;}
+  .map-path-chip{display:inline-block;font-size:12.5px;font-weight:700;border-radius:999px;padding:5px 13px;margin:4px 6px 4px 0;}
+  .map-note{font-size:11.5px;color:#6B7280;margin-top:10px;line-height:1.6;}
+
+  @media (max-width:900px){
+    .layout{display:block;}
+    .index{display:none;}
+  }
+
   @media (max-width:560px){
     html{-webkit-text-size-adjust:100%;}
     body{padding:20px 12px calc(60px + env(safe-area-inset-bottom));}
@@ -208,15 +253,18 @@
 </head>
 <body>
 <div class="wrap">
+  <div class="layout">
+    <div class="main">
 
   <div class="hero">
     <h1>互動版程式工具詞彙表</h1>
-    <p class="sub">新手 → 初階 → 進階 → 副檔名，四個分頁自由切換，還能搜尋</p>
+    <p class="sub">新手 → 初階 → 進階 → 副檔名 → 地圖，五個分頁自由切換，還能搜尋</p>
     <div class="meta">
-      <span>新手 30 個概念</span>
+      <span>新手 42 個概念</span>
       <span>初階 19 個指令</span>
       <span>進階 28 個技巧</span>
       <span>副檔名 42 個</span>
+      <span>地圖 1 張</span>
     </div>
   </div>
 
@@ -226,6 +274,7 @@
       <div class="hl">② 搜尋框即時過濾</div>
       <div class="hl">③ 每個詞條左側<b>打勾＝標記已學會</b>、右上「重點」按鈕＝畫關鍵字，上方進度條自動算完成度</div>
       <div class="hl">④ 副檔名分頁可用分類按鈕篩選。</div>
+      <div class="hl">⑤ 電腦版右側有「目錄」：看每個分類有多少細項、點它直接跳過去</div>
     </div>
     <div class="hl-sec"><b>筆記存哪：</b>打勾與重點會自動存在<b>這台瀏覽器</b>（重新整理、關掉重開都還在）；換瀏覽器或換裝置不會同步。想清空按右上「清除筆記」。</div>
     <div class="hl-sec"><b>升級路線：</b>
@@ -238,10 +287,11 @@
 
   <div class="bar">
     <div class="tabs" role="tablist">
-      <button class="tab-btn on" data-tab="beginner" role="tab" aria-selected="true">新手<span class="cnt">30</span></button>
+      <button class="tab-btn on" data-tab="beginner" role="tab" aria-selected="true">新手<span class="cnt">42</span></button>
       <button class="tab-btn" data-tab="elementary" role="tab" aria-selected="false">初階<span class="cnt">19</span></button>
       <button class="tab-btn" data-tab="advanced" role="tab" aria-selected="false">進階<span class="cnt">28</span></button>
       <button class="tab-btn" data-tab="ext" role="tab" aria-selected="false">副檔名<span class="cnt">42</span></button>
+      <button class="tab-btn" data-tab="map" role="tab" aria-selected="false">地圖</button>
     </div>
     <input class="kw" id="kw" type="search" placeholder="搜尋目前分頁的詞彙／指令／副檔名…">
     <button class="clear-btn" id="clearBtn" type="button">清除筆記</button>
@@ -490,6 +540,95 @@
           <div class="term-r">
             <p>提供服務的電腦那端（機房／雲端）。</p>
             <p class="when"><b>遇到：</b>看到「伺服器錯誤」＝<b>後端那台電腦出問題</b>。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="grp">
+      <div class="grp-head"><span class="dot" style="background:#D98E1E;"></span><h3>常用程式語言</h3><span class="cnt">12</span></div>
+      <div class="card">
+        <div class="term">
+          <div class="term-l"><code>Python</code><span class="en">資料科學・AI・自動化・後端</span></div>
+          <div class="term-r">
+            <p>最好上手、用途最廣：數據分析、AI、自動化、網站後端都能用。<b>選 Python 就對了</b>。</p>
+            <p class="when"><b>遇到：</b>想學第一個語言、要處理資料 → Python。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><code>JavaScript</code><span class="en">網頁互動・前端必備</span></div>
+          <div class="term-r">
+            <p>瀏覽器唯一內建的程式語言——按鈕會動、畫面會跳都是它。</p>
+            <p class="when"><b>遇到：</b>想做網站前端 → JavaScript；<b>它跟 Python 完全不同用途</b>。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><code>TypeScript</code><span class="en">JavaScript 升級版</span></div>
+          <div class="term-r">
+            <p>JavaScript 加上「型別檢查」，大型專案不容易改到壞掉。</p>
+            <p class="when"><b>遇到：</b>JavaScript 專案變大、常常改壞 → 改用 TypeScript。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><code>Java</code><span class="en">企業系統・老牌</span></div>
+          <div class="term-r">
+            <p>銀行、大公司系統愛用（Android 早期主力）。</p>
+            <p class="when"><b>遇到：</b>看到職缺要求 Java → 通常是企業級系統。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><code>C</code><span class="en">底層・嵌入式</span></div>
+          <div class="term-r">
+            <p>最接近電腦硬體的語言：作業系統、嵌入式裝置。<b>寫過 C 才懂電腦底層</b>。</p>
+            <p class="when"><b>遇到：</b>想做系統底層、搞懂記憶體 → C。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><code>C++</code><span class="en">遊戲・高效能</span></div>
+          <div class="term-r">
+            <p>C 的進化版：遊戲引擎、高效能軟體的主力。</p>
+            <p class="when"><b>遇到：</b>想寫遊戲引擎、高效能程式 → C++。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><code>C#</code><span class="en">微軟・Unity 遊戲</span></div>
+          <div class="term-r">
+            <p>微軟主推：Windows 軟體、Unity 遊戲開發。</p>
+            <p class="when"><b>遇到：</b>用 Unity 做遊戲 → C#。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><code>Go</code><span class="en">雲端・後端 API</span></div>
+          <div class="term-r">
+            <p>Google 出品：雲端服務與後端 API 的新寵，語法簡單、跑得快。</p>
+            <p class="when"><b>遇到：</b>雲端、微服務後端 → Go。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><code>Swift</code><span class="en">iPhone App</span></div>
+          <div class="term-r">
+            <p>蘋果官方語言，iPhone／iPad App 專用。</p>
+            <p class="when"><b>遇到：</b>想做 iOS App → Swift。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><code>Kotlin</code><span class="en">Android App</span></div>
+          <div class="term-r">
+            <p>Android 官方推薦語言，跟 Java 互通。</p>
+            <p class="when"><b>遇到：</b>想做 Android App → Kotlin。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><code>SQL</code><span class="en">跟資料庫對話</span></div>
+          <div class="term-r">
+            <p>查資料、新增、修改、刪除都靠它。<b>不會寫程式也要會一點</b>。</p>
+            <p class="when"><b>遇到：</b>要「撈資料」、分析資料 → SQL。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><code>R</code><span class="en">統計・資料科學</span></div>
+          <div class="term-r">
+            <p>統計與資料科學專用，學術界愛用。</p>
+            <p class="when"><b>遇到：</b>做統計分析、寫論文 → R。</p>
           </div>
         </div>
       </div>
@@ -941,6 +1080,108 @@
     </div>
   </div>
 
+  <!-- ============ 地圖：一張圖看懂 ============ -->
+  <div class="tab-panel" id="panel-map" style="display:none;">
+    <div class="map-hero">
+      <h3>寫程式這行：一張地圖看懂</h3>
+      <p>所有網站、App 背後都是同一套分工：<b>前端</b>負責「給人看」、<b>後端</b>負責「處理事情」、<b>資料庫</b>負責「記住資料」，中間用 <b>API</b> 溝通。下面是白話總覽——該懂的術語一個都不少。</p>
+    </div>
+
+    <div class="map-sec">
+      <div class="map-sec-title"><span class="no">①</span> 四個角色：先記住這四層</div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;">
+        <div class="map-card" style="flex:1 1 100%;background:linear-gradient(135deg,#EEF0FC,#F6F8FF);border-color:#C9D2F0;border-left:5px solid #3B4E9B;">
+          <div class="t" style="color:#3B4E9B;">前端 Frontend —— 給人看的（餐廳外場）</div>
+          <div class="d">網頁畫面、App 畫面：你看到的排版、按鈕、圖片都是前端的功。外場負責把菜端到你面前。</div>
+          <div class="tip">代表技能：HTML（骨架）、CSS（打扮）、JavaScript（互動）</div>
+        </div>
+        <div class="map-card" style="flex:1 1 100%;background:#F8F8F5;border-color:#E4E3DD;border-left:5px solid #8A8F98;">
+          <div class="t" style="color:#4A4F58;">API —— 前後端的橋（服務生）</div>
+          <div class="d">前端想拿資料、後端想給資料，都透過 API 傳遞。它定義好「怎麼問、怎麼答」，像菜單一樣有規則。</div>
+          <div class="tip">代表：REST API、HTTP 請求／回應</div>
+        </div>
+        <div class="map-card" style="flex:1 1 100%;background:linear-gradient(135deg,#F5F1FD,#FAF7FF);border-color:#D9CEF0;border-left:5px solid #7B5EA7;">
+          <div class="t" style="color:#7B5EA7;">後端 Backend —— 躲在伺服器做事（廚房）</div>
+          <div class="d">登入驗證、算價格、處理訂單……使用者看不到，但所有「功能」都在這裡發生。廚房負責把菜煮出來。</div>
+          <div class="tip">代表語言：Python、Java、Go、Node.js</div>
+        </div>
+        <div class="map-card" style="flex:1 1 100%;background:linear-gradient(135deg,#E8F6F6,#F2FAFA);border-color:#BFE3E3;border-left:5px solid #24939B;">
+          <div class="t" style="color:#1F7E85;">資料庫 Database —— 記住資料（倉庫）</div>
+          <div class="d">把使用者的帳號、貼文、訂單「存起來」，需要時再撈出來。倉庫決定食材放哪、怎麼找。</div>
+          <div class="tip">代表語言：SQL；常見：MySQL、PostgreSQL、SQLite</div>
+        </div>
+      </div>
+      <div class="map-note">一句話：<b>前端像外場、後端是廚房、資料庫是倉庫、API 是傳單子的服務生</b>。</div>
+    </div>
+
+    <div class="map-sec">
+      <div class="map-sec-title"><span class="no">②</span> 每一層在幹嘛＋常用工具</div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;">
+        <div class="map-card" style="flex:1 1 260px;background:linear-gradient(135deg,#EEF0FC,#F6F8FF);border-color:#C9D2F0;">
+          <div class="t" style="color:#3B4E9B;">前端常用</div>
+          <div class="d">把畫面做出來、把互動加進去、在瀏覽器裡即時除錯。</div>
+          <div style="margin-top:6px;">
+            <span class="map-chip">HTML</span><span class="map-chip">CSS</span><span class="map-chip">JavaScript</span><span class="map-chip">瀏覽器（Chrome）</span><span class="map-chip">VS Code</span><span class="map-chip">Chrome DevTools</span>
+          </div>
+        </div>
+        <div class="map-card" style="flex:1 1 260px;background:linear-gradient(135deg,#F5F1FD,#FAF7FF);border-color:#D9CEF0;">
+          <div class="t" style="color:#7B5EA7;">後端常用</div>
+          <div class="d">寫邏輯、接資料庫、把服務放到雲端讓全世界能用。</div>
+          <div style="margin-top:6px;">
+            <span class="map-chip">Python</span><span class="map-chip">Node.js</span><span class="map-chip">Java／Go</span><span class="map-chip">雲端（AWS／GCP／阿里雲）</span><span class="map-chip">MySQL／PostgreSQL</span>
+          </div>
+        </div>
+        <div class="map-card" style="flex:1 1 260px;background:#F6F6F2;border-color:#E4E3DD;">
+          <div class="t" style="color:#4A4F58;">基礎工具（不分端）</div>
+          <div class="d">不管寫前端還後端都用得上——你現在學的就是這一層。</div>
+          <div style="margin-top:6px;">
+            <span class="map-chip">終端機</span><span class="map-chip">Git</span><span class="map-chip">GitHub</span><span class="map-chip">副檔名</span><span class="map-chip">VS Code</span><span class="map-chip">AI 工具</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="map-sec">
+      <div class="map-sec-title"><span class="no">③</span> 它們怎麼合作：你打開 IG 的那 5 秒</div>
+      <div class="map-flow-step">
+        <div class="map-flow-num">1</div>
+        <div class="map-flow-txt">你打開 IG，<b>App 畫面（前端）</b>開始載入。</div>
+      </div>
+      <div class="map-arrow">▼</div>
+      <div class="map-flow-step">
+        <div class="map-flow-num">2</div>
+        <div class="map-flow-txt">前端透過 <b>API</b> 送出請求：「把首頁貼文給我」。</div>
+      </div>
+      <div class="map-arrow">▼</div>
+      <div class="map-flow-step">
+        <div class="map-flow-num">3</div>
+        <div class="map-flow-txt"><b>後端</b>收到請求，去<b>資料庫</b>撈貼文。</div>
+      </div>
+      <div class="map-arrow">▼</div>
+      <div class="map-flow-step">
+        <div class="map-flow-num">4</div>
+        <div class="map-flow-txt">資料庫回傳資料，後端整理成乾淨格式，經 API 送回前端。</div>
+      </div>
+      <div class="map-arrow">▼</div>
+      <div class="map-flow-step">
+        <div class="map-flow-num">5</div>
+        <div class="map-flow-txt">前端把資料「<b>渲染</b>」成你看到的圖片和文字。</div>
+      </div>
+      <div class="map-note">所有網站和 App 每天重複這 5 步幾百萬次——<b>看懂這條線，就懂整行在做什麼</b>。</div>
+    </div>
+
+    <div class="map-sec">
+      <div class="map-sec-title"><span class="no">④</span> 你的學習路線</div>
+      <div class="map-flow-txt">你現在在這裡：<b>基礎工具層</b>（終端機・Git・副檔名・Python・AI 工具）——正在打地基。</div>
+      <div style="margin:10px 0 2px;">
+        <span class="map-path-chip" style="background:#3B4E9B;color:#fff;">往前端：HTML → CSS → JavaScript → 做出自己的網頁</span>
+        <span class="map-path-chip" style="background:#7B5EA7;color:#fff;">往後端：Python 深入 → SQL → API → 做出能存資料的服務</span>
+        <span class="map-path-chip" style="background:#D98E1E;color:#fff;">兩條都走完 ＝ 全端</span>
+      </div>
+      <div class="map-note">不用急著選邊——<b>先把基礎工具用熟，兩邊都試試再決定</b>。詞彙表「新手」分頁有「前端與後端」6 條、「常用程式語言」12 條，可以先打勾認識。</div>
+    </div>
+  </div>
+
   <footer>
     <b>互動使用小技巧：</b>
     <ul>
@@ -950,6 +1191,12 @@
     </ul>
   </footer>
 
+    </div>
+    <aside class="index" id="index">
+      <div class="index-title">目錄</div>
+      <div class="index-list" id="index-list"></div>
+    </aside>
+  </div>
 </div>
 
 <noscript><style>.tab-panel{display:block !important;}</style></noscript>
@@ -990,6 +1237,62 @@
       }
     }
 
+    function buildIndex(name){
+      var box=document.getElementById('index');
+      var list=document.getElementById('index-list');
+      if(!box||!list) return;
+      list.innerHTML='';
+      var panel=document.getElementById('panel-'+name);
+      if(!panel || name==='map'){ box.style.display='none'; return; }
+      box.style.display='';
+      var items=[];
+      var groups=panel.querySelectorAll('.grp');
+      for(var i=0;i<groups.length;i++){
+        (function(g,idx){
+          var h3=g.querySelector('h3'); if(!h3) return;
+          var dot=g.querySelector('.dot'); var cnt=g.querySelector('.cnt');
+          if(!g.id) g.id='grp-'+name+'-'+idx;
+          var it=document.createElement('div');
+          it.className='idx-item';
+          var dh=dot ? '<span class="idot" style="background:'+dot.style.background+';"></span>' : '';
+          var ch=cnt ? '<span class="icnt">'+cnt.textContent+'</span>' : '';
+          it.innerHTML=dh+'<span class="iname">'+h3.textContent+'</span>'+ch;
+          it.addEventListener('click',function(){ g.scrollIntoView({behavior:'smooth',block:'start'}); });
+          list.appendChild(it);
+          items.push({el:g,item:it});
+        })(groups[i],i);
+      }
+      if(name==='ext'){
+        var chipsBox=panel.querySelector('.chips');
+        if(chipsBox){
+          var chips=chipsBox.querySelectorAll('.chip-btn');
+          for(var c=0;c<chips.length;c++){
+            (function(chip){
+              var cat=chip.getAttribute('data-cat');
+              var n=panel.querySelectorAll('.ext tbody tr[data-cat="'+cat+'"]').length;
+              var it=document.createElement('div');
+              it.className='idx-item';
+              it.innerHTML='<span class="iname">'+chip.textContent.trim()+'</span><span class="icnt">'+n+'</span>';
+              it.addEventListener('click',function(){ chipsBox.scrollIntoView({behavior:'smooth',block:'start'}); chip.click(); });
+              list.appendChild(it);
+            })(chips[c]);
+          }
+        }
+      }
+      if(window.__idxObs) window.__idxObs.disconnect();
+      if(items.length){
+        var obs=new IntersectionObserver(function(entries){
+          for(var e=0;e<entries.length;e++){
+            if(entries[e].isIntersecting){
+              for(var k=0;k<items.length;k++) items[k].item.classList.toggle('on', items[k].el===entries[e].target);
+            }
+          }
+        },{rootMargin:'-15% 0px -75% 0px'});
+        for(var m=0;m<items.length;m++) obs.observe(items[m].el);
+        window.__idxObs=obs;
+      }
+    }
+
     function showTab(name){
       current = name;
       for(var i=0;i<tabs.length;i++){
@@ -1002,6 +1305,7 @@
       }
       if(kw){ kw.value = ''; }
       applyFilter();
+      buildIndex(name);
     }
 
     for(var i=0;i<tabs.length;i++){
@@ -1054,6 +1358,8 @@
           if(done[tid(items[j])]) cnt++;
         }
         var prog=p.querySelector('.prog');
+        if(total===0){ if(prog) prog.style.display='none'; continue; }
+        if(prog) prog.style.display='';
         if(!prog){
           prog=document.createElement('div');
           prog.className='prog';
