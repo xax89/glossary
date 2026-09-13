@@ -215,7 +215,7 @@
     <div class="meta">
       <span>新手 24 個概念</span>
       <span>初階 19 個指令</span>
-      <span>進階 20 個技巧</span>
+      <span>進階 28 個技巧</span>
       <span>副檔名 42 個</span>
     </div>
   </div>
@@ -240,7 +240,7 @@
     <div class="tabs" role="tablist">
       <button class="tab-btn on" data-tab="beginner" role="tab" aria-selected="true">新手<span class="cnt">24</span></button>
       <button class="tab-btn" data-tab="elementary" role="tab" aria-selected="false">初階<span class="cnt">19</span></button>
-      <button class="tab-btn" data-tab="advanced" role="tab" aria-selected="false">進階<span class="cnt">20</span></button>
+      <button class="tab-btn" data-tab="advanced" role="tab" aria-selected="false">進階<span class="cnt">28</span></button>
       <button class="tab-btn" data-tab="ext" role="tab" aria-selected="false">副檔名<span class="cnt">42</span></button>
     </div>
     <input class="kw" id="kw" type="search" placeholder="搜尋目前分頁的詞彙／指令／副檔名…">
@@ -760,6 +760,67 @@
           <div class="term-r">
             <p>AI Agent 的擴充能力名詞，<b>看到時知道「這是幫 AI 加能力的工具」即可</b>：<b>技能</b>＝特定領域的專業流程、<b>連接器</b>＝接外部系統／資料、<b>定時任務</b>＝到點自動執行、<b>工作夥伴</b>＝預設的專業角色。</p>
             <p class="when"><b>範例：</b>想讓 AI 定時整理資料 → 用「定時任務」；想接公司資料 → 用「連接器」。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="grp">
+      <div class="grp-head"><span class="dot" style="background:#24939B;"></span><h3>網頁開發（前端）</h3><span class="cnt">8</span></div>
+      <div class="card">
+        <div class="term">
+          <div class="term-l"><b>響應式設計</b><span class="en">Responsive Web Design</span></div>
+          <div class="term-r">
+            <p>讓同一個網頁依照螢幕寬度自動調整版面，手機、平板、電腦都好好顯示。<b>寬度超過螢幕就會壞版</b>。</p>
+            <p class="when"><b>遇到：</b>手機看網頁「跑掉」時，多半就是缺響應式設計。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><b>Media Query</b><span class="en">媒體查詢</span></div>
+          <div class="term-r">
+            <p>CSS 的 <code>@media</code> 語法，指定「螢幕多寬時」套用另一組樣式。</p>
+            <p class="when"><b>範例：</b><code>@media (max-width:560px){...}</code> → <b>手機寬度（小於 560px）才生效的規則</b>。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><b>Viewport</b><span class="en">視窗設定</span></div>
+          <div class="term-r">
+            <p>網頁的 meta 標籤，告訴手機瀏覽器「用真實寬度渲染」。</p>
+            <p class="when"><b>範例：</b><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code> → <b>每頁都該有，沒有它手機版一定壞</b>。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><b>iOS 自動縮放</b><span class="en">iOS Auto Zoom</span></div>
+          <div class="term-r">
+            <p>iPhone 點擊字體小於 16px 的輸入框時，會自動把整個頁面放大——版面瞬間「跑掉」。</p>
+            <p class="when"><b>遇到：</b>手機一碰搜尋框畫面就跳掉 → <b>輸入框字體要設 ≥16px</b>。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><b>安全區域</b><span class="en">Safe Area</span></div>
+          <div class="term-r">
+            <p>iPhone 的瀏海、底部橫條（Home 指示條）會擋住內容，用 <code>env(safe-area-inset-bottom)</code> 留白避開。</p>
+            <p class="when"><b>範例：</b><code>padding-bottom:calc(60px + env(safe-area-inset-bottom))</code> → 底部內容不被擋住。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><b>CSS 前綴</b><span class="en">Vendor Prefix</span></div>
+          <div class="term-r">
+            <p>Safari 對部分新 CSS 屬性要加 <code>-webkit-</code> 才認得，其他瀏覽器用原名。</p>
+            <p class="when"><b>範例：</b><code>-webkit-backdrop-filter</code> 和 <code>backdrop-filter</code> 兩行都寫 → <b>各瀏覽器都支援</b>。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><b>Flex 換行</b><span class="en">flex-wrap</span></div>
+          <div class="term-r">
+            <p>Flex 容器加 <code>flex-wrap:wrap</code>，子元素放不下時自動排到下一行——<b>窄螢幕不擠爆的秘密</b>。</p>
+            <p class="when"><b>範例：</b><code>.bar{display:flex;flex-wrap:wrap}</code> → 手機上按鈕自動換行排列。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><b>Sticky 工具列</b><span class="en">position:sticky</span></div>
+          <div class="term-r">
+            <p>讓工具列捲動時黏在頂部，隨時能切換操作。</p>
+            <p class="when"><b>遇到：</b>工具列太高會吃掉半個螢幕 → <b>手機上要壓扁</b>（詞彙表工具列從 364px 瘦身到 118px）。</p>
           </div>
         </div>
       </div>
