@@ -321,10 +321,11 @@
 
   <div class="hero">
     <h1>互動版程式工具詞彙表</h1>
-    <p class="sub">地圖 → 新手 → 初階 → 進階 → 副檔名，五個分頁自由切換，還能搜尋</p>
+    <p class="sub">地圖 → 新手 → 初階 → 進階 → 程式語言與工具 → 副檔名，六個分頁自由切換，還能搜尋</p>
     <div class="meta">
       <span>地圖 1 張</span>
-      <span>新手 49 個概念</span>
+      <span>新手 27 個概念</span>
+      <span>程式語言與工具 22 個</span>
       <span>初階 19 個指令</span>
       <span>進階 28 個技巧</span>
       <span>副檔名 42 個</span>
@@ -359,9 +360,10 @@
   <div class="bar">
     <div class="tabs" role="tablist">
       <button class="tab-btn" data-tab="map" role="tab" aria-selected="false">地圖</button>
-      <button class="tab-btn on" data-tab="beginner" role="tab" aria-selected="true">新手<span class="cnt">49</span></button>
+      <button class="tab-btn on" data-tab="beginner" role="tab" aria-selected="true">新手<span class="cnt">27</span></button>
       <button class="tab-btn" data-tab="elementary" role="tab" aria-selected="false">初階<span class="cnt">19</span></button>
       <button class="tab-btn" data-tab="advanced" role="tab" aria-selected="false">進階<span class="cnt">28</span></button>
+      <button class="tab-btn" data-tab="langs" role="tab" aria-selected="false">程式語言與工具<span class="cnt">22</span></button>
       <button class="tab-btn" data-tab="ext" role="tab" aria-selected="false">副檔名<span class="cnt">42</span></button>
     </div>
     <input class="kw" id="kw" type="search" placeholder="搜尋全部詞彙（跨分頁）…">
@@ -470,7 +472,7 @@
         <span class="map-path-chip" style="background:#7B5EA7;color:#fff;">往後端：Python 深入 → SQL → API → 做出能存資料的服務</span>
         <span class="map-path-chip" style="background:#D98E1E;color:#fff;">兩條都走完 ＝ 全端</span>
       </div>
-      <div class="map-note">不用急著選邊——<b>先把基礎工具用熟，兩邊都試試再決定</b>。詞彙表「新手」分頁有「前端與後端」6 條、「常用程式語言」12 條，可以先打勾認識。</div>
+      <div class="map-note">不用急著選邊——<b>先把基礎工具用熟，兩邊都試試再決定</b>。「常用程式語言」與「開發工具」已獨立成「程式語言與工具」分頁，可以先打勾認識。</div>
     </div>
 
     <div class="map-sec">
@@ -497,20 +499,20 @@
           <div class="d">第一個程式語言，也常是統計、AI 的首選。</div>
           <div class="path">初階・起步 4 → 進階・3</div>
         </div>
-        <div class="domain-card" data-goto="beginner" data-grp="AI 與新工具">
+        <div class="domain-card" data-goto="langs" data-grp="開發工具">
           <div class="t">🤖 AI 工具</div>
           <div class="d">讓 AI 幫你寫程式、查資料、做筆記。</div>
-          <div class="path">新手・概念 5 → 進階・AI Agent 操作 7</div>
+          <div class="path">程式語言與工具分頁・開發工具 10 → 進階・AI Agent 操作 7</div>
         </div>
         <div class="domain-card" data-goto="beginner" data-grp="前端與後端">
           <div class="t">🌐 網頁開發</div>
           <div class="d">做出網站：前端給人看、後端處理事、資料庫記資料。</div>
           <div class="path">新手・前後端 6 → 進階・網頁開發 8</div>
         </div>
-        <div class="domain-card" data-goto="beginner" data-grp="常用程式語言">
+        <div class="domain-card" data-goto="langs" data-grp="常用程式語言">
           <div class="t">💬 常用程式語言</div>
           <div class="d">JavaScript、Python、Swift…各語言的分工與差別。</div>
-          <div class="path">新手・12 條</div>
+          <div class="path">程式語言與工具分頁・12 條</div>
         </div>
       </div>
     </div>
@@ -722,89 +724,9 @@
       </div>
     </div>
 
-    <div class="grp">
-      <div class="grp-head"><span class="dot" style="background:#D9534F;"></span><h3>程式與開發概念</h3><span class="cnt">5</span></div>
-      <div class="grp-path">🗂️ 領域全貌：<a class="path-link" data-goto="map">地圖・領域總覽</a></div>
-      <div class="card">
-        <div class="term">
-          <div class="term-l"><b>程式碼</b><span class="en">Code</span></div>
-          <div class="term-r">
-            <p>寫給電腦看的指令文字；你學的 Python 就是一種程式語言。</p>
-            <p class="when"><b>遇到：</b>用 VS Code 打開 <code>.py</code> 檔，<b>看到的內容就是程式碼</b>。</p>
-          </div>
-        </div>
-        <div class="term">
-          <div class="term-l"><b>編輯器</b><span class="en">Editor</span></div>
-          <div class="term-r">
-            <p>專門寫程式的軟體，最常用的是 VS Code。</p>
-            <p class="when"><b>遇到：</b>安裝 VS Code 後，<b>用「開啟資料夾」打開專案資料夾</b>來寫 code。</p>
-          </div>
-        </div>
-        <div class="term">
-          <div class="term-l"><b>腳本</b><span class="en">Script</span></div>
-          <div class="term-r">
-            <p>一段自動化小程式，例如「自動整理下載資料夾」。Python 特別適合寫腳本。</p>
-            <p class="when"><b>遇到：</b><b>想讓重複的事自動做時，就是寫腳本的時機</b>。</p>
-          </div>
-        </div>
-        <div class="term">
-          <div class="term-l"><b>報錯／錯誤訊息</b><span class="en">Error</span></div>
-          <div class="term-r">
-            <p>程式出錯時跳出的提示（通常是英文）。它是程式給你的線索，不是在罵你。</p>
-            <p class="when"><b>遇到：</b>幾乎每天。<b>SOP：整段複製 → 貼給 AI → 跟著改，最有效率</b>。</p>
-          </div>
-        </div>
-        <div class="term">
-          <div class="term-l"><b>API</b><span class="en">API</span></div>
-          <div class="term-r">
-            <p>兩個程式之間溝通的「點餐窗口」：你叫資料，它出資料。</p>
-            <p class="when"><b>遇到：</b><b>想讓程式抓天氣、匯率、股市資料時</b>；也是「連接器」背後的原理。</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    
 
-    <div class="grp">
-      <div class="grp-head"><span class="dot" style="background:#7B5EA7;"></span><h3>AI 與新工具</h3><span class="cnt">5</span></div>
-      <div class="grp-path">🧭 想更深入：<a class="path-link" data-goto="advanced" data-grp="AI Agent 操作">進階・AI Agent 操作</a></div>
-      <div class="card">
-        <div class="term">
-          <div class="term-l"><b>Prompt（提示詞）</b><span class="en">Prompt</span></div>
-          <div class="term-r">
-            <p>你對 AI 說的話＝任務描述。說得越清楚，結果越好。</p>
-            <p class="when"><b>遇到：</b>每次跟 AI 對話都是在寫 prompt；<b>「目標＋材料＋格式＋驗收標準」四件套最有效</b>。</p>
-          </div>
-        </div>
-        <div class="term">
-          <div class="term-l"><b>Agent（智能體）</b><span class="en">Agent</span></div>
-          <div class="term-r">
-            <p>能自己拆解任務、調用工具的 AI（豆包工作就是 Agent）。</p>
-            <p class="when"><b>遇到：</b>任務模式／工作模式裡的我。<b>不用懂原理，會下指令就行</b>。</p>
-          </div>
-        </div>
-        <div class="term">
-          <div class="term-l"><b>模型</b><span class="en">Model</span></div>
-          <div class="term-r">
-            <p>AI 的「大腦」；不同模型擅長的事情不同。</p>
-            <p class="when"><b>遇到：</b><b>生成結果不理想時，可以問問換個模型／模式是不是更好</b>。</p>
-          </div>
-        </div>
-        <div class="term">
-          <div class="term-l"><b>額度</b><span class="en">Quota</span></div>
-          <div class="term-r">
-            <p>你能使用某功能的次數或時長限制。</p>
-            <p class="when"><b>遇到：</b>提示「今日次數用完」時；<b>免費版次日重置，訂閱則有更大額度</b>。</p>
-          </div>
-        </div>
-        <div class="term">
-          <div class="term-l"><b>上下文</b><span class="en">Context</span></div>
-          <div class="term-r">
-            <p>AI 記得的先前對話內容。</p>
-            <p class="when"><b>遇到：</b>新開對話後 AI 忘了前面的事＝上下文斷了；<b>把重要資訊重新貼上即可</b>。</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    
     <div class="grp">
       <div class="grp-head"><span class="dot" style="background:#5A6ACF;"></span><h3>前端與後端（端的地圖）</h3><span class="cnt">6</span></div>
       <div class="grp-path">🗂️ 全貌：<a class="path-link" data-goto="map">地圖分頁</a> ｜ 🧭 深入：<a class="path-link" data-goto="advanced" data-grp="網頁開發（前端）">進階・網頁開發</a></div>
@@ -853,96 +775,7 @@
         </div>
       </div>
     </div>
-    <div class="grp">
-      <div class="grp-head"><span class="dot" style="background:#D98E1E;"></span><h3>常用程式語言</h3><span class="cnt">12</span></div>
-      <div class="grp-path">🗂️ 全貌與差別：<a class="path-link" data-goto="map">地圖・領域總覽</a></div>
-      <div class="card">
-        <div class="term">
-          <div class="term-l"><code>Python</code><span class="en">資料科學・AI・自動化・後端</span></div>
-          <div class="term-r">
-            <p>最好上手、用途最廣：數據分析、AI、自動化、網站後端都能用。<b>選 Python 就對了</b>。</p>
-            <p class="when"><b>遇到：</b>想學第一個語言、要處理資料 → Python。</p>
-          </div>
-        </div>
-        <div class="term">
-          <div class="term-l"><code>JavaScript</code><span class="en">網頁互動・前端必備</span></div>
-          <div class="term-r">
-            <p>瀏覽器唯一內建的程式語言——按鈕會動、畫面會跳都是它。</p>
-            <p class="when"><b>遇到：</b>想做網站前端 → JavaScript；<b>它跟 Python 完全不同用途</b>。</p>
-          </div>
-        </div>
-        <div class="term">
-          <div class="term-l"><code>TypeScript</code><span class="en">JavaScript 升級版</span></div>
-          <div class="term-r">
-            <p>JavaScript 加上「型別檢查」，大型專案不容易改到壞掉。</p>
-            <p class="when"><b>遇到：</b>JavaScript 專案變大、常常改壞 → 改用 TypeScript。</p>
-          </div>
-        </div>
-        <div class="term">
-          <div class="term-l"><code>Java</code><span class="en">企業系統・老牌</span></div>
-          <div class="term-r">
-            <p>銀行、大公司系統愛用（Android 早期主力）。</p>
-            <p class="when"><b>遇到：</b>看到職缺要求 Java → 通常是企業級系統。</p>
-          </div>
-        </div>
-        <div class="term">
-          <div class="term-l"><code>C</code><span class="en">底層・嵌入式</span></div>
-          <div class="term-r">
-            <p>最接近電腦硬體的語言：作業系統、嵌入式裝置。<b>寫過 C 才懂電腦底層</b>。</p>
-            <p class="when"><b>遇到：</b>想做系統底層、搞懂記憶體 → C。</p>
-          </div>
-        </div>
-        <div class="term">
-          <div class="term-l"><code>C++</code><span class="en">遊戲・高效能</span></div>
-          <div class="term-r">
-            <p>C 的進化版：遊戲引擎、高效能軟體的主力。</p>
-            <p class="when"><b>遇到：</b>想寫遊戲引擎、高效能程式 → C++。</p>
-          </div>
-        </div>
-        <div class="term">
-          <div class="term-l"><code>C#</code><span class="en">微軟・Unity 遊戲</span></div>
-          <div class="term-r">
-            <p>微軟主推：Windows 軟體、Unity 遊戲開發。</p>
-            <p class="when"><b>遇到：</b>用 Unity 做遊戲 → C#。</p>
-          </div>
-        </div>
-        <div class="term">
-          <div class="term-l"><code>Go</code><span class="en">雲端・後端 API</span></div>
-          <div class="term-r">
-            <p>Google 出品：雲端服務與後端 API 的新寵，語法簡單、跑得快。</p>
-            <p class="when"><b>遇到：</b>雲端、微服務後端 → Go。</p>
-          </div>
-        </div>
-        <div class="term">
-          <div class="term-l"><code>Swift</code><span class="en">iPhone App</span></div>
-          <div class="term-r">
-            <p>蘋果官方語言，iPhone／iPad App 專用。</p>
-            <p class="when"><b>遇到：</b>想做 iOS App → Swift。</p>
-          </div>
-        </div>
-        <div class="term">
-          <div class="term-l"><code>Kotlin</code><span class="en">Android App</span></div>
-          <div class="term-r">
-            <p>Android 官方推薦語言，跟 Java 互通。</p>
-            <p class="when"><b>遇到：</b>想做 Android App → Kotlin。</p>
-          </div>
-        </div>
-        <div class="term">
-          <div class="term-l"><code>SQL</code><span class="en">跟資料庫對話</span></div>
-          <div class="term-r">
-            <p>查資料、新增、修改、刪除都靠它。<b>不會寫程式也要會一點</b>。</p>
-            <p class="when"><b>遇到：</b>要「撈資料」、分析資料 → SQL。</p>
-          </div>
-        </div>
-        <div class="term">
-          <div class="term-l"><code>R</code><span class="en">統計・資料科學</span></div>
-          <div class="term-r">
-            <p>統計與資料科學專用，學術界愛用。</p>
-            <p class="when"><b>遇到：</b>做統計分析、寫論文 → R。</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    
   </div>
 
   <!-- ============ 初階：會操作（19 個指令） ============ -->
@@ -1331,6 +1164,179 @@
   </div>
 
   <!-- ============ 副檔名大全（42 個） ============ -->
+  <div class="tab-panel" id="panel-langs" style="display:none;">
+<div class="grp">
+      <div class="grp-head"><span class="dot" style="background:#D98E1E;"></span><h3>常用程式語言</h3><span class="cnt">12</span></div>
+      <div class="grp-path">🗂️ 全貌與差別：<a class="path-link" data-goto="map">地圖・領域總覽</a></div>
+      <div class="card">
+        <div class="term">
+          <div class="term-l"><code>Python</code><span class="en">資料科學・AI・自動化・後端</span></div>
+          <div class="term-r">
+            <p>最好上手、用途最廣：數據分析、AI、自動化、網站後端都能用。<b>選 Python 就對了</b>。</p>
+            <p class="when"><b>遇到：</b>想學第一個語言、要處理資料 → Python。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><code>JavaScript</code><span class="en">網頁互動・前端必備</span></div>
+          <div class="term-r">
+            <p>瀏覽器唯一內建的程式語言——按鈕會動、畫面會跳都是它。</p>
+            <p class="when"><b>遇到：</b>想做網站前端 → JavaScript；<b>它跟 Python 完全不同用途</b>。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><code>TypeScript</code><span class="en">JavaScript 升級版</span></div>
+          <div class="term-r">
+            <p>JavaScript 加上「型別檢查」，大型專案不容易改到壞掉。</p>
+            <p class="when"><b>遇到：</b>JavaScript 專案變大、常常改壞 → 改用 TypeScript。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><code>Java</code><span class="en">企業系統・老牌</span></div>
+          <div class="term-r">
+            <p>銀行、大公司系統愛用（Android 早期主力）。</p>
+            <p class="when"><b>遇到：</b>看到職缺要求 Java → 通常是企業級系統。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><code>C</code><span class="en">底層・嵌入式</span></div>
+          <div class="term-r">
+            <p>最接近電腦硬體的語言：作業系統、嵌入式裝置。<b>寫過 C 才懂電腦底層</b>。</p>
+            <p class="when"><b>遇到：</b>想做系統底層、搞懂記憶體 → C。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><code>C++</code><span class="en">遊戲・高效能</span></div>
+          <div class="term-r">
+            <p>C 的進化版：遊戲引擎、高效能軟體的主力。</p>
+            <p class="when"><b>遇到：</b>想寫遊戲引擎、高效能程式 → C++。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><code>C#</code><span class="en">微軟・Unity 遊戲</span></div>
+          <div class="term-r">
+            <p>微軟主推：Windows 軟體、Unity 遊戲開發。</p>
+            <p class="when"><b>遇到：</b>用 Unity 做遊戲 → C#。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><code>Go</code><span class="en">雲端・後端 API</span></div>
+          <div class="term-r">
+            <p>Google 出品：雲端服務與後端 API 的新寵，語法簡單、跑得快。</p>
+            <p class="when"><b>遇到：</b>雲端、微服務後端 → Go。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><code>Swift</code><span class="en">iPhone App</span></div>
+          <div class="term-r">
+            <p>蘋果官方語言，iPhone／iPad App 專用。</p>
+            <p class="when"><b>遇到：</b>想做 iOS App → Swift。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><code>Kotlin</code><span class="en">Android App</span></div>
+          <div class="term-r">
+            <p>Android 官方推薦語言，跟 Java 互通。</p>
+            <p class="when"><b>遇到：</b>想做 Android App → Kotlin。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><code>SQL</code><span class="en">跟資料庫對話</span></div>
+          <div class="term-r">
+            <p>查資料、新增、修改、刪除都靠它。<b>不會寫程式也要會一點</b>。</p>
+            <p class="when"><b>遇到：</b>要「撈資料」、分析資料 → SQL。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><code>R</code><span class="en">統計・資料科學</span></div>
+          <div class="term-r">
+            <p>統計與資料科學專用，學術界愛用。</p>
+            <p class="when"><b>遇到：</b>做統計分析、寫論文 → R。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="grp">
+        <div class="grp-head"><span class="dot" style="background:#2E9E8F;"></span><h3>開發工具</h3><span class="cnt">10</span></div>
+        <div class="grp-path">🗂️ 領域全貌：<a class="path-link" data-goto="map">地圖・領域總覽</a> ｜ 🧭 深入：<a class="path-link" data-goto="advanced" data-grp="AI Agent 操作">進階・AI Agent 操作</a></div>
+        <div class="card">
+<div class="card">
+        <div class="term">
+          <div class="term-l"><b>程式碼</b><span class="en">Code</span></div>
+          <div class="term-r">
+            <p>寫給電腦看的指令文字；你學的 Python 就是一種程式語言。</p>
+            <p class="when"><b>遇到：</b>用 VS Code 打開 <code>.py</code> 檔，<b>看到的內容就是程式碼</b>。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><b>編輯器</b><span class="en">Editor</span></div>
+          <div class="term-r">
+            <p>專門寫程式的軟體，最常用的是 VS Code。</p>
+            <p class="when"><b>遇到：</b>安裝 VS Code 後，<b>用「開啟資料夾」打開專案資料夾</b>來寫 code。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><b>腳本</b><span class="en">Script</span></div>
+          <div class="term-r">
+            <p>一段自動化小程式，例如「自動整理下載資料夾」。Python 特別適合寫腳本。</p>
+            <p class="when"><b>遇到：</b><b>想讓重複的事自動做時，就是寫腳本的時機</b>。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><b>報錯／錯誤訊息</b><span class="en">Error</span></div>
+          <div class="term-r">
+            <p>程式出錯時跳出的提示（通常是英文）。它是程式給你的線索，不是在罵你。</p>
+            <p class="when"><b>遇到：</b>幾乎每天。<b>SOP：整段複製 → 貼給 AI → 跟著改，最有效率</b>。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><b>API</b><span class="en">API</span></div>
+          <div class="term-r">
+            <p>兩個程式之間溝通的「點餐窗口」：你叫資料，它出資料。</p>
+            <p class="when"><b>遇到：</b><b>想讓程式抓天氣、匯率、股市資料時</b>；也是「連接器」背後的原理。</p>
+          </div>
+        </div>
+      </div>
+        <div class="card">
+        <div class="term">
+          <div class="term-l"><b>Prompt（提示詞）</b><span class="en">Prompt</span></div>
+          <div class="term-r">
+            <p>你對 AI 說的話＝任務描述。說得越清楚，結果越好。</p>
+            <p class="when"><b>遇到：</b>每次跟 AI 對話都是在寫 prompt；<b>「目標＋材料＋格式＋驗收標準」四件套最有效</b>。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><b>Agent（智能體）</b><span class="en">Agent</span></div>
+          <div class="term-r">
+            <p>能自己拆解任務、調用工具的 AI（豆包工作就是 Agent）。</p>
+            <p class="when"><b>遇到：</b>任務模式／工作模式裡的我。<b>不用懂原理，會下指令就行</b>。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><b>模型</b><span class="en">Model</span></div>
+          <div class="term-r">
+            <p>AI 的「大腦」；不同模型擅長的事情不同。</p>
+            <p class="when"><b>遇到：</b><b>生成結果不理想時，可以問問換個模型／模式是不是更好</b>。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><b>額度</b><span class="en">Quota</span></div>
+          <div class="term-r">
+            <p>你能使用某功能的次數或時長限制。</p>
+            <p class="when"><b>遇到：</b>提示「今日次數用完」時；<b>免費版次日重置，訂閱則有更大額度</b>。</p>
+          </div>
+        </div>
+        <div class="term">
+          <div class="term-l"><b>上下文</b><span class="en">Context</span></div>
+          <div class="term-r">
+            <p>AI 記得的先前對話內容。</p>
+            <p class="when"><b>遇到：</b>新開對話後 AI 忘了前面的事＝上下文斷了；<b>把重要資訊重新貼上即可</b>。</p>
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>
+    </div>
+
   <div class="tab-panel" id="panel-ext" style="display:none;">
 
     <div class="chips">
@@ -1396,8 +1402,6 @@
       </div>
     </div>
   </div>
-
-
 
   <footer>
     <b>互動使用小技巧：</b>
@@ -1482,8 +1486,8 @@
       var q = kw ? kw.value.trim().toLowerCase() : '';
       if(q === ''){ info.style.display = 'none'; info.textContent = ''; return; }
       var unseen = !!window.__glossUnseen;
-      var names = ['beginner','elementary','advanced','ext'];
-      var labels = {beginner:'新手',elementary:'初階',advanced:'進階',ext:'副檔名'};
+      var names = ['beginner','elementary','advanced','langs','ext'];
+      var labels = {beginner:'新手',elementary:'初階',advanced:'進階',langs:'程式語言與工具',ext:'副檔名'};
       var total = 0, parts = [];
       for(var i=0;i<names.length;i++){
         var pnl = document.getElementById('panel-' + names[i]);
