@@ -52,6 +52,20 @@
     display:none;margin:0 auto;max-width:var(--wrap);padding:3px 24px 0;
     font-size:12.5px;color:var(--text2);
   }
+  .grp{scroll-margin-top:130px;}
+  .grp-path{font-size:11.5px;color:var(--text2);margin:7px 0 0;line-height:1.6;}
+  .grp-path a{color:var(--accent);cursor:pointer;font-weight:700;text-decoration:none;border-bottom:1px dashed var(--accent);}
+  .grp-path a:hover{opacity:0.75;}
+  .domain-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;}
+  .domain-card{
+    flex:1 1 240px;background:var(--card);border:1px solid var(--border);
+    border-radius:14px;padding:12px 14px;cursor:pointer;
+    transition:border-color .15s, transform .15s;
+  }
+  .domain-card:hover{border-color:var(--accent);transform:translateY(-1px);}
+  .domain-card .t{font-weight:800;font-size:13.5px;margin-bottom:4px;}
+  .domain-card .d{font-size:12px;color:var(--text2);line-height:1.55;}
+  .domain-card .path{font-size:11.5px;color:var(--accent);margin-top:8px;line-height:1.6;font-weight:600;}
   .tabs{display:flex;flex-wrap:wrap;gap:6px;flex:1 1 auto;}
   .tab-btn{
     background:var(--card);color:var(--text2);border:1px solid var(--border);
@@ -460,7 +474,49 @@
     </div>
 
     <div class="map-sec">
-      <div class="map-sec-title"><span class="no">⑤</span> ❓ 新手最常問的 5 件事</div>
+      <div class="map-sec-title"><span class="no">⑤</span> 🗂️ 領域總覽：這些知識分別放在哪幾頁</div>
+      <div class="map-note">學習有兩個入口：<b>照難度學</b>走上方分頁；<b>想找某個領域</b>從這裡進——點卡片直接跳到那一課。</div>
+      <div class="domain-grid">
+        <div class="domain-card" data-goto="beginner" data-grp="檔案與電腦基礎">
+          <div class="t">🗂️ 電腦基礎</div>
+          <div class="d">認識你的機器：檔案、資料夾、CPU、記憶體、儲存空間。搞懂「哪裡卡、哪裡滿」。</div>
+          <div class="path">新手・檔案與電腦基礎 4 ＋ 電腦硬體 7</div>
+        </div>
+        <div class="domain-card" data-goto="beginner" data-grp="終端機與命令列">
+          <div class="t">🖥️ 終端機</div>
+          <div class="d">用打字操控電腦，程式人的基本動作。三層由淺入深串成一條路。</div>
+          <div class="path">新手・基礎 4 → 初階・入門指令 9 → 進階・進階技巧 10</div>
+        </div>
+        <div class="domain-card" data-goto="beginner" data-grp="Git 與 GitHub">
+          <div class="t">🌿 Git 與 GitHub</div>
+          <div class="d">程式的時光機（存檔）＋雲端備份（放上網）。</div>
+          <div class="path">新手・概念 6 → 初階・日常六條 6 → 進階・3</div>
+        </div>
+        <div class="domain-card" data-goto="elementary" data-grp="Python 起步">
+          <div class="t">🐍 Python</div>
+          <div class="d">第一個程式語言，也常是統計、AI 的首選。</div>
+          <div class="path">初階・起步 4 → 進階・3</div>
+        </div>
+        <div class="domain-card" data-goto="beginner" data-grp="AI 與新工具">
+          <div class="t">🤖 AI 工具</div>
+          <div class="d">讓 AI 幫你寫程式、查資料、做筆記。</div>
+          <div class="path">新手・概念 5 → 進階・AI Agent 操作 7</div>
+        </div>
+        <div class="domain-card" data-goto="beginner" data-grp="前端與後端">
+          <div class="t">🌐 網頁開發</div>
+          <div class="d">做出網站：前端給人看、後端處理事、資料庫記資料。</div>
+          <div class="path">新手・前後端 6 → 進階・網頁開發 8</div>
+        </div>
+        <div class="domain-card" data-goto="beginner" data-grp="常用程式語言">
+          <div class="t">💬 常用程式語言</div>
+          <div class="d">JavaScript、Python、Swift…各語言的分工與差別。</div>
+          <div class="path">新手・12 條</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="map-sec">
+      <div class="map-sec-title"><span class="no">⑥</span> ❓ 新手最常問的 5 件事</div>
       <div class="faq-item">
         <div class="faq-q">前端和「設計師」差在哪？</div>
         <div class="faq-a">設計師畫出藍圖（長什麼樣），<b>前端工程師</b>把它變成真的會動、能按的網頁。</div>
@@ -484,7 +540,7 @@
     </div>
 
     <div class="map-sec" style="background:linear-gradient(135deg,#FDF6EC,#FFF9F0);border-color:#F0DFC2;">
-      <div class="map-sec-title"><span class="no">⑥</span> ✨ 記住這一句</div>
+      <div class="map-sec-title"><span class="no">⑦</span> ✨ 記住這一句</div>
       <div class="map-motto">前端＝畫面 🎨 ｜ 後端＝邏輯 ⚙️ ｜ 資料庫＝記憶 🗄️ ｜ API＝傳話筒 📣</div>
       <div class="map-note">你打出的每個字、點下的每個按鈕，背後都是這四者在合作。</div>
     </div>
@@ -493,6 +549,7 @@
 
     <div class="grp">
       <div class="grp-head"><span class="dot" style="background:#5A6ACF;"></span><h3>檔案與電腦基礎</h3><span class="cnt">4</span></div>
+      <div class="grp-path">🗂️ 領域全貌：<a class="path-link" data-goto="map">地圖・領域總覽</a></div>
       <div class="card">
         <div class="term">
           <div class="term-l"><b>檔案路徑</b><span class="en">Path</span></div>
@@ -527,6 +584,7 @@
 
     <div class="grp">
       <div class="grp-head"><span class="dot" style="background:#C97B2D;"></span><h3>電腦硬體（廚房比喻）</h3><span class="cnt">7</span></div>
+      <div class="grp-path">🗂️ 領域全貌：<a class="path-link" data-goto="map">地圖・領域總覽</a></div>
       <div class="card">
         <div class="term">
           <div class="term-l"><b>CPU（處理器）</b><span class="en">Central Processing Unit</span></div>
@@ -582,6 +640,7 @@
 
     <div class="grp">
       <div class="grp-head"><span class="dot" style="background:#3E9D63;"></span><h3>終端機與命令列</h3><span class="cnt">4</span></div>
+      <div class="grp-path">🧭 學完接著看：<a class="path-link" data-goto="elementary" data-grp="終端機入門指令">初階・終端機入門指令</a> → <a class="path-link" data-goto="advanced" data-grp="終端機進階">進階・終端機進階</a></div>
       <div class="card">
         <div class="term">
           <div class="term-l"><b>終端機</b><span class="en">Terminal</span></div>
@@ -616,6 +675,7 @@
 
     <div class="grp">
       <div class="grp-head"><span class="dot" style="background:#D98E1E;"></span><h3>Git 與 GitHub</h3><span class="cnt">6</span></div>
+      <div class="grp-path">🧭 學完接著看：<a class="path-link" data-goto="elementary" data-grp="Git 日常六條">初階・Git 日常六條</a> → <a class="path-link" data-goto="advanced" data-grp="Git 與 Python 進階">進階・Git/Python 進階</a></div>
       <div class="card">
         <div class="term">
           <div class="term-l"><b>Git</b><span class="en">Git</span></div>
@@ -664,6 +724,7 @@
 
     <div class="grp">
       <div class="grp-head"><span class="dot" style="background:#D9534F;"></span><h3>程式與開發概念</h3><span class="cnt">5</span></div>
+      <div class="grp-path">🗂️ 領域全貌：<a class="path-link" data-goto="map">地圖・領域總覽</a></div>
       <div class="card">
         <div class="term">
           <div class="term-l"><b>程式碼</b><span class="en">Code</span></div>
@@ -705,6 +766,7 @@
 
     <div class="grp">
       <div class="grp-head"><span class="dot" style="background:#7B5EA7;"></span><h3>AI 與新工具</h3><span class="cnt">5</span></div>
+      <div class="grp-path">🧭 想更深入：<a class="path-link" data-goto="advanced" data-grp="AI Agent 操作">進階・AI Agent 操作</a></div>
       <div class="card">
         <div class="term">
           <div class="term-l"><b>Prompt（提示詞）</b><span class="en">Prompt</span></div>
@@ -745,6 +807,7 @@
     </div>
     <div class="grp">
       <div class="grp-head"><span class="dot" style="background:#5A6ACF;"></span><h3>前端與後端（端的地圖）</h3><span class="cnt">6</span></div>
+      <div class="grp-path">🗂️ 全貌：<a class="path-link" data-goto="map">地圖分頁</a> ｜ 🧭 深入：<a class="path-link" data-goto="advanced" data-grp="網頁開發（前端）">進階・網頁開發</a></div>
       <div class="card">
         <div class="term">
           <div class="term-l"><b>前端</b><span class="en">Frontend</span></div>
@@ -792,6 +855,7 @@
     </div>
     <div class="grp">
       <div class="grp-head"><span class="dot" style="background:#D98E1E;"></span><h3>常用程式語言</h3><span class="cnt">12</span></div>
+      <div class="grp-path">🗂️ 全貌與差別：<a class="path-link" data-goto="map">地圖・領域總覽</a></div>
       <div class="card">
         <div class="term">
           <div class="term-l"><code>Python</code><span class="en">資料科學・AI・自動化・後端</span></div>
@@ -886,6 +950,7 @@
 
     <div class="grp">
       <div class="grp-head"><span class="dot" style="background:#3E9D63;"></span><h3>終端機入門指令</h3><span class="cnt">9</span></div>
+      <div class="grp-path">🧭 往回：<a class="path-link" data-goto="beginner" data-grp="終端機與命令列">新手・終端機基礎</a> ｜ 往後：<a class="path-link" data-goto="advanced" data-grp="終端機進階">進階・終端機進階</a></div>
       <div class="card">
         <div class="term">
           <div class="term-l"><code>pwd</code><span class="en">print working directory</span></div>
@@ -955,6 +1020,7 @@
 
     <div class="grp">
       <div class="grp-head"><span class="dot" style="background:#D98E1E;"></span><h3>Git 日常六條</h3><span class="cnt">6</span></div>
+      <div class="grp-path">🧭 往回：<a class="path-link" data-goto="beginner" data-grp="Git 與 GitHub">新手・Git 與 GitHub</a></div>
       <div class="card">
         <div class="term ok">
           <div class="term-l"><code>git clone</code><span class="en">複製專案</span></div>
@@ -1003,6 +1069,7 @@
 
     <div class="grp">
       <div class="grp-head"><span class="dot" style="background:#24939B;"></span><h3>Python 起步</h3><span class="cnt">4</span></div>
+      <div class="grp-path">🧭 往後：<a class="path-link" data-goto="advanced" data-grp="Git 與 Python 進階">進階・Git/Python 進階</a></div>
       <div class="card">
         <div class="term">
           <div class="term-l"><code>python3 --version</code><span class="en">確認版本</span></div>
@@ -1041,6 +1108,7 @@
 
     <div class="grp">
       <div class="grp-head"><span class="dot" style="background:#D9534F;"></span><h3>終端機進階</h3><span class="cnt">10</span></div>
+      <div class="grp-path">🧭 往回：<a class="path-link" data-goto="beginner" data-grp="終端機與命令列">新手・終端機基礎</a> → <a class="path-link" data-goto="elementary" data-grp="終端機入門指令">初階・入門指令</a></div>
       <div class="card">
         <div class="term danger">
           <div class="term-l"><code>rm</code><span class="en">remove</span></div>
@@ -1117,6 +1185,7 @@
 
     <div class="grp">
       <div class="grp-head"><span class="dot" style="background:#D98E1E;"></span><h3>Git 與 Python 進階</h3><span class="cnt">3</span></div>
+      <div class="grp-path">🧭 往回：<a class="path-link" data-goto="beginner" data-grp="Git 與 GitHub">新手・Git</a> → <a class="path-link" data-goto="elementary" data-grp="Python 起步">初階・Python 起步</a></div>
       <div class="card">
         <div class="term">
           <div class="term-l"><code>git log</code><span class="en">看歷史</span></div>
@@ -1144,6 +1213,7 @@
 
     <div class="grp">
       <div class="grp-head"><span class="dot" style="background:#7B5EA7;"></span><h3>AI Agent 操作</h3><span class="cnt">7</span></div>
+      <div class="grp-path">🧭 往回：<a class="path-link" data-goto="beginner" data-grp="AI 與新工具">新手・AI 與新工具</a></div>
       <div class="card">
         <div class="term ok">
           <div class="term-l"><code>任務四件套</code><span class="en">目標＋材料＋格式＋驗收</span></div>
@@ -1198,6 +1268,7 @@
     </div>
     <div class="grp">
       <div class="grp-head"><span class="dot" style="background:#24939B;"></span><h3>網頁開發（前端）</h3><span class="cnt">8</span></div>
+      <div class="grp-path">🧭 往回：<a class="path-link" data-goto="beginner" data-grp="前端與後端">新手・前端與後端</a> ｜ 🗂️ 全貌：<a class="path-link" data-goto="map">地圖分頁</a></div>
       <div class="card">
         <div class="term">
           <div class="term-l"><b>響應式設計</b><span class="en">Responsive Web Design</span></div>
@@ -1554,6 +1625,38 @@
       })(chips[c]);
     }
 
+    function gotoGroup(tab, grp){
+      if(!tab) return;
+      showTab(tab);
+      if(!grp) return;
+      setTimeout(function(){
+        var panel=document.getElementById('panel-'+tab);
+        if(!panel) return;
+        var groups=panel.querySelectorAll('.grp');
+        for(var i=0;i<groups.length;i++){
+          var h3=groups[i].querySelector('h3');
+          if(h3 && h3.textContent.indexOf(grp)>-1){
+            groups[i].scrollIntoView({behavior:'smooth',block:'start'});
+            var origBg=groups[i].style.background, origTr=groups[i].style.transition;
+            groups[i].style.transition='background .5s';
+            groups[i].style.background='#FFF3D6';
+            setTimeout(function(){
+              groups[i].style.background=origBg;
+              groups[i].style.transition=origTr;
+            }, 1400);
+            break;
+          }
+        }
+      }, 80);
+    }
+    document.addEventListener('click', function(e){
+      var el = e.target && e.target.closest ? e.target.closest('.path-link, .domain-card') : null;
+      if(!el) return;
+      var tab = el.getAttribute('data-goto') || el.getAttribute('data-tab');
+      var grp = el.getAttribute('data-grp');
+      if(tab) gotoGroup(tab, grp);
+    });
+    window.__glossGotoGroup = gotoGroup;
     window.__glossApplyFilter = applyFilter;
     showTab('beginner');
   }catch(e){ console.error(e); }
