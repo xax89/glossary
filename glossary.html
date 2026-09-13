@@ -174,6 +174,14 @@
   }
   .note-box textarea:focus{outline:none;border-color:var(--accent);}
   .note-hint{font-size:11px;color:var(--text2);margin-top:5px;line-height:1.5;}
+  .sync-box{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+  .sync-btn{
+    background:var(--card);color:var(--accent);border:1px solid var(--accent);
+    border-radius:999px;padding:7px 16px;font-size:12.5px;font-weight:700;
+    cursor:pointer;font-family:inherit;min-height:40px;
+  }
+  .sync-btn:hover{background:var(--accent-light);}
+  .sync-msg{font-size:12px;color:var(--text2);width:100%;line-height:1.5;}
 
   /* 副檔名分頁 */
   .chips{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 10px;}
@@ -314,7 +322,14 @@
       <div class="hl">⑤ 電腦版右側有「目錄」：看每個分類有多少細項、點它直接跳過去</div>
       <div class="hl">⑥ 搜尋框旁可開「<b>只看未學會</b>」；每個詞條右上「<b>筆記</b>」可寫自己的重點</div>
     </div>
-    <div class="hl-sec"><b>筆記存哪：</b>打勾、重點與詞條筆記都會自動存在<b>這台瀏覽器</b>（重新整理、關掉重開都還在）；換瀏覽器或換裝置不會同步。想清空按右上「清除筆記」。</div>
+    <div class="hl-sec"><b>筆記存哪：</b>打勾、重點與詞條筆記都會自動存在<b>這台瀏覽器</b>（重新整理、關掉重開都還在）；換瀏覽器或換裝置不會自動同步，可用下方「匯出／匯入備份」搬移。想清空按右上「清除筆記」。</div>
+    <div class="hl-sec"><b>跨裝置同步：</b>把「匯出備份」存成一個小檔案（.json），用 AirDrop、iCloud、Notion 或通訊軟體傳到另一台裝置，在那台裝置開網頁後按「匯入備份」——會<b>合併</b>兩邊的資料，不會蓋掉新的。
+      <div class="sync-box">
+        <button class="sync-btn" id="exportBtn" type="button">匯出備份</button>
+        <button class="sync-btn" id="importBtn" type="button">匯入備份</button>
+        <span class="sync-msg" id="syncMsg"></span>
+      </div>
+    </div>
     <div class="hl-sec"><b>升級路線：</b>
       <div class="hl">新手＝看得懂</div>
       <div class="hl">初階＝會操作</div>
@@ -1585,6 +1600,93 @@
         var noteBtns=document.querySelectorAll('.note-btn');
         for(var m=0;m<noteBtns.length;m++){ noteBtns[m].classList.remove('on'); }
         refreshProgress();
+      });
+    }
+
+    // 匯出／匯入備份
+    var exportBtn=document.getElementById('exportBtn');
+    var importBtn=document.getElementById('importBtn');
+    var syncMsg=document.getElementById('syncMsg');
+    function flash(msg){
+      if(!syncMsg) return;
+      syncMsg.textContent=msg;
+      clearTimeout(syncMsg._t);
+      syncMsg._t=setTimeout(function(){ syncMsg.textContent=''; }, 7000);
+    }
+    function renderAll(){
+      var all=document.querySelectorAll('.term, .ext tbody tr');
+      for(var a=0;a<all.length;a++){ all[a].classList.remove('done','hl'); }
+      var cks=document.querySelectorAll('.term input[type=checkbox], .ext input[type=checkbox]');
+      for(var b=0;b<cks.length;b++){
+        var row=cks[b].closest('.term')||cks[b].closest('tr');
+        var id=row?row.getAttribute('data-id'):'';
+        var on=!!done[id];
+        cks[b].checked=on;
+        if(on) row.classList.add('done');
+      }
+      var markBtns=document.querySelectorAll('.mark-btn');
+      for(var m=0;m<markBtns.length;m++){
+        var t2=markBtns[m].closest('.term');
+        var id2=t2?t2.getAttribute('data-id'):'';
+        if(hl[id2]){ t2.classList.add('hl'); markBtns[m].classList.add('on'); }
+        else{ t2.classList.remove('hl'); markBtns[m].classList.remove('on'); }
+      }
+      var noteBtns=document.querySelectorAll('.note-btn');
+      for(var n=0;n<noteBtns.length;n++){
+        var t3=noteBtns[n].closest('.term');
+        var id3=t3?t3.getAttribute('data-id'):'';
+        var ta=t3?t3.querySelector('.note-box textarea'):null;
+        if(notes[id3]){ noteBtns[n].classList.add('on'); if(ta) ta.value=notes[id3]; }
+        else{ noteBtns[n].classList.remove('on'); if(ta) ta.value=''; }
+      }
+      refreshProgress();
+      if(window.__glossApplyFilter) window.__glossApplyFilter();
+    }
+    if(exportBtn){
+      exportBtn.addEventListener('click', function(){
+        try{
+          var data={app:'glossary-notes', version:1, exportedAt:new Date().toISOString(), done:done, hl:hl, notes:notes};
+          var blob=new Blob([JSON.stringify(data,null,2)], {type:'application/json'});
+          var url=URL.createObjectURL(blob);
+          var a=document.createElement('a');
+          a.href=url;
+          var d=new Date();
+          var pad=function(n){ return (n<10?'0':'')+n; };
+          a.download='glossary-backup-'+d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate())+'.json';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          setTimeout(function(){ URL.revokeObjectURL(url); }, 3000);
+          flash('已匯出備份檔：'+Object.keys(done).length+' 打勾、'+Object.keys(hl).length+' 重點、'+Object.keys(notes).length+' 筆記');
+        }catch(e){ flash('匯出失敗：'+e.message); }
+      });
+    }
+    if(importBtn){
+      importBtn.addEventListener('click', function(){
+        var inp=document.createElement('input');
+        inp.type='file';
+        inp.accept='.json,application/json';
+        inp.addEventListener('change', function(){
+          var f=inp.files && inp.files[0];
+          if(!f) return;
+          var rd=new FileReader();
+          rd.onload=function(){
+            try{
+              var data=JSON.parse(rd.result);
+              if(!data || typeof data!=='object' || data.app!=='glossary-notes') throw new Error('bad');
+              var d2=data.done||{}, h2=data.hl||{}, n2=data.notes||{};
+              var c2=0,h3=0,m2=0;
+              for(var k in d2){ if(d2[k] && !done[k]) c2++; done[k]=true; }
+              for(var k2 in h2){ if(h2[k2] && !hl[k2]) h3++; hl[k2]=true; }
+              for(var k3 in n2){ if(n2[k3] && n2[k3].trim()){ if(!notes[k3]) m2++; notes[k3]=n2[k3]; } }
+              saveObj(LS_DONE,done); saveObj(LS_HL,hl); saveObj(LS_NOTES,notes);
+              renderAll();
+              flash('匯入完成：新增 '+c2+' 打勾、'+h3+' 重點、'+m2+' 筆記；合併後共 '+Object.keys(done).length+' 打勾、'+Object.keys(hl).length+' 重點、'+Object.keys(notes).length+' 筆記');
+            }catch(e){ flash('匯入失敗：不是有效的備份檔'); }
+          };
+          rd.readAsText(f);
+        });
+        inp.click();
       });
     }
 
