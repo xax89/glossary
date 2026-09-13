@@ -146,6 +146,35 @@
   }
   .clear-btn:hover{background:#F8DFDE;}
 
+  /* 只看未學會＋詞條筆記 */
+  .unseen-btn{
+    background:var(--card);color:var(--text2);border:1px solid var(--border);
+    border-radius:999px;padding:8px 16px;font-size:12.5px;font-weight:700;
+    cursor:pointer;font-family:inherit;min-height:44px;white-space:nowrap;flex-shrink:0;
+  }
+  .unseen-btn:hover{color:var(--accent);border-color:var(--accent);}
+  .unseen-btn.on{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .note-btn{
+    position:absolute;top:10px;right:68px;
+    background:var(--card);color:var(--text2);border:1px solid var(--border);
+    border-radius:999px;padding:0 12px;font-size:12px;font-weight:600;
+    cursor:pointer;font-family:inherit;min-height:34px;line-height:34px;
+  }
+  .note-btn.on{background:#E3F0FF;border-color:#3B4E9B;color:#2C3E8F;}
+  .note-box{
+    flex:1 1 100%;display:none;box-sizing:border-box;
+    margin-top:2px;padding:10px 14px 12px;background:#F8F7F2;
+    border:1px dashed #D8D5C8;border-radius:10px;
+  }
+  .note-box.show{display:block;}
+  .note-box textarea{
+    width:100%;box-sizing:border-box;min-height:66px;border:1px solid var(--border);
+    border-radius:8px;padding:8px 10px;font-size:12.5px;font-family:inherit;
+    line-height:1.65;resize:vertical;background:#fff;color:var(--text);
+  }
+  .note-box textarea:focus{outline:none;border-color:var(--accent);}
+  .note-hint{font-size:11px;color:var(--text2);margin-top:5px;line-height:1.5;}
+
   /* 副檔名分頁 */
   .chips{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 10px;}
   .chip-btn{
@@ -241,7 +270,7 @@
     .clear-btn{font-size:12.5px;padding:8px 12px;}
 
     /* 詞條：打勾框與名稱同一列、說明整列，重點鈕貼右上 */
-    .term{display:block;padding:14px 64px 14px 54px;}
+    .term{display:block;padding:14px 118px 14px 54px;}
     .term .ck{
       position:absolute;left:12px;top:12px;width:38px;height:38px;
       display:flex;align-items:center;justify-content:center;
@@ -249,6 +278,8 @@
     .term-l{flex:none;width:auto;min-width:0;}
     .term-r{flex:none;width:auto;margin-top:3px;}
     .mark-btn{top:11px;right:11px;min-height:38px;line-height:38px;}
+    .note-btn{top:11px;right:64px;min-height:38px;line-height:38px;padding:0 10px;}
+    .unseen-btn{font-size:12.5px;padding:8px 12px;min-height:38px;}
 
     .grp-head h3{font-size:15.5px;}
     .ext th,.ext td{padding:8px 10px;font-size:12.5px;}
@@ -281,8 +312,9 @@
       <div class="hl">③ 每個詞條左側<b>打勾＝標記已學會</b>、右上「重點」按鈕＝畫關鍵字，上方進度條自動算完成度</div>
       <div class="hl">④ 副檔名分頁可用分類按鈕篩選。</div>
       <div class="hl">⑤ 電腦版右側有「目錄」：看每個分類有多少細項、點它直接跳過去</div>
+      <div class="hl">⑥ 搜尋框旁可開「<b>只看未學會</b>」；每個詞條右上「<b>筆記</b>」可寫自己的重點</div>
     </div>
-    <div class="hl-sec"><b>筆記存哪：</b>打勾與重點會自動存在<b>這台瀏覽器</b>（重新整理、關掉重開都還在）；換瀏覽器或換裝置不會同步。想清空按右上「清除筆記」。</div>
+    <div class="hl-sec"><b>筆記存哪：</b>打勾、重點與詞條筆記都會自動存在<b>這台瀏覽器</b>（重新整理、關掉重開都還在）；換瀏覽器或換裝置不會同步。想清空按右上「清除筆記」。</div>
     <div class="hl-sec"><b>升級路線：</b>
       <div class="hl">新手＝看得懂</div>
       <div class="hl">初階＝會操作</div>
@@ -300,6 +332,7 @@
       <button class="tab-btn" data-tab="ext" role="tab" aria-selected="false">副檔名<span class="cnt">42</span></button>
     </div>
     <input class="kw" id="kw" type="search" placeholder="搜尋目前分頁的詞彙／指令／副檔名…">
+    <button class="unseen-btn" id="unseenBtn" type="button">只看未學會</button>
     <button class="clear-btn" id="clearBtn" type="button">清除筆記</button>
   </div>
 
@@ -1253,10 +1286,23 @@
       var q = kw ? kw.value.trim().toLowerCase() : '';
       var panel = document.getElementById('panel-' + current);
       if(!panel) return;
+      var unseen = !!window.__glossUnseen;
+      var doneRef = window.__glossDone || {};
+      function isDone(el){
+        var id = el.getAttribute('data-id');
+        if(!id){
+          var n = el.querySelector('.term-l') || el.querySelector('code');
+          id = (n ? n.textContent : el.textContent).trim().toLowerCase()
+             .replace(/\s+/g,'-').replace(/[^\w\u4e00-\u9fff-]/g,'').slice(0,80);
+          el.setAttribute('data-id', id);
+        }
+        return !!doneRef[id];
+      }
       var terms = panel.querySelectorAll('.term');
       for(var i=0;i<terms.length;i++){
         var t = terms[i];
-        t.style.display = (q === '' || t.textContent.toLowerCase().indexOf(q) > -1) ? '' : 'none';
+        var qOk = (q === '' || t.textContent.toLowerCase().indexOf(q) > -1);
+        t.style.display = (qOk && (!unseen || !isDone(t))) ? '' : 'none';
       }
       var groups = panel.querySelectorAll('.grp');
       for(var g=0;g<groups.length;g++){
@@ -1270,7 +1316,8 @@
         var row = rows[r];
         var catOk = (extFilter === '' || row.getAttribute('data-cat') === extFilter);
         var qOk = (q === '' || row.textContent.toLowerCase().indexOf(q) > -1);
-        row.style.display = (catOk && qOk) ? '' : 'none';
+        var dOk = (!unseen || !isDone(row));
+        row.style.display = (catOk && qOk && dOk) ? '' : 'none';
       }
     }
 
@@ -1361,6 +1408,7 @@
       })(chips[c]);
     }
 
+    window.__glossApplyFilter = applyFilter;
     showTab('beginner');
   }catch(e){ console.error(e); }
 })();
@@ -1370,7 +1418,8 @@
   try{
     var LS_DONE='glossary_done_v1';
     var LS_HL='glossary_hl_v1';
-    var done=loadObj(LS_DONE), hl=loadObj(LS_HL);
+    var LS_NOTES='glossary_notes_v1';
+    var done=loadObj(LS_DONE), hl=loadObj(LS_HL), notes=loadObj(LS_NOTES);
 
     function loadObj(k){ try{ return JSON.parse(localStorage.getItem(k)||'{}'); }catch(e){ return {}; } }
     function saveObj(k,o){ try{ localStorage.setItem(k,JSON.stringify(o)); }catch(e){} }
@@ -1384,6 +1433,7 @@
       }
       return id;
     }
+    window.__glossDone = done;
 
     function refreshProgress(){
       var panels=document.querySelectorAll('.tab-panel');
@@ -1407,7 +1457,21 @@
         var bar=prog.querySelector('.pb i');
         if(label) label.textContent='已學會 '+cnt+' / '+total;
         if(bar) bar.style.width=(total>0 ? Math.round(cnt/total*100) : 0)+'%';
+        var onTab=document.querySelector('.tab-btn.on');
+        if(onTab && unseenBtn && onTab.getAttribute('data-tab')===p.id.replace('panel-','')){
+          unseenBtn.textContent='只看未學會 ('+(total-cnt)+')';
+        }
       }
+    }
+
+    // 只看未學會
+    var unseenBtn=document.getElementById('unseenBtn');
+    if(unseenBtn){
+      unseenBtn.addEventListener('click', function(){
+        window.__glossUnseen = !window.__glossUnseen;
+        unseenBtn.classList.toggle('on', window.__glossUnseen);
+        if(window.__glossApplyFilter) window.__glossApplyFilter();
+      });
     }
 
     // 詞條：打勾＋畫重點
@@ -1426,6 +1490,7 @@
           else{ delete done[id]; term.classList.remove('done'); }
           saveObj(LS_DONE,done);
           refreshProgress();
+          if(window.__glossUnseen && window.__glossApplyFilter) window.__glossApplyFilter();
         });
         ckDiv.appendChild(ck);
         term.insertBefore(ckDiv, term.firstChild);
@@ -1441,7 +1506,34 @@
           else{ hl[id]=true; term.classList.add('hl'); mb.classList.add('on'); }
           saveObj(LS_HL,hl);
         });
+        var nb=document.createElement('button');
+        nb.type='button';
+        nb.className='note-btn';
+        nb.textContent='筆記';
+        if(notes[id]){ nb.classList.add('on'); nb.title='打開看你的筆記'; }
+        var noteBox=document.createElement('div');
+        noteBox.className='note-box';
+        var noteArea=document.createElement('textarea');
+        noteArea.placeholder='寫下你的筆記：哪裡不懂、查到什麼、想記的重點…關掉也還在。';
+        noteArea.value=notes[id]||'';
+        noteArea.addEventListener('input', function(){
+          var v=noteArea.value.trim();
+          if(v){ notes[id]=noteArea.value; nb.classList.add('on'); }
+          else{ delete notes[id]; nb.classList.remove('on'); }
+          saveObj(LS_NOTES, notes);
+        });
+        nb.addEventListener('click', function(){
+          noteBox.classList.toggle('show');
+          if(noteBox.classList.contains('show')){ noteArea.focus(); }
+        });
+        noteBox.appendChild(noteArea);
+        var hint=document.createElement('div');
+        hint.className='note-hint';
+        hint.textContent='筆記存在這台瀏覽器，輸入自動儲存。';
+        noteBox.appendChild(hint);
         term.appendChild(mb);
+        term.appendChild(nb);
+        term.appendChild(noteBox);
       })(terms[i]);
     }
 
@@ -1467,6 +1559,7 @@
               else{ delete done[id]; row.classList.remove('done'); }
               saveObj(LS_DONE,done);
               refreshProgress();
+              if(window.__glossUnseen && window.__glossApplyFilter) window.__glossApplyFilter();
             });
             td.appendChild(ck);
             row.insertBefore(td, row.firstChild);
@@ -1480,13 +1573,17 @@
     var clearBtn=document.getElementById('clearBtn');
     if(clearBtn){
       clearBtn.addEventListener('click',function(){
-        if(!window.confirm('確定要清除這台瀏覽器的所有打勾與重點嗎？')) return;
-        done={}; hl={};
-        try{ localStorage.removeItem(LS_DONE); localStorage.removeItem(LS_HL); }catch(e){}
+        if(!window.confirm('確定要清除這台瀏覽器的所有打勾、重點與詞條筆記嗎？')) return;
+        done={}; hl={}; notes={};
+        try{ localStorage.removeItem(LS_DONE); localStorage.removeItem(LS_HL); localStorage.removeItem(LS_NOTES); }catch(e){}
         var all=document.querySelectorAll('.term, .ext tbody tr');
         for(var a=0;a<all.length;a++){ all[a].classList.remove('done','hl'); }
         var cks=document.querySelectorAll('.term input[type=checkbox], .ext input[type=checkbox]');
         for(var b=0;b<cks.length;b++){ cks[b].checked=false; }
+        var noteBoxes=document.querySelectorAll('.note-box');
+        for(var n=0;n<noteBoxes.length;n++){ noteBoxes[n].classList.remove('show'); var ta=noteBoxes[n].querySelector('textarea'); if(ta) ta.value=''; }
+        var noteBtns=document.querySelectorAll('.note-btn');
+        for(var m=0;m<noteBtns.length;m++){ noteBtns[m].classList.remove('on'); }
         refreshProgress();
       });
     }
