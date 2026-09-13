@@ -48,6 +48,10 @@
     padding:12px 14px;margin-top:22px;
     display:flex;flex-wrap:wrap;align-items:center;gap:10px;
   }
+  .search-info{
+    display:none;margin:0 auto;max-width:var(--wrap);padding:3px 24px 0;
+    font-size:12.5px;color:var(--text2);
+  }
   .tabs{display:flex;flex-wrap:wrap;gap:6px;flex:1 1 auto;}
   .tab-btn{
     background:var(--card);color:var(--text2);border:1px solid var(--border);
@@ -346,10 +350,12 @@
       <button class="tab-btn" data-tab="advanced" role="tab" aria-selected="false">進階<span class="cnt">28</span></button>
       <button class="tab-btn" data-tab="ext" role="tab" aria-selected="false">副檔名<span class="cnt">42</span></button>
     </div>
-    <input class="kw" id="kw" type="search" placeholder="搜尋目前分頁的詞彙／指令／副檔名…">
+    <input class="kw" id="kw" type="search" placeholder="搜尋全部詞彙（跨分頁）…">
     <button class="unseen-btn" id="unseenBtn" type="button">只看未學會</button>
     <button class="clear-btn" id="clearBtn" type="button">清除筆記</button>
   </div>
+
+  <div class="search-info" id="searchInfo"></div>
 
   <!-- ============ 新手：看得懂（24 個概念） ============ -->
     <!-- ============ 地圖：一張圖看懂 ============ -->
@@ -1297,42 +1303,112 @@
 
     function visible(el){ return el.style.display !== 'none'; }
 
-    function applyFilter(){
-      var q = kw ? kw.value.trim().toLowerCase() : '';
-      var panel = document.getElementById('panel-' + current);
-      if(!panel) return;
-      var unseen = !!window.__glossUnseen;
-      var doneRef = window.__glossDone || {};
-      function isDone(el){
-        var id = el.getAttribute('data-id');
-        if(!id){
-          var n = el.querySelector('.term-l') || el.querySelector('code');
-          id = (n ? n.textContent : el.textContent).trim().toLowerCase()
-             .replace(/\s+/g,'-').replace(/[^\w\u4e00-\u9fff-]/g,'').slice(0,80);
-          el.setAttribute('data-id', id);
-        }
-        return !!doneRef[id];
+    function isDone(el){
+      var id = el.getAttribute('data-id');
+      if(!id){
+        var n = el.querySelector('.term-l') || el.querySelector('code');
+        id = (n ? n.textContent : el.textContent).trim().toLowerCase()
+           .replace(/\s+/g,'-').replace(/[^\w\u4e00-\u9fff-]/g,'').slice(0,80);
+        el.setAttribute('data-id', id);
       }
-      var terms = panel.querySelectorAll('.term');
+      return !!(window.__glossDone || {})[id];
+    }
+
+    function filterPanel(pnl, q, unseen){
+      var terms = pnl.querySelectorAll('.term');
       for(var i=0;i<terms.length;i++){
         var t = terms[i];
         var qOk = (q === '' || t.textContent.toLowerCase().indexOf(q) > -1);
         t.style.display = (qOk && (!unseen || !isDone(t))) ? '' : 'none';
       }
-      var groups = panel.querySelectorAll('.grp');
+      var groups = pnl.querySelectorAll('.grp');
       for(var g=0;g<groups.length;g++){
         var kids = groups[g].querySelectorAll('.term');
         var shown = 0;
         for(var k=0;k<kids.length;k++){ if(visible(kids[k])) shown++; }
         groups[g].style.display = (shown > 0) ? '' : 'none';
       }
-      var rows = panel.querySelectorAll('.ext tbody tr');
+      var rows = pnl.querySelectorAll('.ext tbody tr');
       for(var r=0;r<rows.length;r++){
         var row = rows[r];
         var catOk = (extFilter === '' || row.getAttribute('data-cat') === extFilter);
         var qOk = (q === '' || row.textContent.toLowerCase().indexOf(q) > -1);
         var dOk = (!unseen || !isDone(row));
         row.style.display = (catOk && qOk && dOk) ? '' : 'none';
+      }
+    }
+
+    function countPanel(pnl, q, unseen){
+      var n = pnl.querySelectorAll('.term, .ext tbody tr');
+      var c = 0;
+      for(var i=0;i<n.length;i++){
+        var el = n[i];
+        var qOk = (q === '' || el.textContent.toLowerCase().indexOf(q) > -1);
+        var dOk = (!unseen || !isDone(el));
+        if(qOk && dOk) c++;
+      }
+      return c;
+    }
+
+    function updateSearchInfo(){
+      var info = document.getElementById('searchInfo');
+      if(!info) return;
+      var q = kw ? kw.value.trim().toLowerCase() : '';
+      if(q === ''){ info.style.display = 'none'; info.textContent = ''; return; }
+      var unseen = !!window.__glossUnseen;
+      var names = ['beginner','elementary','advanced','ext'];
+      var labels = {beginner:'新手',elementary:'初階',advanced:'進階',ext:'副檔名'};
+      var total = 0, parts = [];
+      for(var i=0;i<names.length;i++){
+        var pnl = document.getElementById('panel-' + names[i]);
+        if(!pnl) continue;
+        var c = countPanel(pnl, q, unseen);
+        total += c;
+        if(c > 0) parts.push(labels[names[i]] + ' ' + c);
+      }
+      info.style.display = '';
+      info.textContent = total > 0
+        ? '跨分頁找到 ' + total + ' 項：' + parts.join('、') + '。清空搜尋框就回到原本分頁。'
+        : '找不到「' + q + '」相關的詞彙，換個關鍵字試試。';
+    }
+
+    function applyFilter(){
+      var q = kw ? kw.value.trim().toLowerCase() : '';
+      var searching = q.length > 0;
+      var unseen = !!window.__glossUnseen;
+      var allPanels = document.querySelectorAll('.tab-panel');
+      var tabBtns = document.querySelectorAll('.tab-btn');
+      var indexBox = document.getElementById('index');
+
+      if(searching){
+        for(var i=0;i<allPanels.length;i++){
+          allPanels[i].style.display = (allPanels[i].id === 'panel-map') ? 'none' : 'block';
+        }
+        for(var tb=0;tb<tabBtns.length;tb++){ tabBtns[tb].classList.remove('on'); }
+        if(indexBox) indexBox.style.display = 'none';
+        var unseenBtnBox=document.getElementById('unseenBtn');
+        if(unseenBtnBox) unseenBtnBox.textContent='只看未學會';
+        for(var p=0;p<allPanels.length;p++){
+          var pnl = allPanels[p];
+          if(pnl.id === 'panel-map') continue;
+          filterPanel(pnl, q, unseen);
+        }
+        updateSearchInfo();
+      } else {
+        var panel = document.getElementById('panel-' + current);
+        if(!panel) return;
+        for(var j=0;j<allPanels.length;j++){
+          allPanels[j].style.display = (allPanels[j].id === 'panel-' + current) ? 'block' : 'none';
+        }
+        for(var tb2=0;tb2<tabBtns.length;tb2++){
+          tabBtns[tb2].classList.toggle('on', tabBtns[tb2].getAttribute('data-tab') === current);
+        }
+        if(indexBox){
+          indexBox.style.display = (current === 'map') ? 'none' : '';
+        }
+        filterPanel(panel, '', unseen);
+        updateSearchInfo();
+        if(window.__glossRefreshProgress) window.__glossRefreshProgress();
       }
     }
 
@@ -1449,6 +1525,7 @@
       return id;
     }
     window.__glossDone = done;
+    window.__glossRefreshProgress = refreshProgress;
 
     function refreshProgress(){
       var panels=document.querySelectorAll('.tab-panel');
@@ -1472,9 +1549,14 @@
         var bar=prog.querySelector('.pb i');
         if(label) label.textContent='已學會 '+cnt+' / '+total;
         if(bar) bar.style.width=(total>0 ? Math.round(cnt/total*100) : 0)+'%';
+        var kw2=document.getElementById('kw');
         var onTab=document.querySelector('.tab-btn.on');
-        if(onTab && unseenBtn && onTab.getAttribute('data-tab')===p.id.replace('panel-','')){
-          unseenBtn.textContent='只看未學會 ('+(total-cnt)+')';
+        if(unseenBtn){
+          if(kw2 && kw2.value.trim() !== ''){
+            unseenBtn.textContent='只看未學會';
+          } else if(onTab && onTab.getAttribute('data-tab')===p.id.replace('panel-','')){
+            unseenBtn.textContent='只看未學會 ('+(total-cnt)+')';
+          }
         }
       }
     }
