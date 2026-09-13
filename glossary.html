@@ -94,6 +94,8 @@
   }
   .term-r .when{font-size:12.5px;color:var(--text2);margin-top:3px;}
   .term-r .when b{color:var(--accent);font-weight:600;}
+  .term-r p b{color:var(--accent);font-weight:600;}
+  .ext td b{color:var(--accent);font-weight:600;}
   .term.danger .term-l code{background:var(--danger-light);color:var(--danger);border-color:#F2C9C7;}
   .term.ok .term-l code{background:var(--green-light);color:var(--green);border-color:#BEE3CC;}
 
@@ -220,28 +222,28 @@
           <div class="term-l"><b>檔案路徑</b><span class="en">Path</span></div>
           <div class="term-r">
             <p>描述「檔案放在哪裡」的地址，例如 <code>下載/GitHub.dmg</code> 表示在下載資料夾裡。</p>
-            <p class="when"><b>遇到：</b>安裝完找不到東西、要告訴 AI「檔案在哪」。從「下載／文件」資料夾開始找，通常就找得到。</p>
+            <p class="when"><b>遇到：</b>安裝完找不到東西、要告訴 AI「檔案在哪」。<b>從「下載／文件」資料夾開始找，通常就找得到</b>。</p>
           </div>
         </div>
         <div class="term">
           <div class="term-l"><b>資料夾／目錄</b><span class="en">Folder / Directory</span></div>
           <div class="term-r">
             <p>裝檔案的容器，可以一層包一層，就像實體文件夾。</p>
-            <p class="when"><b>遇到：</b>下載的專案常是一個資料夾，裡面再放很多檔案；別只解壓其中某一個檔。</p>
+            <p class="when"><b>遇到：</b>下載的專案常是一個資料夾，裡面再放很多檔案；<b>別只解壓其中某一個檔</b>。</p>
           </div>
         </div>
         <div class="term">
           <div class="term-l"><b>副檔名</b><span class="en">File Extension</span></div>
           <div class="term-r">
             <p>檔名最後的 <code>.py</code>、<code>.txt</code>、<code>.zip</code> 一小段，標示檔案類型。</p>
-            <p class="when"><b>遇到：</b>搞不清楚「哪個檔案能開」時先看副檔名；完整清單見「副檔名」分頁。</p>
+            <p class="when"><b>遇到：</b>搞不清楚「哪個檔案能開」時<b>先看副檔名</b>；完整清單見「副檔名」分頁。</p>
           </div>
         </div>
         <div class="term">
           <div class="term-l"><b>安裝／版本</b><span class="en">Install / Version</span></div>
           <div class="term-r">
             <p>安裝＝把軟體裝進電腦；版本＝軟體的更新代號（例如 Python 3.12）。</p>
-            <p class="when"><b>遇到：</b>照教學「下載 → 雙擊 → 下一步 → 完成」；報錯說「版本太舊」就升級。</p>
+            <p class="when"><b>遇到：</b>照教學「下載 → 雙擊 → 下一步 → 完成」；<b>報錯說「版本太舊」就升級</b>。</p>
           </div>
         </div>
       </div>
@@ -254,28 +256,28 @@
           <div class="term-l"><b>終端機</b><span class="en">Terminal</span></div>
           <div class="term-r">
             <p>用「打字」對電腦下指令的視窗，Mac 內建 App 就叫 Terminal。</p>
-            <p class="when"><b>遇到：</b>教學寫「打開終端機輸入⋯」時。指令可以整段複製貼上，不用自己打。</p>
+            <p class="when"><b>遇到：</b>教學寫「打開終端機輸入⋯」時。<b>指令可以整段複製貼上，不用自己打</b>。</p>
           </div>
         </div>
         <div class="term">
           <div class="term-l"><b>指令</b><span class="en">Command</span></div>
           <div class="term-r">
             <p>打進終端機的一段文字，例如 <code>ls</code>（列出檔案）、<code>cd</code>（切換資料夾）。</p>
-            <p class="when"><b>遇到：</b>複製教學的指令時。貼上後按 Enter，有反應多半就成功了。</p>
+            <p class="when"><b>遇到：</b>複製教學的指令時。<b>貼上後按 Enter，有反應多半就成功了</b>。</p>
           </div>
         </div>
         <div class="term">
           <div class="term-l"><b>執行／運行</b><span class="en">Run</span></div>
           <div class="term-r">
             <p>讓程式「跑起來」的動作。</p>
-            <p class="when"><b>遇到：</b>輸入 <code>python 檔名.py</code> 後看到輸出，就代表執行成功。</p>
+            <p class="when"><b>遇到：</b>輸入 <code>python 檔名.py</code> 後看到輸出，<b>就代表執行成功</b>。</p>
           </div>
         </div>
         <div class="term">
           <div class="term-l"><b>環境變數</b><span class="en">Environment Variable</span></div>
           <div class="term-r">
             <p>電腦的全域設定；最常遇到 PATH——決定你在哪個資料夾都能直接呼叫 python。</p>
-            <p class="when"><b>遇到：</b>安裝後輸入指令卻顯示 <code>command not found</code>，多半是 PATH 沒設好，把報錯貼給 AI 即可。</p>
+            <p class="when"><b>遇到：</b>安裝後輸入指令卻顯示 <code>command not found</code>，<b>多半是 PATH 沒設好</b>，把報錯貼給 AI 即可。</p>
           </div>
         </div>
       </div>
@@ -288,21 +290,21 @@
           <div class="term-l"><b>Git</b><span class="en">Git</span></div>
           <div class="term-r">
             <p>記錄檔案修改歷史的工具，像「檔案的時光機」，任何版本都能回溯。</p>
-            <p class="when"><b>遇到：</b>教學叫你「安裝 Git」。裝好後日常就是 commit／push／pull 三兄弟。</p>
+            <p class="when"><b>遇到：</b>教學叫你「安裝 Git」。<b>裝好後日常就是 commit／push／pull 三兄弟</b>。</p>
           </div>
         </div>
         <div class="term">
           <div class="term-l"><b>Repository（repo）</b><span class="en">Repo</span></div>
           <div class="term-r">
             <p>一個專案＝一個 repo，包含所有檔案＋完整修改歷史。</p>
-            <p class="when"><b>遇到：</b>GitHub 上每個專案頁面就是一個 repo；下載別人的專案＝clone 一個 repo。</p>
+            <p class="when"><b>遇到：</b>GitHub 上每個專案頁面就是一個 repo；<b>下載別人的專案＝clone 一個 repo</b>。</p>
           </div>
         </div>
         <div class="term">
           <div class="term-l"><b>Commit</b><span class="en">Commit</span></div>
           <div class="term-r">
             <p>把目前進度「拍一張快照」存下來，並寫一行說明。</p>
-            <p class="when"><b>遇到：</b>改完程式後執行 <code>git commit</code>。好習慣：小步 commit，說明寫清楚。</p>
+            <p class="when"><b>遇到：</b>改完程式後執行 <code>git commit</code>。<b>好習慣：小步 commit，說明寫清楚</b>。</p>
           </div>
         </div>
         <div class="term">
@@ -316,14 +318,14 @@
           <div class="term-l"><b>Pull</b><span class="en">Pull</span></div>
           <div class="term-r">
             <p>把 GitHub 上別人改過的內容「抓下來」到自己電腦。</p>
-            <p class="when"><b>遇到：</b>多人協作、或換電腦繼續工作、想更新到最新版時。</p>
+            <p class="when"><b>遇到：</b>多人協作、或換電腦繼續工作、<b>想更新到最新版時</b>。</p>
           </div>
         </div>
         <div class="term">
           <div class="term-l"><b>Clone</b><span class="en">Clone</span></div>
           <div class="term-r">
             <p>把別人的 repo 完整複製到自己電腦（包含歷史記錄）。</p>
-            <p class="when"><b>遇到：</b>想「下載」某個專案來用、來研究時。</p>
+            <p class="when"><b>遇到：</b><b>想「下載」某個專案來用、來研究時</b>。</p>
           </div>
         </div>
       </div>
@@ -336,35 +338,35 @@
           <div class="term-l"><b>程式碼</b><span class="en">Code</span></div>
           <div class="term-r">
             <p>寫給電腦看的指令文字；你學的 Python 就是一種程式語言。</p>
-            <p class="when"><b>遇到：</b>用 VS Code 打開 <code>.py</code> 檔，看到的內容就是程式碼。</p>
+            <p class="when"><b>遇到：</b>用 VS Code 打開 <code>.py</code> 檔，<b>看到的內容就是程式碼</b>。</p>
           </div>
         </div>
         <div class="term">
           <div class="term-l"><b>編輯器</b><span class="en">Editor</span></div>
           <div class="term-r">
             <p>專門寫程式的軟體，最常用的是 VS Code。</p>
-            <p class="when"><b>遇到：</b>安裝 VS Code 後，用「開啟資料夾」打開專案資料夾來寫 code。</p>
+            <p class="when"><b>遇到：</b>安裝 VS Code 後，<b>用「開啟資料夾」打開專案資料夾</b>來寫 code。</p>
           </div>
         </div>
         <div class="term">
           <div class="term-l"><b>腳本</b><span class="en">Script</span></div>
           <div class="term-r">
             <p>一段自動化小程式，例如「自動整理下載資料夾」。Python 特別適合寫腳本。</p>
-            <p class="when"><b>遇到：</b>想讓重複的事自動做時，就是寫腳本的時機。</p>
+            <p class="when"><b>遇到：</b><b>想讓重複的事自動做時，就是寫腳本的時機</b>。</p>
           </div>
         </div>
         <div class="term">
           <div class="term-l"><b>報錯／錯誤訊息</b><span class="en">Error</span></div>
           <div class="term-r">
             <p>程式出錯時跳出的提示（通常是英文）。它是程式給你的線索，不是在罵你。</p>
-            <p class="when"><b>遇到：</b>幾乎每天。SOP：整段複製 → 貼給 AI → 跟著改，最有效率。</p>
+            <p class="when"><b>遇到：</b>幾乎每天。<b>SOP：整段複製 → 貼給 AI → 跟著改，最有效率</b>。</p>
           </div>
         </div>
         <div class="term">
           <div class="term-l"><b>API</b><span class="en">API</span></div>
           <div class="term-r">
             <p>兩個程式之間溝通的「點餐窗口」：你叫資料，它出資料。</p>
-            <p class="when"><b>遇到：</b>想讓程式抓天氣、匯率、股市資料時；也是「連接器」背後的原理。</p>
+            <p class="when"><b>遇到：</b><b>想讓程式抓天氣、匯率、股市資料時</b>；也是「連接器」背後的原理。</p>
           </div>
         </div>
       </div>
@@ -377,35 +379,35 @@
           <div class="term-l"><b>Prompt（提示詞）</b><span class="en">Prompt</span></div>
           <div class="term-r">
             <p>你對 AI 說的話＝任務描述。說得越清楚，結果越好。</p>
-            <p class="when"><b>遇到：</b>每次跟 AI 對話都是在寫 prompt；「目標＋材料＋格式＋驗收標準」四件套最有效。</p>
+            <p class="when"><b>遇到：</b>每次跟 AI 對話都是在寫 prompt；<b>「目標＋材料＋格式＋驗收標準」四件套最有效</b>。</p>
           </div>
         </div>
         <div class="term">
           <div class="term-l"><b>Agent（智能體）</b><span class="en">Agent</span></div>
           <div class="term-r">
             <p>能自己拆解任務、調用工具的 AI（豆包工作就是 Agent）。</p>
-            <p class="when"><b>遇到：</b>任務模式／工作模式裡的我。不用懂原理，會下指令就行。</p>
+            <p class="when"><b>遇到：</b>任務模式／工作模式裡的我。<b>不用懂原理，會下指令就行</b>。</p>
           </div>
         </div>
         <div class="term">
           <div class="term-l"><b>模型</b><span class="en">Model</span></div>
           <div class="term-r">
             <p>AI 的「大腦」；不同模型擅長的事情不同。</p>
-            <p class="when"><b>遇到：</b>生成結果不理想時，可以問問換個模型／模式是不是更好。</p>
+            <p class="when"><b>遇到：</b><b>生成結果不理想時，可以問問換個模型／模式是不是更好</b>。</p>
           </div>
         </div>
         <div class="term">
           <div class="term-l"><b>額度</b><span class="en">Quota</span></div>
           <div class="term-r">
             <p>你能使用某功能的次數或時長限制。</p>
-            <p class="when"><b>遇到：</b>提示「今日次數用完」時；免費版次日重置，訂閱則有更大額度。</p>
+            <p class="when"><b>遇到：</b>提示「今日次數用完」時；<b>免費版次日重置，訂閱則有更大額度</b>。</p>
           </div>
         </div>
         <div class="term">
           <div class="term-l"><b>上下文</b><span class="en">Context</span></div>
           <div class="term-r">
             <p>AI 記得的先前對話內容。</p>
-            <p class="when"><b>遇到：</b>新開對話後 AI 忘了前面的事＝上下文斷了；把重要資訊重新貼上即可。</p>
+            <p class="when"><b>遇到：</b>新開對話後 AI 忘了前面的事＝上下文斷了；<b>把重要資訊重新貼上即可</b>。</p>
           </div>
         </div>
       </div>
@@ -421,7 +423,7 @@
         <div class="term">
           <div class="term-l"><code>pwd</code><span class="en">print working directory</span></div>
           <div class="term-r">
-            <p>顯示「你現在在哪個資料夾」。迷路時的第一條指令。</p>
+            <p>顯示「你現在在哪個資料夾」。<b>迷路時的第一條指令</b>。</p>
             <p class="when"><b>範例：</b>輸入 <code>pwd</code> → 輸出 <code>/Users/chenjieti</code></p>
           </div>
         </div>
@@ -429,13 +431,13 @@
           <div class="term-l"><code>ls</code><span class="en">list</span></div>
           <div class="term-r">
             <p>列出目前資料夾裡的所有檔案。</p>
-            <p class="when"><b>範例：</b><code>ls -la</code> 顯示更詳細資訊（含隱藏檔）——新手最常用的是這個。</p>
+            <p class="when"><b>範例：</b><code>ls -la</code> 顯示更詳細資訊（含隱藏檔）——<b>新手最常用的是這個</b>。</p>
           </div>
         </div>
         <div class="term">
           <div class="term-l"><code>cd</code><span class="en">change directory</span></div>
           <div class="term-r">
-            <p>切換資料夾。三個固定用法必記：<code>cd 資料夾名</code> 進入、<code>cd ..</code> 回上一層、<code>cd ~</code> 回主目錄。</p>
+            <p>切換資料夾。<b>三個固定用法必記</b>：<code>cd 資料夾名</code> 進入、<code>cd ..</code> 回上一層、<code>cd ~</code> 回主目錄。</p>
             <p class="when"><b>範例：</b><code>cd 下載</code> 後再 <code>pwd</code>，會發現位置變了。</p>
           </div>
         </div>
@@ -456,21 +458,21 @@
         <div class="term">
           <div class="term-l"><code>cp</code><span class="en">copy</span></div>
           <div class="term-r">
-            <p>複製檔案。複製整個資料夾要加 <code>-r</code>。</p>
+            <p>複製檔案。<b>複製整個資料夾要加 <code>-r</code></b>。</p>
             <p class="when"><b>範例：</b><code>cp 筆記.txt 備份.txt</code>；<code>cp -r 專案 專案備份</code>。</p>
           </div>
         </div>
         <div class="term">
           <div class="term-l"><code>mv</code><span class="en">move</span></div>
           <div class="term-r">
-            <p>移動檔案，也能「重新命名」。</p>
+            <p>移動檔案，<b>也能「重新命名」</b>。</p>
             <p class="when"><b>範例：</b><code>mv 舊名.py 新名.py</code>（改名）；<code>mv 檔案.txt 下載/</code>（搬家）。</p>
           </div>
         </div>
         <div class="term">
           <div class="term-l"><code>cat</code><span class="en">concatenate</span></div>
           <div class="term-r">
-            <p>把檔案內容直接印在螢幕上，看小檔案最快。</p>
+            <p>把檔案內容直接印在螢幕上，<b>看小檔案最快</b>。</p>
             <p class="when"><b>範例：</b><code>cat 筆記.txt</code> → 立刻看到全部內容。</p>
           </div>
         </div>
@@ -478,7 +480,7 @@
           <div class="term-l"><code>open</code><span class="en">open（macOS）</span></div>
           <div class="term-r">
             <p>用預設程式打開檔案或資料夾（Mac 專屬）。</p>
-            <p class="when"><b>範例：</b><code>open 下載</code> → 直接跳出 Finder 視窗；<code>open 報告.pdf</code> → 用 PDF 程式打開。</p>
+            <p class="when"><b>範例：</b><b><code>open 下載</code> → 直接跳出 Finder 視窗</b>；<code>open 報告.pdf</code> → 用 PDF 程式打開。</p>
           </div>
         </div>
       </div>
@@ -498,21 +500,21 @@
           <div class="term-l"><code>git status</code><span class="en">查看狀態</span></div>
           <div class="term-r">
             <p>看「現在改了哪些檔案」。想確認自己做到哪，打這條就對了。</p>
-            <p class="when"><b>範例：</b>改完檔後打 <code>git status</code> → 紅色＝還沒暫存，綠色＝已暫存。</p>
+            <p class="when"><b>範例：</b>改完檔後打 <code>git status</code> → <b>紅色＝還沒暫存，綠色＝已暫存</b>。</p>
           </div>
         </div>
         <div class="term">
           <div class="term-l"><code>git add</code><span class="en">加入暫存</span></div>
           <div class="term-r">
             <p>把修改「放進暫存區」，準備要 commit。</p>
-            <p class="when"><b>範例：</b><code>git add 檔名.py</code> 加單一檔案；<code>git add .</code> 一次加全部。</p>
+            <p class="when"><b>範例：</b><code>git add 檔名.py</code> 加單一檔案；<b><code>git add .</code> 一次加全部</b>。</p>
           </div>
         </div>
         <div class="term">
           <div class="term-l"><code>git commit</code><span class="en">拍快照</span></div>
           <div class="term-r">
             <p>把暫存區的修改存成一筆歷史紀錄，必須附說明。</p>
-            <p class="when"><b>範例：</b><code>git commit -m "修正輸入錯誤"</code>。說明用中文也可以。</p>
+            <p class="when"><b>範例：</b><code>git commit -m "修正輸入錯誤"</code>。<b>說明用中文也可以</b>。</p>
           </div>
         </div>
         <div class="term">
@@ -526,7 +528,7 @@
           <div class="term-l"><code>git pull</code><span class="en">下載更新</span></div>
           <div class="term-r">
             <p>把 GitHub 上最新版本抓回本機。</p>
-            <p class="when"><b>範例：</b>換了電腦繼續做 → 先 <code>git pull</code> 再開工。</p>
+            <p class="when"><b>範例：</b>換了電腦繼續做 → <b>先 <code>git pull</code> 再開工</b>。</p>
           </div>
         </div>
       </div>
@@ -539,7 +541,7 @@
           <div class="term-l"><code>python3 --version</code><span class="en">確認版本</span></div>
           <div class="term-r">
             <p>確認 Python 有沒有裝好、版本是多少。</p>
-            <p class="when"><b>範例：</b>輸出 <code>Python 3.12.x</code> 就是正常；出現 command not found 代表沒裝好。</p>
+            <p class="when"><b>範例：</b>輸出 <code>Python 3.12.x</code> 就是正常；<b>出現 command not found 代表沒裝好</b>。</p>
           </div>
         </div>
         <div class="term">
@@ -553,14 +555,14 @@
           <div class="term-l"><code>python3</code><span class="en">互動模式</span></div>
           <div class="term-r">
             <p>直接進入 Python 互動視窗，一行一行試語法，適合測小東西。</p>
-            <p class="when"><b>範例：</b>輸入 <code>python3</code> → 出現 <code>&gt;&gt;&gt;</code> → 打 <code>print("hi")</code> → 按 <code>Ctrl+D</code> 或輸入 <code>exit()</code> 離開。</p>
+            <p class="when"><b>範例：</b>輸入 <code>python3</code> → <b>出現 <code>&gt;&gt;&gt;</code></b> → 打 <code>print("hi")</code> → 按 <code>Ctrl+D</code> 或輸入 <code>exit()</code> 離開。</p>
           </div>
         </div>
         <div class="term">
           <div class="term-l"><code>pip3 install</code><span class="en">安裝套件</span></div>
           <div class="term-r">
             <p>安裝 Python 套件（macOS 常寫 pip3）。</p>
-            <p class="when"><b>範例：</b><code>pip3 install requests</code>；裝完通常會要求重新開啟終端機。</p>
+            <p class="when"><b>範例：</b><code>pip3 install requests</code>；<b>裝完通常會要求重新開啟終端機</b>。</p>
           </div>
         </div>
       </div>
@@ -604,7 +606,7 @@
         <div class="term">
           <div class="term-l"><code>Ctrl+C</code><span class="en">中斷</span></div>
           <div class="term-r">
-            <p>中斷正在跑的程式。程式卡住、迴圈跑不完時的好朋友。</p>
+            <p>中斷正在跑的程式。<b>程式卡住、迴圈跑不完時的好朋友</b>。</p>
             <p class="when"><b>範例：</b>執行太久沒反應 → 按 <code>Ctrl+C</code> 停掉。</p>
           </div>
         </div>
@@ -612,13 +614,13 @@
           <div class="term-l"><code>Ctrl+L</code><span class="en">清畫面</span></div>
           <div class="term-r">
             <p>清空螢幕，等於輸入 <code>clear</code>。畫面亂掉時按一下，神清氣爽。</p>
-            <p class="when"><b>範例：</b>畫面太雜 → <code>Ctrl+L</code> 回到乾淨狀態。</p>
+            <p class="when"><b>範例：</b>畫面太雜 → <b><code>Ctrl+L</code> 回到乾淨狀態</b>。</p>
           </div>
         </div>
         <div class="term">
           <div class="term-l"><code>chmod</code><span class="en">change mode</span></div>
           <div class="term-r">
-            <p>修改檔案的執行權限。初期很少用，遇到「Permission denied」才需要。</p>
+            <p>修改檔案的執行權限。<b>初期很少用，遇到「Permission denied」才需要</b>。</p>
             <p class="when"><b>範例：</b><code>chmod +x 腳本.sh</code> → 讓這個檔可以被執行。</p>
           </div>
         </div>
@@ -626,7 +628,7 @@
           <div class="term-l"><code>sudo</code><span class="en">superuser do</span></div>
           <div class="term-r">
             <p>以「管理者」身分執行，會要求輸入密碼。<b>權力很大，不要亂用</b>，尤其不要配 rm 一起用。</p>
-            <p class="when"><b>範例：</b>安裝系統級軟體時教學會要求 <code>sudo</code>；其餘情況先問 AI。</p>
+            <p class="when"><b>範例：</b>安裝系統級軟體時教學會要求 <code>sudo</code>；<b>其餘情況先問 AI</b>。</p>
           </div>
         </div>
         <div class="term ok">
@@ -640,7 +642,7 @@
           <div class="term-l"><code>curl</code><span class="en">下載／抓取</span></div>
           <div class="term-r">
             <p>從網址抓資料到終端機，也能下載檔案。</p>
-            <p class="when"><b>範例：</b><code>curl -O 網址</code> → 下載檔案到目前資料夾。</p>
+            <p class="when"><b>範例：</b><b><code>curl -O 網址</code> → 下載檔案到目前資料夾</b>。</p>
           </div>
         </div>
       </div>
@@ -653,20 +655,20 @@
           <div class="term-l"><code>git log</code><span class="en">看歷史</span></div>
           <div class="term-r">
             <p>看 commit 歷史紀錄。</p>
-            <p class="when"><b>範例：</b><code>git log --oneline</code> → 一行一條，清爽好讀。</p>
+            <p class="when"><b>範例：</b><b><code>git log --oneline</code> → 一行一條，清爽好讀</b>。</p>
           </div>
         </div>
         <div class="term">
           <div class="term-l"><code>git branch</code><span class="en">分支</span></div>
           <div class="term-r">
-            <p>看目前在哪個分支；開新分支＝另開一條平行修改線。</p>
+            <p>看目前在哪個分支；<b>開新分支＝另開一條平行修改線</b>。</p>
             <p class="when"><b>範例：</b><code>git branch</code> 查看；<code>git branch 新功能</code> 開新分支。</p>
           </div>
         </div>
         <div class="term ok">
           <div class="term-l"><code>venv</code><span class="en">虛擬環境</span></div>
           <div class="term-r">
-            <p>每個專案獨立的「套件隔離區」，避免不同專案打架。</p>
+            <p>每個專案獨立的「套件隔離區」，<b>避免不同專案打架</b>。</p>
             <p class="when"><b>範例：</b><code>python3 -m venv myenv</code> 建立 → <code>source myenv/bin/activate</code> 啟用（Mac）→ 用完 <code>deactivate</code> 退出。</p>
           </div>
         </div>
@@ -686,7 +688,7 @@
         <div class="term ok">
           <div class="term-l"><code>先解釋再執行</code><span class="en">安全確認</span></div>
           <div class="term-r">
-            <p>要 AI 操作電腦或下指令前，先要求它「解釋這條會做什麼、會動到我電腦的哪裡」再執行。</p>
+            <p>要 AI 操作電腦或下指令前，<b>先要求它「解釋這條會做什麼、會動到我電腦的哪裡」再執行</b>。</p>
             <p class="when"><b>範例：</b>「這條指令會改動我的檔案嗎？先解釋一遍再跑。」</p>
           </div>
         </div>
@@ -700,14 +702,14 @@
         <div class="term">
           <div class="term-l"><code>指定格式</code><span class="en">輸出控制</span></div>
           <div class="term-r">
-            <p>直接要求輸出格式，AI 會照做：表格、JSON、程式碼、繁體中文、字數限制⋯⋯</p>
+            <p><b>直接要求輸出格式，AI 會照做</b>：表格、JSON、程式碼、繁體中文、字數限制⋯⋯</p>
             <p class="when"><b>範例：</b>「用表格列出，3 欄，每項附一句範例」→ 比「整理一下」清楚一百倍。</p>
           </div>
         </div>
         <div class="term">
           <div class="term-l"><code>修正指令</code><span class="en">回饋迭代</span></div>
           <div class="term-r">
-            <p>不滿意就直說哪裡不滿意：「太長」「太難」「換個比喻」「只要重點」。AI 會照你的回饋修改，不用重開對話。</p>
+            <p><b>不滿意就直說哪裡不滿意</b>：「太長」「太難」「換個比喻」「只要重點」。AI 會照你的回饋修改，不用重開對話。</p>
             <p class="when"><b>範例：</b>「這份太專業了我看不懂，用跟 12 歲小孩解釋的方式重寫。」</p>
           </div>
         </div>
@@ -721,7 +723,7 @@
         <div class="term">
           <div class="term-l"><code>能力詞</code><span class="en">Skill / Connector / 定時任務 / 夥伴</span></div>
           <div class="term-r">
-            <p>AI Agent 的擴充能力名詞，看到時知道「這是幫 AI 加能力的工具」即可：<b>技能</b>＝特定領域的專業流程、<b>連接器</b>＝接外部系統／資料、<b>定時任務</b>＝到點自動執行、<b>工作夥伴</b>＝預設的專業角色。</p>
+            <p>AI Agent 的擴充能力名詞，<b>看到時知道「這是幫 AI 加能力的工具」即可</b>：<b>技能</b>＝特定領域的專業流程、<b>連接器</b>＝接外部系統／資料、<b>定時任務</b>＝到點自動執行、<b>工作夥伴</b>＝預設的專業角色。</p>
             <p class="when"><b>範例：</b>想讓 AI 定時整理資料 → 用「定時任務」；想接公司資料 → 用「連接器」。</p>
           </div>
         </div>
